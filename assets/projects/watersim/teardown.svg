@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-wstd" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0f2238" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="650" fill="#040d1a" />
+  <rect width="1000" height="650" fill="url(#grid-wstd)" opacity="0.6" />
+
+  <g transform="translate(40, 40)">
+    <text font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#00e5ff" letter-spacing="2">HARDWARE WIRING &amp; MATRIX INTERCONNECT</text>
+    <text y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" fill="#ffffff">10x10 Serpentine WS2812B Array &amp; 6A Power Distribution</text>
+  </g>
+
+  <g transform="translate(60, 110)">
+    <!-- 5V 6A High Current PSU -->
+    <rect x="0" y="40" width="220" height="180" rx="8" fill="#0a192f" stroke="#ff4500" stroke-width="2" />
+    <text x="20" y="70" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800" fill="#ff4500">5V 6A PSU</text>
+    <text x="20" y="90" font-family="'JetBrains Mono', monospace" font-size="10" fill="#88b4d8">100x LEDs @ 60mA MAX</text>
+    <g transform="translate(20, 130)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#ffffff">
+      <text y="0"><tspan fill="#ff4500">+5V Rail</tspan> (Heavy Copper)</text>
+      <text y="24"><tspan fill="#88b4d8">GND Rail</tspan> (Common)</text>
+      <text y="48"><tspan fill="#ffd600">1000uF Cap</tspan> In-line</text>
+    </g>
+
+    <!-- ESP32 Controller -->
+    <rect x="300" y="40" width="240" height="340" rx="10" fill="#0c1d33" stroke="#00e5ff" stroke-width="2" />
+    <text x="420" y="75" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#00e5ff">ESP32</text>
+    <text x="420" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#88b4d8">240MHz PHYSICS CORE</text>
+    <g transform="translate(20, 140)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">
+      <text x="300" y="0"><tspan fill="#00e5ff">GPIO 5</tspan>  : FastLED Data</text>
+      <text x="300" y="30"><tspan fill="#ffd600">GPIO 21</tspan> : I2C SDA (MPU)</text>
+      <text x="300" y="60"><tspan fill="#ffd600">GPIO 22</tspan> : I2C SCL (MPU)</text>
+      <text x="300" y="90"><tspan fill="#a0aec0">USB COM</tspan> : 115200 Debug</text>
+    </g>
+
+    <!-- 10x10 Matrix -->
+    <rect x="620" y="40" width="280" height="340" rx="10" fill="#081426" stroke="#0077b6" stroke-width="2" />
+    <text x="760" y="75" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800" fill="#ffffff">10x10 WS2812B</text>
+    <text x="760" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00e5ff">SERPENTINE ZIGZAG</text>
+    
+    <!-- Trace lines -->
+    <path d="M 220 100 L 300 100" stroke="#ff4500" stroke-width="3" fill="none" />
+    <path d="M 540 180 L 620 180" stroke="#00e5ff" stroke-width="2.5" fill="none" />
+  </g>
+
+  <!-- Serpentine Routing Notice -->
+  <g transform="translate(60, 520)">
+    <rect width="880" height="70" rx="8" fill="#0a192f" stroke="#1e3a5f" />
+    <text x="24" y="28" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00e5ff">SERPENTINE MATRIX INDEXING FORMULA:</text>
+    <text x="24" y="48" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbe4ff">
+      uint16_t XY(uint8_t x, uint8_t y) { return (y &amp; 1) ? (y * W + (W - 1 - x)) : (y * W + x); }
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Journals // guywithyellowscrewdriver</title>
+  <meta name="description" content="Engineering field notes, PCB post-mortems, hardware teardowns, and essays by guywithyellowscrewdriver.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0a0a0c',
+            canvas: '#ffffff',
+            surface: '#f7f7f9',
+            subtle: '#e5e7eb',
+            yellow: {
+              DEFAULT: '#ffd600',
+              hover: '#e6c200'
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-ink min-h-screen flex flex-col antialiased selection:bg-yellow selection:text-black">
+
+  <!-- Interactive Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-label"></div>
+
+  <!-- Header -->
+  <header class="w-full bg-white/95 backdrop-blur-md border-b border-subtle sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span class="font-display font-extrabold text-lg tracking-tight text-ink">
+          gwys<span class="text-yellow text-xl leading-none">.</span>in
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-sans font-medium text-neutral-600">
+        <a href="index.html" class="hover:text-ink transition-colors">Home</a>
+        <a href="experiments.html" class="hover:text-ink transition-colors">Builds</a>
+        <a href="journals.html" class="text-ink font-semibold transition-colors">Journals</a>
+        <a href="index.html#how-i-work" class="hover:text-ink transition-colors">How I Work</a>
+      </nav>
+
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button id="sound-toggle-btn" class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-600 hover:text-ink transition-colors px-2.5 py-1 rounded-full border border-neutral-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span id="sound-toggle-text">Audio On</span>
+        </button>
+
+        <a href="mailto:contact@guywithyellowscrewdriver.local" class="btn-pill-primary text-xs tracking-wide">
+          <span>Contact</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full flex-grow">
+    
+    <div class="max-w-3xl mb-12">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2 h-2 rounded-full bg-yellow"></span>
+        <span class="font-mono text-xs uppercase tracking-wider text-neutral-500 font-bold">Field Notes</span>
+      </div>
+      <h1 class="display-hero-title text-5xl sm:text-6xl md:text-7xl text-ink tracking-tight mb-4">
+        Engineering Journals
+      </h1>
+      <p class="font-sans text-base sm:text-lg text-neutral-600 leading-relaxed">
+        Technical autopsies, ground plane noise derivations, kinematics geometry notes, 
+        and hardware teardowns written from the bench.
+      </p>
+    </div>
+
+    <!-- Timeline Entries -->
+    <div class="space-y-12">
+      
+      <!-- Entry 01 -->
+      <article class="py-6 border-t border-subtle">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
+          <span class="font-mono text-xs text-neutral-400">18 October 2026 · Post-Mortem</span>
+          <span class="font-mono text-xs text-neutral-500">Read: 8 min</span>
+        </div>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
+          Diagnosing Ground Loop Transients at 3 AM with an Oscilloscope
+        </h2>
+        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
+          When an ARM Cortex-M7 core resets precisely every time a high-current servo fires, you don't have a software deadlock—you have 
+          680 mV of inductive ground bounce. Documenting how slicing a shared return trace with an X-Acto blade and jumping a star ground to the bulk electrolytic capacitor solved it.
+        </p>
+        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
+          <span>#Grounding</span>
+          <span>•</span>
+          <span>#STM32</span>
+          <span>•</span>
+          <span>#Oscilloscope</span>
+        </div>
+      </article>
+
+      <!-- Entry 02 -->
+      <article class="py-6 border-t border-subtle">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
+          <span class="font-mono text-xs text-neutral-400">14 September 2026 · Algorithms</span>
+          <span class="font-mono text-xs text-neutral-500">Read: 12 min</span>
+        </div>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
+          Why FABRIK Geometry Outperforms Jacobian Inversion Near Singularities
+        </h2>
+        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
+          Jacobian transpose and pseudo-inverse methods fail violently when robotic arms approach full extension. 
+          Forward And Backward Reaching Inverse Kinematics (FABRIK) solves joint positioning purely through geometric projection, consuming 
+          less than 4% of MCU cycles with no matrix determinant collapse.
+        </p>
+        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
+          <span>#Kinematics</span>
+          <span>•</span>
+          <span>#FABRIK</span>
+          <span>•</span>
+          <span>#LinearAlgebra</span>
+        </div>
+      </article>
+
+      <!-- Entry 03 -->
+      <article class="py-6 border-t border-subtle">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
+          <span class="font-mono text-xs text-neutral-400">22 July 2026 · Teardown</span>
+          <span class="font-mono text-xs text-neutral-500">Read: 6 min</span>
+        </div>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
+          Harmonic Strain Wave Gear Teardown: Wear Patterns in Flexsplines
+        </h2>
+        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
+          Taking apart a 50:1 reduction strain wave harmonic cup drive after 1,200 continuous run hours under 8 Nm payload. 
+          Examining flexspline tooth micro-fractures under optical zoom and measuring residual backlash with dial indicators.
+        </p>
+        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
+          <span>#Mechanisms</span>
+          <span>•</span>
+          <span>#HarmonicDrive</span>
+          <span>•</span>
+          <span>#Metrology</span>
+        </div>
+      </article>
+
+      <!-- Entry 04 -->
+      <article class="py-6 border-t border-subtle">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
+          <span class="font-mono text-xs text-neutral-400">08 May 2026 · Electronics</span>
+          <span class="font-mono text-xs text-neutral-500">Read: 10 min</span>
+        </div>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
+          Parasitic Breadboard Capacitance and the True Cost of Analog Noise
+        </h2>
+        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
+          Standard solderless breadboard spring clips introduce 2–5 pF of parasitic capacitance between adjacent rows. 
+          Demonstrating why high-speed SPI signals and precision analog thermocouple amplifiers cannot be accurately evaluated on breadboards.
+        </p>
+        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
+          <span>#Analog</span>
+          <span>•</span>
+          <span>#Parasitics</span>
+          <span>•</span>
+          <span>#PCBs</span>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-white border-t border-subtle py-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
+      <div>guywithyellowscrewdriver // FIELD LOGS</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-ink transition-colors">Home</a>
+        <a href="experiments.html" class="hover:text-ink transition-colors">Builds</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

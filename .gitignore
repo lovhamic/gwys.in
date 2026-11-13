@@ -1,0 +1,17 @@
+# Dependencies and tools
+node_modules/
+skill/
+.agents/
+New folder/
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Compiled binaries and temporary files
+*.exe
+*.zip
+*.pyc
+__pycache__/
+

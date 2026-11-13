@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Details · guywithyellowscrewdriver</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#ffffff',
+            ink: '#0a0a0a',
+            subtle: '#e5e5e5',
+            yellow: '#ffd600',
+            lime: '#d4ff00'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Technical Grid Paper Background */
+    .bg-grid-blueprint {
+      background-size: 28px 28px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+    }
+    
+    /* Solid Frame Box Shadow matching reference */
+    .frame-shadow-solid {
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .frame-shadow-sm {
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .btn-shadow-yellow {
+      box-shadow: 4px 4px 0px #ffd600;
+    }
+    .btn-shadow-yellow:hover {
+      box-shadow: 0px 0px 0px #ffd600;
+      transform: translate(2px, 2px);
+    }
+  </style>
+</head>
+<body class="bg-canvas text-ink font-sans antialiased selection:bg-yellow selection:text-ink min-h-screen flex flex-col bg-grid-blueprint">
+
+  <!-- =========================================================================
+       1. GLOBAL NAVIGATION (Exact Header Structure)
+       ========================================================================= -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logo with Triple Dots / Screwdriver -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="font-mono font-extrabold text-sm sm:text-base tracking-wider text-ink group-hover:text-neutral-600 transition-colors">
+          gwys.in
+        </span>
+        <div class="flex items-center gap-1">
+          <span class="w-2.5 h-2.5 border border-black bg-yellow inline-block"></span>
+          <span class="w-2.5 h-2.5 border border-black bg-white inline-block"></span>
+          <span class="w-2.5 h-2.5 border border-black bg-white inline-block"></span>
+        </div>
+      </a>
+
+      <!-- Right Navigation -->
+      <nav class="flex items-center gap-4 sm:gap-6 font-mono text-xs sm:text-sm">
+        <a href="experiments.html" class="px-3.5 py-1.5 bg-black text-white font-bold rounded-sm tracking-wide">Build</a>
+        <a href="journals.html" class="text-neutral-600 hover:text-black font-semibold transition-colors">Journal</a>
+        <a href="index.html#how-i-work" class="text-neutral-600 hover:text-black font-semibold transition-colors">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. PROJECT DETAIL VIEW (Exact Layout from reference build)
+       ========================================================================= -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow">
+    
+    <!-- Breadcrumb: ← All builds -->
+    <div class="mb-8">
+      <a href="experiments.html" class="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-neutral-800 hover:text-black underline underline-offset-4 decoration-neutral-400 hover:decoration-black transition-all">
+        ← All builds
+      </a>
+    </div>
+
+    <!-- Article Header -->
+    <div class="mb-8">
+      <!-- Big Editorial Serif / Question Hook -->
+      <h1 id="build-hook" class="font-serif italic text-4xl sm:text-5xl md:text-6xl text-ink leading-[1.08] tracking-tight mb-3">
+        Can an ESP32 navigate waypoints without a magnetic compass?
+      </h1>
+      <!-- Project Name / Subtitle -->
+      <p id="build-subtitle" class="font-display font-extrabold text-lg sm:text-xl text-neutral-900 tracking-tight">
+        Black Box · Magnetometer-Free GPS Waypoint Navigator
+      </p>
+    </div>
+
+    <!-- Main Hero Visual Card (Solid Black Border + Drop Shadow) -->
+    <div class="my-8 w-full border-2 border-black bg-white p-3 sm:p-4 frame-shadow-solid rounded-none">
+      <div class="relative w-full aspect-[16/10] bg-neutral-900 overflow-hidden flex items-center justify-center border border-neutral-200">
+        <img id="build-hero-img" 
+             src="assets/projects/blackbox/01.png" 
+             alt="Hero Build Visual" 
+             class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <!-- Two-Column Lower Layout (HOW IT WORKS + MADE WITH) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-12 items-start">
+      
+      <!-- Left Column: HOW IT WORKS + Teardown Photo (7 of 12 cols) -->
+      <div class="lg:col-span-7">
+        
+        <!-- HOW IT WORKS Section Pill Badge -->
+        <div class="mb-4">
+          <span class="inline-block bg-black text-white font-mono text-xs font-extrabold uppercase tracking-widest px-3 py-1.5">
+            HOW IT WORKS
+          </span>
+        </div>
+
+        <!-- Description Paragraphs -->
+        <div id="build-description" class="font-sans text-base sm:text-lg text-neutral-800 leading-relaxed mb-8 space-y-4">
+          <p><strong class="font-bold text-neutral-900">The Lock-On:</strong> When powered up, the device waits for a clear GPS signal. It then mathematically checks your distance against a saved list of coordinates and automatically targets the closest one.</p>
+          <p><strong class="font-bold text-neutral-900">The Calibration:</strong> Because it doesn't use a standard magnetic compass, the device initially doesn't know which way you are facing. It prompts you to &ldquo;Start Walking.&rdquo; Once you reach a normal walking pace, the GPS detects your physical trajectory and locks in your starting direction.</p>
+          <p><strong class="font-bold text-neutral-900">The Navigation:</strong> This is where the sensor fusion happens. An arrow appears on the screen pointing directly toward your destination.</p>
+          <p class="pl-4 border-l-2 border-neutral-300 text-neutral-700 text-base">If you are standing still and turning around, the internal gyroscope smoothly rotates the arrow to match your hand movements.</p>
+          <p class="pl-4 border-l-2 border-neutral-300 text-neutral-700 text-base">When you are walking, the GPS secretly checks your heading in the background and corrects the gyroscope so the arrow never drifts off course.</p>
+          <p><strong class="font-bold text-neutral-900">The Arrival:</strong> Once you are within 15 meters of your target, the screen announces that you have arrived. A simple press of the physical reset button clears the memory and starts the cycle over to find the next nearest location.</p>
+        </div>
+
+        <!-- Secondary Photo / Teardown Card -->
+        <div class="border-2 border-black bg-white p-3 frame-shadow-sm mb-3">
+          <div id="build-teardown-container" class="w-full bg-neutral-900 overflow-hidden flex items-center justify-center border border-neutral-200 transition-all duration-300">
+            <img id="build-teardown-img" 
+                 src="assets/projects/blackbox/02.png" 
+                 alt="Component Breakdown" 
+                 class="w-full h-auto block object-contain transition-all duration-300">
+          </div>
+        </div>
+        
+        <!-- Caption beneath photo -->
+        <p id="build-teardown-caption" class="font-serif italic text-neutral-600 text-sm">
+          Everything that goes inside · ESP32-C3 Supermini, NEO-6M GPS &amp; MPU6050
+        </p>
+
+      </div>
+
+      <!-- Right Column: MADE WITH Card (5 of 12 cols) -->
+      <div class="lg:col-span-5 lg:sticky lg:top-24">
+        
+        <div class="border-2 border-black bg-white p-6 sm:p-8 frame-shadow-solid">
+          
+          <h2 class="font-mono text-sm sm:text-base font-extrabold tracking-wider uppercase pb-3 border-b-2 border-black text-ink">
+            MADE WITH
+          </h2>
+
+          <!-- Dashed lines dividing technologies -->
+          <ul id="build-made-with-list" class="divide-y divide-dashed divide-neutral-300">
+            <li class="py-3 font-mono text-xs sm:text-sm font-semibold text-neutral-900">ESP32-C3 Supermini</li>
+            <li class="py-3 font-mono text-xs sm:text-sm font-semibold text-neutral-900">NEO-6M GPS (UART 9600)</li>
+            <li class="py-3 font-mono text-xs sm:text-sm font-semibold text-neutral-900">MPU6050 6-Axis IMU (Raw I2C)</li>
+            <li class="py-3 font-mono text-xs sm:text-sm font-semibold text-neutral-900">1.3" OLED (SH1106 Driver)</li>
+            <li class="py-3 font-mono text-xs sm:text-sm font-semibold text-neutral-900">5V Power Source</li>
+          </ul>
+
+          <!-- Action Button: Code on GitHub with yellow offset shadow -->
+          <a id="build-github-link" 
+             href="https://github.com/lovhamic" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="mt-8 w-full inline-flex items-center justify-center gap-2 bg-black text-white font-mono text-xs sm:text-sm font-bold py-3.5 px-6 border-2 border-black btn-shadow-yellow transition-all">
+            <span>Code on GitHub</span>
+            <span>→</span>
+          </a>
+
+          <!-- Quick Spec Attributes -->
+          <div class="mt-6 pt-5 border-t border-neutral-200">
+            <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+              <div>
+                <span class="text-neutral-400 block text-[10px] uppercase">Discipline</span>
+                <span id="build-spec-discipline" class="font-bold text-neutral-800">Hardware &amp; IoT</span>
+              </div>
+              <div>
+                <span class="text-neutral-400 block text-[10px] uppercase">Status</span>
+                <span id="build-spec-status" class="font-bold text-emerald-600">Active Build</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Switcher Bar for all 10 builds -->
+        <div class="mt-6 p-4 bg-white border border-neutral-300">
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-neutral-500 mb-3">
+            Browse All Builds [10]
+          </div>
+          <div class="flex flex-wrap gap-1.5" id="build-quick-pills">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Previous / Next Navigation -->
+    <div class="mt-16 pt-8 border-t-2 border-black flex items-center justify-between font-mono text-xs sm:text-sm">
+      <a id="build-prev-link" href="#" class="inline-flex items-center gap-2 font-bold text-neutral-800 hover:text-black">
+        ← Previous Build
+      </a>
+      <a href="experiments.html" class="hidden sm:inline-block font-semibold text-neutral-500 hover:text-black">
+        All 10 Builds
+      </a>
+      <a id="build-next-link" href="#" class="inline-flex items-center gap-2 font-bold text-neutral-800 hover:text-black">
+        Next Build →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       3. FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-black mt-20 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-600">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-yellow border border-black"></span>
+        <span>guywithyellowscrewdriver · sacred workbench archive</span>
+      </div>
+      <div>
+        <span>Hand-crafted minimal engineering portfolio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    // Build detail page dynamic renderer
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof initBuildDetailPage === "function") {
+        initBuildDetailPage();
+      }
+    });
+  </script>
+</body>
+</html>

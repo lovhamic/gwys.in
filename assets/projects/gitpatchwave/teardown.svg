@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-gpwtd" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="650" fill="#090b10" />
+  <rect width="1000" height="650" fill="url(#grid-gpwtd)" opacity="0.6" />
+
+  <g transform="translate(40, 40)">
+    <text font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#a78bfa" letter-spacing="2">STACK ARCHITECTURE &amp; DATAFLOW</text>
+    <text y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" fill="#ffffff">Flask Math Endpoint &amp; Canvas Rendering Loop</text>
+  </g>
+
+  <g transform="translate(60, 110)">
+    <!-- Frontend Canvas -->
+    <rect x="0" y="40" width="280" height="340" rx="10" fill="#111827" stroke="#06b6d4" stroke-width="2" />
+    <text x="140" y="75" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800" fill="#06b6d4">HTML5 CANVAS</text>
+    <text x="140" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">UI &amp; GRAPH ENGINE</text>
+    <g transform="translate(20, 130)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      <text y="0">• Pan offset &amp; Zoom scale</text>
+      <text y="25">• RequestAnimationFrame loop</text>
+      <text y="50">• Sliders serialize params</text>
+      <text y="75">• Fetch /calculate_wave</text>
+      <text y="100">• Superposition sum render</text>
+    </g>
+
+    <!-- Communication Arrow -->
+    <g transform="translate(280, 200)">
+      <line x1="20" y1="0" x2="100" y2="0" stroke="#a78bfa" stroke-width="3" />
+      <polygon points="100,0 85,-6 85,6" fill="#a78bfa" />
+      <text x="60" y="-12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#a78bfa">GET /calculate</text>
+      <text x="60" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">JSON Y-arrays</text>
+    </g>
+
+    <!-- Backend Flask -->
+    <rect x="400" y="40" width="480" height="340" rx="10" fill="#111827" stroke="#a78bfa" stroke-width="2" />
+    <text x="640" y="75" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800" fill="#a78bfa">FLASK + NUMPY CORE</text>
+    <text x="640" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">VECTORIZED EQUATION EVALUATOR</text>
+    
+    <g transform="translate(430, 130)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">
+      <text y="0">x = np.linspace(minX, maxX, 1000)</text>
+      <text y="24" fill="#64748b"># Evaluate safe mathematical dictionary</text>
+      <text y="48" fill="#ffd600">y_series = eval(clean_eq, safe_dict)</text>
+      <text y="72" fill="#06b6d4">total_y += y_series</text>
+      <text y="96" fill="#68d391">return jsonify({'waves': results, 'sum': total_y})</text>
+    </g>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(60, 510)">
+    <rect width="880" height="70" rx="8" fill="#111827" stroke="#334155" />
+    <text x="24" y="30" font-family="'JetBrains Mono', monospace" font-size="11" fill="#ffd600">PRODUCTION PACKAGING:</text>
+    <text x="24" y="50" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      Bundled via PyInstaller --noconsole --add-data "templates;templates" --add-data "static;static" app.py
+    </text>
+  </g>
+</svg>

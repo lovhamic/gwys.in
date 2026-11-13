@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Builds // guywithyellowscrewdriver</title>
+  <meta name="description" content="Robotic mechanisms, IoT devices, simulation software, and hardware builds by guywithyellowscrewdriver.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0a0a0c',
+            canvas: '#ffffff',
+            surface: '#f7f7f9',
+            subtle: '#e5e7eb',
+            yellow: {
+              DEFAULT: '#ffd600',
+              hover: '#e6c200'
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-ink min-h-screen flex flex-col antialiased selection:bg-yellow selection:text-black">
+
+  <!-- Interactive Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-label"></div>
+
+  <!-- Header -->
+  <header class="w-full bg-white/95 backdrop-blur-md border-b border-subtle sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span class="font-display font-extrabold text-lg tracking-tight text-ink">
+          gwys<span class="text-yellow text-xl leading-none">.</span>in
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-sans font-medium text-neutral-600">
+        <a href="index.html" class="hover:text-ink transition-colors">Home</a>
+        <a href="experiments.html" class="text-ink font-semibold transition-colors">Builds</a>
+        <a href="journals.html" class="hover:text-ink transition-colors">Journals</a>
+        <a href="index.html#how-i-work" class="hover:text-ink transition-colors">How I Work</a>
+      </nav>
+
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button id="sound-toggle-btn" class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-600 hover:text-ink transition-colors px-2.5 py-1 rounded-full border border-neutral-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span id="sound-toggle-text">Audio On</span>
+        </button>
+
+        <a href="mailto:contact@guywithyellowscrewdriver.local" class="btn-pill-primary text-xs tracking-wide">
+          <span>Contact</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full flex-grow">
+    
+    <div class="max-w-3xl mb-12">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2 h-2 rounded-full bg-yellow"></span>
+        <span class="font-mono text-xs uppercase tracking-wider text-neutral-500 font-bold">Workbench Projects</span>
+      </div>
+      <h1 class="display-hero-title text-5xl sm:text-6xl md:text-7xl text-ink tracking-tight mb-4">
+        Selected Builds
+      </h1>
+      <p class="font-sans text-base sm:text-lg text-neutral-600 leading-relaxed">
+        Curated robotic joints, custom motor inverter boards, low-power IoT telemetry nodes, 
+        and mathematical simulation engines built on the workbench. Click any card to inspect its hardware specs.
+      </p>
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="flex flex-wrap items-center gap-2 mb-12 font-sans text-xs sm:text-sm font-medium">
+      <button class="filter-pill btn-pill-primary text-xs" data-filter="all">
+        All [10]
+      </button>
+      <button class="filter-pill btn-pill-secondary text-xs" data-filter="hardware">
+        Hardware &amp; IoT [04]
+      </button>
+      <button class="filter-pill btn-pill-secondary text-xs" data-filter="robotics">
+        Robotics [02]
+      </button>
+      <button class="filter-pill btn-pill-secondary text-xs" data-filter="simulation">
+        Simulation [02]
+      </button>
+      <button class="filter-pill btn-pill-secondary text-xs" data-filter="vision">
+        Vision &amp; Optics [02]
+      </button>
+    </div>
+
+    <!-- Works Grid with 3D Tilt -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 tilt-card-container" id="builds-grid">
+      
+      <!-- Build 01: Black Box -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="hardware" data-project-id="blackbox" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/blackbox/01.png" 
+               alt="Black Box Magnetometer-Free GPS Waypoint Navigator" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=blackbox" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Black Box · GPS Navigator
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Magnetometer-free waypoint navigation fusing 1Hz GPS with 100Hz MPU6050 gyro via 1D Kalman filter.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>ESP32-C3</span>
+            <span>•</span>
+            <span>NEO-6M</span>
+            <span>•</span>
+            <span>SH1106</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 02: Meme Glove -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="hardware" data-project-id="memeglove" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/meme-glove/hero.jpg" 
+               alt="Meme Glove IoT Wireless RFID NFC Soundboard Wearable" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=memeglove" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Meme Glove · IoT Soundboard
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Wearable glove with RC522 RFID reader transmitting UIDs over Wi-Fi to a PC audio server for instant meme sounds.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>ESP32</span>
+            <span>•</span>
+            <span>RC522 SPI</span>
+            <span>•</span>
+            <span>Wi-Fi HTTP</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 03: Shoot the Cockroach -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="hardware" data-project-id="cockroach" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/cockroach/03.jpg" 
+               alt="Shoot the Cockroach ESP32 Physical IMU Arcade Gun" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=cockroach" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Shoot the Cockroach · IMU Gun
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Hardware arcade gun streaming 6-axis IMU gyro/accel packets over USB serial at 115200 baud to Pygame.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>ESP32</span>
+            <span>•</span>
+            <span>MPU6050</span>
+            <span>•</span>
+            <span>Pygame</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 04: Water Sim -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="simulation" data-project-id="watersim" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/watersim/hero.png" 
+               alt="Water Sim ESP32 NeoPixel Particle Fluid Matrix" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=watersim" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Water Sim · Fluid Matrix
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Real-time fluid solver on a 100-LED NeoPixel matrix with MPU6050 tilt gravity and jerk splash physics.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>FastLED</span>
+            <span>•</span>
+            <span>WS2812B</span>
+            <span>•</span>
+            <span>40 FPS Solver</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 05: AI Robotic Arm -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="robotics" data-project-id="robotarm" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/robotarm/hero.jpg" 
+               alt="AI Robotic Arm 4-DOF Vision Manipulator" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=robotarm" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            AI Robotic Arm · 4-DOF Manipulator
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Vision-guided robotic arm driven by ESP32, 4x MG996R servos, ACS712 current sensing, and local Ollama LLM.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>MG996R</span>
+            <span>•</span>
+            <span>Ollama AI</span>
+            <span>•</span>
+            <span>ACS712</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 06: Navigator 01 -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="hardware" data-project-id="navigator" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/navigator/hero.svg" 
+               alt="Navigator 01 ESP32 Smart OLED Companion" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=navigator" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Navigator 01 · Smart Companion
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            SSD1306 128x64 OLED companion with capacitive touch animation switcher, Spotify API, and turn-by-turn routing.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>SSD1306</span>
+            <span>•</span>
+            <span>Spotify PKCE</span>
+            <span>•</span>
+            <span>Touch GPIO</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 07: PySpectrometer -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="vision" data-project-id="spectrometer" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/spectrometer/hero.jpg" 
+               alt="PySpectrometer Optical Emission Spectrum Analysis" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=spectrometer" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            PySpectrometer · Optical Analysis
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Diffraction grating spectroscopy suite with dual-laser nanometer calibration and Savitzky-Golay peak detection.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>OpenCV</span>
+            <span>•</span>
+            <span>SciPy</span>
+            <span>•</span>
+            <span>PeakUtils</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 08: Webcam Coordinate Tracker -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="vision" data-project-id="webcamtracker" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/webcamtracker/hero.jpg" 
+               alt="Webcam Coordinate Tracker Optical 2D Measuring" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=webcamtracker" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Webcam Coordinate Tracker
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Overhead computer vision pinhole measurement system translating video pixels to real-world centimeters.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>OpenCV</span>
+            <span>•</span>
+            <span>Pinhole Ray</span>
+            <span>•</span>
+            <span>Wi-Fi IP Cam</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 09: Git:Patch Wave -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="simulation" data-project-id="gitpatchwave" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/gitpatchwave/hero.svg" 
+               alt="Git:Patch Wave Wave Superposition Engine" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=gitpatchwave" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Git:Patch Wave · Wave Engine
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Interactive wave-superposition engine in Python Flask and HTML5 canvas using a Git branch/commit paradigm.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>Flask</span>
+            <span>•</span>
+            <span>NumPy</span>
+            <span>•</span>
+            <span>HTML5 Canvas</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Build 10: Voice Quadruped -->
+      <article class="work-card work-card-tilt group block cursor-pointer" data-category="robotics" data-project-id="robotdog" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/robotdog/hero.jpg" 
+               alt="Voice Quadruped On-Device AI Robot Dog" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-2.5 py-1 rounded-full">
+            Open Breakdown →
+          </div>
+          <a href="build.html?id=robotdog" class="absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Page ↗
+          </a>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-display font-bold text-lg text-ink group-hover:text-neutral-600 transition-colors">
+            Voice Quadruped · AI Robot Dog
+          </h2>
+          <p class="font-sans text-xs text-neutral-500 leading-relaxed">
+            Seeed XIAO ESP32S3 quadruped robot running on-chip ESP-SR neural wake-word models and inverse kinematics gait.
+          </p>
+          <div class="font-mono text-[11px] text-neutral-400 pt-2 flex items-center gap-2">
+            <span>XIAO S3</span>
+            <span>•</span>
+            <span>INMP441 I2S</span>
+            <span>•</span>
+            <span>ESP-SR AI</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-white border-t border-subtle py-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
+      <div>guywithyellowscrewdriver // LABORATORY BUILDS</div>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-ink transition-colors">Home</a>
+        <a href="journals.html" class="hover:text-ink transition-colors">Journals</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

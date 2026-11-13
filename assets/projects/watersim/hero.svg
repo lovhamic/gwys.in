@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <radialGradient id="water-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="1" />
+      <stop offset="60%" stop-color="#0066ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#002266" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="spray-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="70%" stop-color="#80d8ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0091ea" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid-ws" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0a192f" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="800" fill="#040d1a" />
+  <rect width="1200" height="800" fill="url(#grid-ws)" opacity="0.8" />
+
+  <!-- Technical Header -->
+  <g transform="translate(60, 60)">
+    <text font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#00e5ff" letter-spacing="3">EMBEDDED FLUID PHYSICS // EULERIAN-LAGRANGIAN SOLVER</text>
+    <text y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Water Sim 10x10 · ESP32 NeoPixel Fluid Matrix</text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" fill="#5c7699">40-PARTICLE FLUID DYNAMICS + DENSITY PRESSURE GRID + MPU6050 GRAVITY VECTOR + JERK SPLASH</text>
+  </g>
+
+  <!-- 10x10 LED Matrix Stage (Left Side) -->
+  <g transform="translate(60, 150)">
+    <!-- Matrix Bezel / Acrylic Frame -->
+    <rect width="480" height="480" rx="16" fill="#081426" stroke="#00b4d8" stroke-width="3" />
+    <rect x="20" y="20" width="440" height="440" rx="10" fill="#020813" />
+
+    <!-- 10x10 Grid Cells & LEDs -->
+    <g transform="translate(40, 40)">
+      <!-- Render 100 LED cells -->
+      <!-- Top 6 rows (mostly air, with some splash droplets) -->
+      <!-- Droplets in air -->
+      <circle cx="120" cy="80" r="9" fill="url(#spray-glow)" />
+      <circle cx="280" cy="110" r="7" fill="url(#spray-glow)" />
+      <circle cx="160" cy="140" r="11" fill="url(#water-glow)" />
+      <circle cx="320" cy="60" r="8" fill="url(#spray-glow)" />
+      <circle cx="220" cy="180" r="12" fill="url(#water-glow)" />
+
+      <!-- Inactive grid dots -->
+      <!-- Row loop generator visually rendered -->
+      <g opacity="0.25" fill="#1e3a5f">
+        <circle cx="0" cy="0" r="4" /><circle cx="40" cy="0" r="4" /><circle cx="80" cy="0" r="4" /><circle cx="120" cy="0" r="4" /><circle cx="160" cy="0" r="4" /><circle cx="200" cy="0" r="4" /><circle cx="240" cy="0" r="4" /><circle cx="280" cy="0" r="4" /><circle cx="320" cy="0" r="4" /><circle cx="360" cy="0" r="4" />
+        <circle cx="0" cy="40" r="4" /><circle cx="40" cy="40" r="4" /><circle cx="80" cy="40" r="4" /><circle cx="120" cy="40" r="4" /><circle cx="160" cy="40" r="4" /><circle cx="200" cy="40" r="4" /><circle cx="240" cy="40" r="4" /><circle cx="280" cy="40" r="4" /><circle cx="320" cy="40" r="4" /><circle cx="360" cy="40" r="4" />
+        <circle cx="0" cy="80" r="4" /><circle cx="40" cy="80" r="4" /><circle cx="80" cy="80" r="4" /><circle cx="160" cy="80" r="4" /><circle cx="200" cy="80" r="4" /><circle cx="240" cy="80" r="4" /><circle cx="320" cy="80" r="4" /><circle cx="360" cy="80" r="4" />
+        <circle cx="0" cy="120" r="4" /><circle cx="40" cy="120" r="4" /><circle cx="80" cy="120" r="4" /><circle cx="120" cy="120" r="4" /><circle cx="200" cy="120" r="4" /><circle cx="240" cy="120" r="4" /><circle cx="280" cy="120" r="4" /><circle cx="360" cy="120" r="4" />
+      </g>
+
+      <!-- Bottom Packed Fluid Layer (Rows 6-9) -->
+      <!-- Fluid surface (Cyan glow) -->
+      <g>
+        <circle cx="0" cy="240" r="14" fill="url(#water-glow)" />
+        <circle cx="40" cy="240" r="15" fill="url(#water-glow)" />
+        <circle cx="80" cy="220" r="16" fill="url(#spray-glow)" />
+        <circle cx="120" cy="200" r="16" fill="url(#spray-glow)" />
+        <circle cx="160" cy="220" r="15" fill="url(#water-glow)" />
+        <circle cx="200" cy="240" r="14" fill="url(#water-glow)" />
+        <circle cx="240" cy="240" r="15" fill="url(#water-glow)" />
+        <circle cx="280" cy="220" r="16" fill="url(#spray-glow)" />
+        <circle cx="320" cy="240" r="15" fill="url(#water-glow)" />
+        <circle cx="360" cy="240" r="14" fill="url(#water-glow)" />
+
+        <!-- Deep fluid cells (Deep blue + cyan core) -->
+        <circle cx="0" cy="280" r="16" fill="#00d2ff" />
+        <circle cx="40" cy="280" r="16" fill="#00d2ff" />
+        <circle cx="80" cy="280" r="16" fill="#00b4d8" />
+        <circle cx="120" cy="280" r="16" fill="#0096c7" />
+        <circle cx="160" cy="280" r="16" fill="#0077b6" />
+        <circle cx="200" cy="280" r="16" fill="#0096c7" />
+        <circle cx="240" cy="280" r="16" fill="#00b4d8" />
+        <circle cx="280" cy="280" r="16" fill="#00d2ff" />
+        <circle cx="320" cy="280" r="16" fill="#00d2ff" />
+        <circle cx="360" cy="280" r="16" fill="#00d2ff" />
+
+        <circle cx="0" cy="320" r="16" fill="#023e8a" />
+        <circle cx="40" cy="320" r="16" fill="#023e8a" />
+        <circle cx="80" cy="320" r="16" fill="#03045e" />
+        <circle cx="120" cy="320" r="16" fill="#023e8a" />
+        <circle cx="160" cy="320" r="16" fill="#0077b6" />
+        <circle cx="200" cy="320" r="16" fill="#023e8a" />
+        <circle cx="240" cy="320" r="16" fill="#03045e" />
+        <circle cx="280" cy="320" r="16" fill="#023e8a" />
+        <circle cx="320" cy="320" r="16" fill="#023e8a" />
+        <circle cx="360" cy="320" r="16" fill="#023e8a" />
+
+        <circle cx="0" cy="360" r="16" fill="#03045e" />
+        <circle cx="40" cy="360" r="16" fill="#03045e" />
+        <circle cx="80" cy="360" r="16" fill="#03045e" />
+        <circle cx="120" cy="360" r="16" fill="#03045e" />
+        <circle cx="160" cy="360" r="16" fill="#03045e" />
+        <circle cx="200" cy="360" r="16" fill="#03045e" />
+        <circle cx="240" cy="360" r="16" fill="#03045e" />
+        <circle cx="280" cy="360" r="16" fill="#03045e" />
+        <circle cx="320" cy="360" r="16" fill="#03045e" />
+        <circle cx="360" cy="360" r="16" fill="#03045e" />
+      </g>
+    </g>
+  </g>
+
+  <!-- Right: Physics Engine Specs -->
+  <g transform="translate(580, 150)">
+    <!-- Real-time Gravity Vector HUD -->
+    <rect width="560" height="150" rx="12" fill="#0a192f" stroke="#0077b6" stroke-width="1.5" />
+    <text x="24" y="32" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#00e5ff">ACCELEROMETER GRAVITY VECTOR (MPU6050)</text>
+    
+    <g transform="translate(60, 85)">
+      <circle r="36" fill="none" stroke="#1e3a5f" stroke-width="2" />
+      <!-- Gravity vector arrow pointing down-right -->
+      <line x1="0" y1="0" x2="16" y2="28" stroke="#ffd600" stroke-width="3" />
+      <polygon points="16,28 10,22 18,18" fill="#ffd600" />
+      <text x="50" y="4" font-family="'JetBrains Mono', monospace" font-size="12" fill="#ffffff">gx = +12.4 m/s²</text>
+      <text x="50" y="24" font-family="'JetBrains Mono', monospace" font-size="12" fill="#ffd600">gy = +38.2 m/s² (TILTED)</text>
+    </g>
+
+    <!-- Formula Cards -->
+    <g transform="translate(0, 175)">
+      <rect width="560" height="305" rx="12" fill="#081426" stroke="#1e3a5f" stroke-width="1.5" />
+      <text x="24" y="32" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ffd600">PHYSICS EQUATIONS EXECUTING AT 40 FPS</text>
+
+      <g transform="translate(24, 60)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbe4ff">
+        <text y="0" font-weight="700" fill="#00e5ff">01. Cell Density Pressure:</text>
+        <text y="20" fill="#88b4d8">fx = cnt(x-1, y) - cnt(x+1, y);</text>
+        <text y="40" fill="#88b4d8">fy = cnt(x, y-1) - cnt(x, y+1);</text>
+        <text y="60" fill="#ffffff">p.vx += (gx + fx * PRESSURE) * dt;</text>
+
+        <text y="100" font-weight="700" fill="#00e5ff">02. Wall Restitution Bounce:</text>
+        <text y="120" fill="#88b4d8">p.vx = -p.vx * RESTITUTION (0.35f);</text>
+
+        <text y="160" font-weight="700" fill="#ff6b4a">03. Jerk Detection &amp; Splash Droplets:</text>
+        <text y="180" fill="#88b4d8">jerk = |accel_now - accel_prev|;</text>
+        <text y="200" fill="#ffd600">if (jerk > SHAKE_JERK_G) spawnSplash();</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Bar -->
+  <g transform="translate(60, 660)">
+    <rect width="1080" height="70" rx="8" fill="#081426" stroke="#0077b6" />
+    <text x="24" y="40" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a0c4e8">
+      HARDWARE: ESP32 GPIO 5 (WS2812B DIN) · GPIO 21/22 (MPU6050 I2C 400kHz) · 6A 5V Heavy Power Rail
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-gpw" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#181c24" stroke-width="1"/>
+    </pattern>
+    <filter id="glow-gpw" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="#090b10" />
+  <rect width="1200" height="800" fill="url(#grid-gpw)" opacity="0.8" />
+
+  <!-- Header -->
+  <g transform="translate(60, 60)">
+    <text font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#a78bfa" letter-spacing="3">MATHEMATICAL WAVE SIMULATION // GIT-THEMED INTERFERENCE</text>
+    <text y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Git:Patch Wave · Wave Superposition Engine</text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" fill="#64748b">PYTHON FLASK + NUMPY VECTORIZED MATH + HTML5 CANVAS + DYNAMIC VARIABLE COMMIT TREE</text>
+  </g>
+
+  <!-- Left: Wave Interference Canvas Render -->
+  <g transform="translate(60, 160)">
+    <rect width="540" height="400" rx="16" fill="#11141d" stroke="#334155" stroke-width="2" />
+    <rect x="20" y="20" width="500" height="360" rx="10" fill="#06070a" />
+
+    <!-- Wave Coordinate Axes -->
+    <line x1="40" y1="200" x2="500" y2="200" stroke="#1e293b" stroke-width="1.5" />
+    <line x1="270" y1="40" x2="270" y2="360" stroke="#1e293b" stroke-width="1.5" />
+
+    <!-- Wave 1: Cyan Sine Wave: A * sin(x - t) -->
+    <path d="M 40 200 Q 95 100 150 200 T 260 200 T 370 200 T 480 200" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.7" />
+
+    <!-- Wave 2: Purple Harmonic: 0.5 * sin(2*k*x - w*t) -->
+    <path d="M 40 200 Q 67 150 95 200 T 150 200 T 205 200 T 260 200 T 315 200 T 370 200 T 425 200 T 480 200" fill="none" stroke="#a855f7" stroke-width="2" opacity="0.7" />
+
+    <!-- Superposition Wave: Thick Glowing White Composite Curve -->
+    <path d="M 40 200 C 80 60 110 320 150 200 C 190 80 220 340 260 200 C 300 70 330 330 370 200 C 410 90 440 310 480 200" 
+          fill="none" stroke="#ffffff" stroke-width="3.5" filter="url(#glow-gpw)" />
+
+    <!-- Status Legend -->
+    <g transform="translate(40, 50)" font-family="'JetBrains Mono', monospace" font-size="10">
+      <text fill="#ffffff" font-weight="700">MERGE WAVES (SUM) : ACTIVE</text>
+      <text y="20" fill="#06b6d4">Branch 01: A * sin(x - t)</text>
+      <text y="36" fill="#a855f7">Branch 02: B * sin(2*k*x - w*t)</text>
+      <text y="52" fill="#ffd600">t = 14.82s (LIVE EXEC)</text>
+    </g>
+  </g>
+
+  <!-- Right: Git Branch / Commit Variable Controls -->
+  <g transform="translate(630, 160)">
+    <rect width="510" height="400" rx="16" fill="#11141d" stroke="#334155" stroke-width="2" />
+    <text x="24" y="36" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#a78bfa">GIT REPOSITORY EQUATION TREE</text>
+
+    <!-- Function Branch 1 -->
+    <g transform="translate(24, 65)" font-family="'JetBrains Mono', monospace">
+      <rect width="460" height="65" rx="8" fill="#181f2c" stroke="#06b6d4" />
+      <text x="16" y="24" font-size="11" font-weight="700" fill="#06b6d4">⑂ branch/wave-alpha</text>
+      <text x="16" y="46" font-size="13" fill="#ffffff">A * sin(k * x - w * t)</text>
+    </g>
+
+    <!-- Function Branch 2 -->
+    <g transform="translate(24, 145)" font-family="'JetBrains Mono', monospace">
+      <rect width="460" height="65" rx="8" fill="#181f2c" stroke="#a855f7" />
+      <text x="16" y="24" font-size="11" font-weight="700" fill="#a855f7">⑂ branch/wave-beta</text>
+      <text x="16" y="46" font-size="13" fill="#ffffff">0.5 * cos(3 * x + t)</text>
+    </g>
+
+    <!-- Variable Commits (Sliders) -->
+    <g transform="translate(24, 230)" font-family="'JetBrains Mono', monospace">
+      <text font-size="11" font-weight="700" fill="#ffd600">PARAMETER COMMITS:</text>
+      
+      <!-- Var A -->
+      <g transform="translate(0, 20)">
+        <text y="14" font-size="11" fill="#cbd5e0">Commit A (Amplitude) = 2.40</text>
+        <line x1="0" y1="28" x2="460" y2="28" stroke="#334155" stroke-width="4" stroke-linecap="round" />
+        <circle cx="280" cy="28" r="7" fill="#ffd600" />
+      </g>
+
+      <!-- Var k -->
+      <g transform="translate(0, 65)">
+        <text y="14" font-size="11" fill="#cbd5e0">Commit k (Wavenumber) = 1.15</text>
+        <line x1="0" y1="28" x2="460" y2="28" stroke="#334155" stroke-width="4" stroke-linecap="round" />
+        <circle cx="190" cy="28" r="7" fill="#06b6d4" />
+      </g>
+
+      <!-- Var w -->
+      <g transform="translate(0, 110)">
+        <text y="14" font-size="11" fill="#cbd5e0">Commit w (Angular Freq) = 0.85</text>
+        <line x1="0" y1="28" x2="460" y2="28" stroke="#334155" stroke-width="4" stroke-linecap="round" />
+        <circle cx="150" cy="28" r="7" fill="#a855f7" />
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(60, 590)">
+    <rect width="1080" height="140" rx="12" fill="#0c0e14" stroke="#1e293b" />
+    <text x="30" y="34" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#a78bfa">DESKTOP STANDALONE EXECUTABLE</text>
+    <g transform="translate(30, 58)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">
+      <text y="0">• Bundled with PyInstaller into a standalone executable (GitPatchWave.exe) that automatically spins up a local browser UI.</text>
+      <text y="22">• Fast NumPy linspace vector evaluation across 1,000 spatial samples per frame.</text>
+      <text y="44">• Supports trigonometric, exponential, power, and logarithmic harmonics with interactive time evolution.</text>
+    </g>
+  </g>
+</svg>

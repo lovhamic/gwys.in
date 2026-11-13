@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-cktd" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#261b17" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="650" fill="#0d0908" />
+  <rect width="1000" height="650" fill="url(#grid-cktd)" opacity="0.6" />
+
+  <g transform="translate(40, 40)">
+    <text font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ff6b4a" letter-spacing="2">CONTROLLER HARDWARE BREAKDOWN</text>
+    <text y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" fill="#ffffff">ESP32 + GY-521 + Microswitch Wiring &amp; Pygame Bridge</text>
+  </g>
+
+  <!-- Central Wiring Layout -->
+  <g transform="translate(80, 110)">
+    <!-- ESP32 Board -->
+    <rect x="300" y="40" width="260" height="360" rx="10" fill="#181210" stroke="#ff6b4a" stroke-width="2" />
+    <text x="430" y="75" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#ff6b4a">ESP32 DEVKIT</text>
+    <text x="430" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8f7a75">SERIAL BRIDGE CONTROLLER</text>
+
+    <!-- MPU6050 Left -->
+    <rect x="0" y="100" width="200" height="200" rx="8" fill="#140d0a" stroke="#ffd600" stroke-width="1.5" />
+    <text x="20" y="30" transform="translate(0, 100)" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#ffd600">MPU6050 (GY-521)</text>
+    <text x="20" y="50" transform="translate(0, 100)" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8f7a75">3.3V SAFE POWER</text>
+    
+    <g transform="translate(20, 180)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">
+      <text y="0">VCC  → 3.3V (NOT 5V!)</text>
+      <text y="25">GND  → ESP32 GND</text>
+      <text y="50">SDA  → GPIO 21</text>
+      <text y="75">SCL  → GPIO 22</text>
+    </g>
+
+    <!-- Trigger Switch Bottom -->
+    <rect x="660" y="140" width="220" height="150" rx="8" fill="#140d0a" stroke="#00ff66" stroke-width="1.5" />
+    <text x="20" y="30" transform="translate(660, 140)" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#00ff66">TRIGGER SWITCH</text>
+    <text x="20" y="50" transform="translate(660, 140)" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8f7a75">MOMENTARY PUSH BUTTON</text>
+
+    <g transform="translate(680, 220)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">
+      <text y="0">Leg A → GPIO 4 (Pullup)</text>
+      <text y="25">Leg B → ESP32 GND</text>
+      <text y="50">Logic → Active LOW</text>
+    </g>
+
+    <!-- Connections -->
+    <path d="M 200 200 L 300 200" stroke="#ffd600" stroke-width="2" fill="none" />
+    <path d="M 660 215 L 560 215" stroke="#00ff66" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- Bottom Terminal Note -->
+  <g transform="translate(80, 520)">
+    <rect width="840" height="70" rx="8" fill="#181210" stroke="#38251e" />
+    <text x="24" y="28" font-family="'JetBrains Mono', monospace" font-size="11" fill="#ffd600">FIRMWARE SETUP CHECK:</text>
+    <text x="24" y="48" font-family="'JetBrains Mono', monospace" font-size="11" fill="#c9d1d9">
+      Upload esp32/shoot_the_cockroach_esp32.ino at 115200 baud. Serial monitor prints "ESP32_READY" on boot.
+    </text>
+  </g>
+</svg>

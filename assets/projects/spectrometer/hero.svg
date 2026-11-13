@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="spectrum-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b0764" />
+      <stop offset="15%" stop-color="#2563eb" />
+      <stop offset="35%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="68%" stop-color="#eab308" />
+      <stop offset="85%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+    <pattern id="grid-sp" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#181c24" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="800" fill="#090b10" />
+  <rect width="1200" height="800" fill="url(#grid-sp)" opacity="0.8" />
+
+  <!-- Header -->
+  <g transform="translate(60, 60)">
+    <text font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#38bdf8" letter-spacing="3">OPTICAL SPECTROSCOPY // EMISSION WAVELENGTH CALIBRATION</text>
+    <text y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">PySpectrometer · Optical Emission Spectrum Analysis</text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" fill="#64748b">PYTHON + OPENCV + SCIPY SAVITZKY-GOLAY FILTERING + PEAKUTILS + DIFFRACTION GRATING ANALYSIS</text>
+  </g>
+
+  <!-- Left: Spectral Emission Lines Graph -->
+  <g transform="translate(60, 160)">
+    <rect width="540" height="400" rx="16" fill="#11141d" stroke="#38bdf8" stroke-width="2" />
+    
+    <!-- Spectrum Color Strip -->
+    <rect x="30" y="30" width="480" height="45" rx="6" fill="url(#spectrum-grad)" />
+    <!-- Calibration markers -->
+    <line x1="120" y1="25" x2="120" y2="80" stroke="#ffffff" stroke-width="2" />
+    <text x="120" y="98" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#38bdf8">405 nm</text>
+
+    <line x1="320" y1="25" x2="320" y2="80" stroke="#ffffff" stroke-width="2" />
+    <text x="320" y="98" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#10b981">532 nm</text>
+
+    <!-- Intensity Graph Canvas -->
+    <g transform="translate(30, 130)">
+      <rect width="480" height="230" rx="8" fill="#06070a" stroke="#1e293b" />
+      
+      <!-- Grid lines -->
+      <line x1="0" y1="60" x2="480" y2="60" stroke="#1e293b" stroke-dasharray="2 2" />
+      <line x1="0" y1="120" x2="480" y2="120" stroke="#1e293b" stroke-dasharray="2 2" />
+      <line x1="0" y1="180" x2="480" y2="180" stroke="#1e293b" stroke-dasharray="2 2" />
+
+      <!-- Savitzky-Golay Filtered Spectral Curve with Detected Peaks -->
+      <path d="M 10 210 Q 50 205 70 190 Q 90 120 95 30 Q 100 120 120 190 Q 180 205 210 170 Q 235 60 240 20 Q 245 60 270 190 Q 300 195 315 150 Q 320 40 325 15 Q 330 40 345 180 Q 400 190 430 80 Q 435 45 440 90 Q 460 200 470 210" 
+            fill="none" stroke="#38bdf8" stroke-width="2.5" />
+      
+      <!-- Peak Detection Highlights -->
+      <circle cx="95" cy="30" r="5" fill="#ef4444" />
+      <text x="95" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#ef4444">405.2nm</text>
+
+      <circle cx="240" cy="20" r="5" fill="#10b981" />
+      <text x="240" y="8" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#10b981">488.0nm</text>
+
+      <circle cx="325" cy="15" r="5" fill="#ffd600" />
+      <text x="325" y="5" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#ffd600">532.1nm</text>
+
+      <circle cx="435" cy="45" r="5" fill="#f97316" />
+      <text x="435" y="32" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#f97316">632.8nm</text>
+    </g>
+  </g>
+
+  <!-- Right: Controls & Scientific Filtering -->
+  <g transform="translate(630, 160)">
+    <rect width="510" height="400" rx="16" fill="#11141d" stroke="#1e293b" stroke-width="2" />
+    <text x="24" y="36" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#38bdf8">CALIBRATION &amp; NOISE SUPPRESSION</text>
+
+    <g transform="translate(24, 70)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      <rect width="460" height="85" rx="8" fill="#181f2c" stroke="#38bdf8" stroke-dasharray="3 2" />
+      <text x="16" y="26" font-weight="700" fill="#ffffff">DEFAULT CALIBRATION BENCHMARK:</text>
+      <text x="16" y="48" fill="#38bdf8">Point 1 (Violet laser) : (x: 72px  → 405 nm)</text>
+      <text x="16" y="68" fill="#10b981">Point 2 (Green laser)  : (x: 304px → 532 nm)</text>
+    </g>
+
+    <g transform="translate(24, 180)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">
+      <text y="0"><tspan fill="#38bdf8">Savitzky-Golay</tspan>: Digital smoothing polynomial window</text>
+      <text y="24"><tspan fill="#ffd600">PeakUtils</tspan>     : Sub-pixel peak centroid interpolation</text>
+      <text y="48"><tspan fill="#ffffff">Peak Hold</tspan>     : Accumulates maximum photon exposure</text>
+      <text y="72"><tspan fill="#10b981">CSV Export</tspan>    : Outputs calibrated wavelength / intensity data</text>
+      <text y="96"><tspan fill="#cbd5e0">Diffraction</tspan>   : 1000 lines/mm transmission grating slit</text>
+    </g>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(60, 590)">
+    <rect width="1080" height="140" rx="12" fill="#0c0e14" stroke="#1e293b" />
+    <text x="30" y="34" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#38bdf8">CLI EXECUTION &amp; BATCH IMAGE PROCESSING</text>
+    <g transform="translate(30, 58)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">
+      <text y="0">python pyspectrometer_image_folder.py --folder ./spectrum_photos -c 72:400,304:530</text>
+      <text y="22">Processes static spectrum captures and high-resolution camera frames with Tkinter interactive review.</text>
+      <text y="44">Accurately identifies gas discharge emission tubes (Hydrogen, Helium, Mercury) and laser diodes.</text>
+    </g>
+  </g>
+</svg>
