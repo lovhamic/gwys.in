@@ -480,101 +480,61 @@
   </section>
 
   <!-- =========================================================================
-       7. SUMMARISE JOURNALS // FROM THE FIELD LOGS + LIVE BENCH STATUS
+       7. SUMMARISE JOURNALS // FROM THE FIELD LOGS
        ========================================================================= -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full border-t border-subtle">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+    <div class="max-w-4xl">
       
-      <!-- Left Column: Chronological Log Entries -->
-      <div class="md:col-span-8">
-        <div class="mb-8">
-          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-ink tracking-tight mb-2">
-            From the Field Logs
-          </h2>
-          <p class="font-sans text-sm text-neutral-600">
-            Field logs, hackathons, physics laboratory teardowns, and engineering prototypes from the bench.
-          </p>
-        </div>
-
-        <div class="space-y-6">
-          
-          <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
-            <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">03 October 2026</span>
-            <a href="journal.html?id=claude-hackathon" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
-              Hacking Human Ability: Taking First Place at Superhuman Lab
-            </a>
-            <span class="font-mono text-xs font-bold text-neutral-800 bg-yellow/40 px-2 py-0.5 rounded border border-black/10">1st Place</span>
-          </div>
-
-          <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
-            <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">19 September 2026</span>
-            <a href="journal.html?id=walking-ferns" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
-              Experiencing Outdoor Learning: Volunteering with Walking Ferns
-            </a>
-            <span class="font-mono text-xs text-neutral-500">Mentorship</span>
-          </div>
-
-          <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
-            <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">15 September 2026</span>
-            <a href="journal.html?id=useless-project" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
-              The Useless Project: When Over-Engineering is the Only Metric That Matters
-            </a>
-            <span class="font-mono text-xs text-neutral-500">Hardware</span>
-          </div>
-
-          <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
-            <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">12 August 2026</span>
-            <a href="journal.html?id=nit-physics-visit" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
-              A Day at the National Institute of Technology: Exploring Advanced Physics Labs
-            </a>
-            <span class="font-mono text-xs text-neutral-500">Laboratory</span>
-          </div>
-
-        </div>
-
-        <div class="mt-8">
-          <a href="journals.html" class="btn-pill-secondary text-xs">
-            <span>Browse complete journal archive</span>
-            <span>→</span>
-          </a>
-        </div>
+      <div class="mb-8">
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-ink tracking-tight mb-2">
+          From the Field Logs
+        </h2>
+        <p class="font-sans text-sm text-neutral-600">
+          Field logs, hackathons, physics laboratory teardowns, and engineering prototypes from the bench.
+        </p>
       </div>
 
-      <!-- Right Column: Interactive Live Bench Status Telemetry Widget -->
-      <div class="md:col-span-4 p-6 sm:p-8 bg-surface rounded-2xl border border-subtle">
-        <div class="flex items-center justify-between pb-3 border-b border-subtle mb-4">
-          <span class="font-mono text-xs font-bold uppercase tracking-wider text-neutral-500">
-            Live Bench Telemetry
-          </span>
-          <span class="flex items-center gap-1.5 text-xs font-mono text-emerald-600 font-semibold">
-            <span id="telemetry-status-led" class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            Online
-          </span>
+      <div class="space-y-6">
+        
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">03 October 2026</span>
+          <a href="journal.html?id=claude-hackathon" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            Hacking Human Ability: Taking First Place at Superhuman Lab
+          </a>
+          <span class="font-mono text-xs font-bold text-neutral-800 bg-yellow/40 px-2 py-0.5 rounded border border-black/10">1st Place</span>
         </div>
 
-        <div class="space-y-3 mb-6">
-          <div class="flex items-center justify-between font-mono text-xs">
-            <span class="text-neutral-500">BUS VOLTAGE:</span>
-            <span id="telemetry-voltage" class="font-bold text-neutral-900">24.12 V</span>
-          </div>
-          <div class="flex items-center justify-between font-mono text-xs">
-            <span class="text-neutral-500">MOTOR CURRENT:</span>
-            <span id="telemetry-current" class="font-bold text-neutral-900">1.84 A</span>
-          </div>
-          <div class="flex items-center justify-between font-mono text-xs">
-            <span class="text-neutral-500">CAN PACKETS RX:</span>
-            <span id="telemetry-packets" class="font-bold text-neutral-900">48,210</span>
-          </div>
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">19 September 2026</span>
+          <a href="journal.html?id=walking-ferns" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            Experiencing Outdoor Learning: Volunteering with Walking Ferns
+          </a>
+          <span class="font-mono text-xs text-neutral-500">Mentorship</span>
         </div>
 
-        <button id="telemetry-spike-btn" class="w-full btn-pill-secondary text-xs py-2 mb-4 font-mono justify-center">
-          <span>Inject Peak Load Spike</span>
-        </button>
-
-        <div class="pt-4 border-t border-subtle font-mono text-[11px] text-neutral-500 flex items-center justify-between">
-          <span>Bench Rig 01</span>
-          <span class="font-bold text-ink">Yellow Screwdriver</span>
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">15 September 2026</span>
+          <a href="journal.html?id=useless-project" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            The Useless Project: When Over-Engineering is the Only Metric That Matters
+          </a>
+          <span class="font-mono text-xs text-neutral-500">Hardware</span>
         </div>
+
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">12 August 2026</span>
+          <a href="journal.html?id=nit-physics-visit" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            A Day at the National Institute of Technology: Exploring Advanced Physics Labs
+          </a>
+          <span class="font-mono text-xs text-neutral-500">Laboratory</span>
+        </div>
+
+      </div>
+
+      <div class="mt-8">
+        <a href="journals.html" class="btn-pill-secondary text-xs">
+          <span>Browse complete journal archive</span>
+          <span>→</span>
+        </a>
       </div>
 
     </div>

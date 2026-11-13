@@ -15,13 +15,7 @@
     heroMode: "photo",
     activeWorkstation: null, // 1 | 2 | 3 | null
     armSpeed: 1.0,
-    benchActive: true,
-    telemetry: {
-      voltage: 24.12,
-      current: 1.84,
-      temp: 38.6,
-      packets: 48210
-    }
+    benchActive: true
   };
 
   // ---------------------------------------------------------------------------
@@ -1114,60 +1108,6 @@ void audioTask(void *pvParameters) {
   }
 
   // ---------------------------------------------------------------------------
-  // 7. LIVE BENCH TELEMETRY SIMULATOR (Field Logs Status Widget)
-  // ---------------------------------------------------------------------------
-  function initBenchTelemetry() {
-    const elVoltage = document.getElementById("telemetry-voltage");
-    const elCurrent = document.getElementById("telemetry-current");
-    const elPackets = document.getElementById("telemetry-packets");
-    const btnSpike = document.getElementById("telemetry-spike-btn");
-    const statusLed = document.getElementById("telemetry-status-led");
-
-    let isSpiking = false;
-
-    setInterval(() => {
-      if (!isSpiking) {
-        // Natural small jitter
-        const v = 24.12 + (Math.random() - 0.5) * 0.06;
-        const a = 1.84 + (Math.random() - 0.5) * 0.12;
-        state.telemetry.packets += Math.floor(Math.random() * 4) + 1;
-
-        if (elVoltage) elVoltage.textContent = `${v.toFixed(2)} V`;
-        if (elCurrent) elCurrent.textContent = `${a.toFixed(2)} A`;
-        if (elPackets) elPackets.textContent = state.telemetry.packets.toLocaleString();
-      }
-    }, 600);
-
-    if (btnSpike) {
-      btnSpike.addEventListener("click", () => {
-        isSpiking = true;
-        Sound.relay();
-
-        if (statusLed) {
-          statusLed.classList.remove("bg-emerald-500");
-          statusLed.classList.add("bg-amber-500", "animate-ping");
-        }
-        if (elVoltage) elVoltage.textContent = "22.45 V";
-        if (elCurrent) elCurrent.textContent = "18.62 A";
-
-        setTimeout(() => {
-          if (elVoltage) elVoltage.textContent = "23.80 V";
-          if (elCurrent) elCurrent.textContent = "4.20 A";
-        }, 500);
-
-        setTimeout(() => {
-          isSpiking = false;
-          if (statusLed) {
-            statusLed.classList.remove("bg-amber-500", "animate-ping");
-            statusLed.classList.add("bg-emerald-500");
-          }
-          Sound.probe(1400);
-        }, 1200);
-      });
-    }
-  }
-
-  // ---------------------------------------------------------------------------
   // 9. FILTER PILLS
   // ---------------------------------------------------------------------------
   function initFilterPills() {
@@ -2224,7 +2164,6 @@ void audioTask(void *pvParameters) {
     initHowIWorkSection();
     initAxiomCards();
     initCardTiltAndModal();
-    initBenchTelemetry();
     initFilterPills();
     initJournalThumbnailMotion();
     initJournalDetailPage();
