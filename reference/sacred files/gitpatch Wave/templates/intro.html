@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git:Patch Wave - Initialize</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;600;700&family=JetBrains+Mono:wght@100;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at center, #0B0E14 0%, #000000 100%);
+            height: 100vh; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-family: 'Rajdhani', sans-serif;
+            color: white;
+            cursor: none; /* Hide default cursor */
+        }
+
+        /* --- 1. STARS --- */
+        .star-layer {
+            position: fixed; top: 0; left: 0; width: 1px; height: 1px;
+            background: transparent; z-index: -1;
+        }
+        .layer-1 { animation: animStar 200s linear infinite; } 
+        .layer-2 { animation: animStar 150s linear infinite; } 
+        .layer-3 { animation: animStar 100s linear infinite; } 
+
+        @keyframes animStar { 
+            from { transform: translateY(0px); } 
+            to { transform: translateY(-2000px); } 
+        }
+
+        /* --- 2. UI --- */
+        .container { 
+            text-align: center; z-index: 10; 
+            pointer-events: none; 
+            mix-blend-mode: lighten;
+        }
+        
+        h1 {
+            font-size: 6rem; margin: 0; letter-spacing: 12px;
+            text-shadow: 0 0 40px rgba(88, 166, 255, 0.4);
+            background: linear-gradient(180deg, #fff, #58a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #8b949e;
+            margin-top: -10px; letter-spacing: 6px; text-transform: uppercase;
+        }
+
+        .tagline {
+            margin-top: 30px; font-size: 1rem; color: #58a6ff; font-weight: 400;
+            opacity: 0; animation: fadeUp 2s ease forwards 0.8s;
+            border-top: 1px solid rgba(88, 166, 255, 0.2);
+            border-bottom: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 10px 40px; display: inline-block;
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- 3. BUTTON --- */
+        .btn-enter {
+            margin-top: 60px;
+            padding: 18px 50px;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #58a6ff;
+            background: rgba(88, 166, 255, 0.03); 
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            text-decoration: none; pointer-events: auto; cursor: none;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative; overflow: hidden;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .btn-enter::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-enter:hover {
+            background: rgba(88, 166, 255, 0.1);
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.2);
+            border-color: #fff; color: #fff; letter-spacing: 4px;
+        }
+        
+        .btn-enter:hover::before { left: 100%; }
+
+        #trail-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div id="stars1" class="star-layer layer-1"></div>
+    <div id="stars2" class="star-layer layer-2"></div>
+    <div id="stars3" class="star-layer layer-3"></div>
+
+    <canvas id="trail-canvas"></canvas>
+
+    <div class="container">
+        <h1>GIT:PATCH WAVE</h1>
+        <div class="subtitle">Advanced Geometry Render Suite</div>
+        <br>
+        <div class="tagline"> ~ A git:patch tool </div>
+        <br>
+        <a href="/plotter" class="btn-enter">> INITIALIZE_ENVIRONMENT</a>
+    </div>
+
+    <script>
+        // --- STARFIELD ---
+        function generateSpace(layerId, starCount, size) {
+            let boxShadowValue = "";
+            for(let i = 0; i < starCount; i++) {
+                const x = Math.floor(Math.random() * 2500);
+                const y = Math.floor(Math.random() * 2500);
+                boxShadowValue += `${x}px ${y}px #FFF, `;
+            }
+            const element = document.getElementById(layerId);
+            element.style.boxShadow = boxShadowValue.slice(0, -2);
+            element.style.width = size + "px"; element.style.height = size + "px";
+        }
+        generateSpace('stars1', 1500, 1); 
+        generateSpace('stars2', 500, 2); 
+        generateSpace('stars3', 100, 3); 
+
+        // --- ROBUST TRAIL SYSTEM ---
+        const canvas = document.getElementById('trail-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Configuration
+        const TRAIL_LENGTH = 20;
+        let points = [];
+        let mouse = { x: -100, y: -100 }; // Start off-screen
+        let isInitialized = false;
+
+        function resize() { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }
+        window.onresize = resize;
+        resize();
+
+        window.addEventListener('mousemove', e => {
+            // 1. Browser Glitch Filter (0,0)
+            if (e.clientX === 0 && e.clientY === 0) return;
+
+            // 2. Initialization Check
+            if (!isInitialized) {
+                mouse = { x: e.clientX, y: e.clientY };
+                // Seed the array with the start position so it doesn't crash
+                for(let i=0; i<TRAIL_LENGTH; i++) {
+                    points.push({ x: mouse.x, y: mouse.y });
+                }
+                isInitialized = true;
+                return;
+            }
+
+            // 3. Teleport Protection
+            const dx = e.clientX - mouse.x;
+            const dy = e.clientY - mouse.y;
+            const distSq = dx*dx + dy*dy;
+
+            // If jump > 100px, move everything to new spot instantly (No line drawn)
+            if (distSq > 10000) {
+                mouse = { x: e.clientX, y: e.clientY };
+                // Reset all points to new location to "teleport" the trail without a line
+                points.forEach(p => { p.x = mouse.x; p.y = mouse.y; });
+            } else {
+                // Normal movement
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            }
+        });
+
+        function animate() {
+            // Clear Screen
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Only draw if initialized
+            if (isInitialized) {
+                // 1. Advance the Trail
+                // Remove old point (tail)
+                points.shift();
+                // Add new point (head)
+                points.push({ x: mouse.x, y: mouse.y });
+
+                // 2. Draw the Curve
+                // We draw from tail (points[0]) to head (points[len-1])
+                
+                ctx.beginPath();
+                
+                // Styling
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                // Move to start of tail
+                ctx.moveTo(points[0].x, points[0].y);
+
+                // Draw segments with gradient opacity? 
+                // Simple quadratic curve for smoothness
+                for (let i = 1; i < points.length - 1; i++) {
+                    const xc = (points[i].x + points[i + 1].x) / 2;
+                    const yc = (points[i].y + points[i + 1].y) / 2;
+                    ctx.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
+                }
+                // Connect last point
+                ctx.lineTo(points[points.length-1].x, points[points.length-1].y);
+
+                // Apply Neon Glow Style
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#00f3ff';
+                
+                // Create Gradient
+                const grad = ctx.createLinearGradient(
+                    points[0].x, points[0].y, 
+                    points[points.length-1].x, points[points.length-1].y
+                );
+                grad.addColorStop(0, 'rgba(88, 166, 255, 0)');   // Tail is transparent
+                grad.addColorStop(0.5, 'rgba(88, 166, 255, 0.5)'); 
+                grad.addColorStop(1, 'rgba(0, 243, 255, 1)');     // Head is solid Cyan
+
+                ctx.strokeStyle = grad;
+                ctx.stroke();
+
+                // 3. Draw the Cursor Head (Glowing Dot)
+                ctx.beginPath();
+                ctx.arc(mouse.x, mouse.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#fff';
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = '#fff';
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>

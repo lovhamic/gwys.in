@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Robotic Arm Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a2e;
+    color: #eee;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 { color: #00d4ff; margin-bottom: 6px; }
+  .subtitle { color: #888; margin-bottom: 20px; font-size: 13px; }
+  .panel {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 16px;
+    border: 1px solid #0f3460;
+  }
+  .panel h2 {
+    color: #e94560;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 200px; }
+  .status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  .status-connected { background: #06d6a0; color: #000; }
+  .status-disconnected { background: #e94560; color: #fff; }
+  .status-idle { background: #ffd166; color: #000; }
+  .status-executing { background: #118ab2; color: #fff; }
+  .status-teaching { background: #ff6b6b; color: #fff; }
+  .status-error { background: #e94560; color: #fff; }
+  .gauge { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .gauge-bar { flex: 1; height: 8px; background: #333; border-radius: 4px; overflow: hidden; }
+  .gauge-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+  .gauge-label { width: 65px; font-size: 11px; color: #aaa; }
+  .gauge-val { width: 55px; font-size: 11px; text-align: right; }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #0f3460;
+    background: #0f0f23;
+    color: #eee;
+    font-size: 14px;
+  }
+  button {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #00d4ff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  button:hover { background: #33e0ff; }
+  button:disabled { background: #555; cursor: not-allowed; }
+  button.btn-danger { background: #e94560; color: #fff; }
+  button.btn-danger:hover { background: #ff6b6b; }
+  button.btn-success { background: #06d6a0; color: #000; }
+  button.btn-warning { background: #ffd166; color: #000; }
+  .slider-group { margin: 8px 0; }
+  .slider-group label { font-size: 12px; color: #aaa; display: flex; justify-content: space-between; }
+  input[type="range"] {
+    width: 100%;
+    margin-top: 4px;
+    accent-color: #00d4ff;
+  }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .log {
+    height: 180px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    background: #0f0f23;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .log .in { color: #06d6a0; }
+  .log .out { color: #e94560; }
+  .log .info { color: #ffd166; }
+  .log .error { color: #ff6b6b; }
+  .emergency-bar {
+    background: #2d0a0a;
+    border: 1px solid #e94560;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .emergency-bar h2 { color: #e94560; margin: 0; }
+  .skill-list { list-style: none; padding: 0; }
+  .skill-list li {
+    background: #0f0f23;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 4px 0;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .skill-list li span { color: #00d4ff; }
+</style>
+</head>
+<body>
+
+<h1>AI Robotic Arm</h1>
+<p class="subtitle">Dashboard — ESP32 &harr; Ollama (Llama 3.1) &mdash; All Local</p>
+
+<!-- EMERGENCY STOP BAR -->
+<div class="emergency-bar" id="emergency-bar" style="display:none;">
+  <h2>EMERGENCY STOP ACTIVE</h2>
+  <button class="btn-success" onclick="clearEmergency()">Clear Emergency</button>
+</div>
+
+<!-- CONNECTION STATUS -->
+<div class="panel">
+  <h2>Connection</h2>
+  <div class="row">
+    <div class="col">
+      <p>ESP32: <span id="esp-status" class="status-badge status-disconnected">Disconnected</span></p>
+      <p style="margin-top:6px; font-size:12px; color:#888;">Last seen: <span id="esp-lastseen">&mdash;</span></p>
+    </div>
+    <div class="col">
+      <p>Ollama: <span id="ollama-status" class="status-badge status-disconnected">Unknown</span></p>
+      <p style="margin-top:6px; font-size:12px; color:#888;">Model: <span id="ollama-model">&mdash;</span></p>
+    </div>
+    <div class="col">
+      <p>Mood: <span id="val-mood" style="color:#e94560; font-weight:bold;">curious</span></p>
+      <p style="margin-top:6px; font-size:12px; color:#888;">Status: <span id="arm-status" class="status-badge status-idle">Idle</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ARM STATE + SENSORS -->
+<div class="panel">
+  <h2>Arm State</h2>
+  <div class="row">
+    <div class="col">
+      <div class="gauge"><span class="gauge-label">Base</span><div class="gauge-bar"><div class="gauge-fill" id="gauge-base" style="width:0%; background:#06d6a0"></div></div><span class="gauge-val" id="val-base">0&deg;</span></div>
+      <div class="gauge"><span class="gauge-label">Shoulder</span><div class="gauge-bar"><div class="gauge-fill" id="gauge-shoulder" style="width:67%; background:#00d4ff"></div></div><span class="gauge-val" id="val-shoulder">90&deg;</span></div>
+      <div class="gauge"><span class="gauge-label">Elbow</span><div class="gauge-bar"><div class="gauge-fill" id="gauge-elbow" style="width:67%; background:#00d4ff"></div></div><span class="gauge-val" id="val-elbow">90&deg;</span></div>
+      <div class="gauge"><span class="gauge-label">Wrist</span><div class="gauge-bar"><div class="gauge-fill" id="gauge-wrist" style="width:50%; background:#00d4ff"></div></div><span class="gauge-val" id="val-wrist">90</span></div>
+      <div class="gauge"><span class="gauge-label">Gripper</span><div class="gauge-bar"><div class="gauge-fill" id="gauge-gripper" style="width:50%; background:#e94560"></div></div><span class="gauge-val" id="val-gripper">50%</span></div>
+    </div>
+    <div class="col">
+      <p style="font-size:13px; color:#888; margin-bottom:6px;">Sensors</p>
+      <p style="font-size:13px;">Distance: <span id="val-distance" style="color:#00d4ff; font-weight:bold;">&mdash;</span> cm</p>
+      <p style="font-size:13px; margin-top:3px;">Current: <span id="val-current" style="color:#ffd166; font-weight:bold;">&mdash;</span> A</p>
+      <p style="font-size:13px; margin-top:3px;">Active: <span id="val-cmd" style="color:#06d6a0; font-weight:bold;">&mdash;</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- MANUAL CONTROL -->
+<div class="panel">
+  <h2>Manual Control</h2>
+  <div class="row">
+    <div class="col">
+      <div class="slider-group">
+        <label>Base - Stepper (0-360°) <span id="sl-val-base">0</span></label>
+        <input type="range" id="sl-base" min="0" max="360" value="0" oninput="updateSliderVal('base')">
+      </div>
+      <div class="slider-group">
+        <label>Shoulder (0-135°) <span id="sl-val-shoulder">90</span></label>
+        <input type="range" id="sl-shoulder" min="0" max="135" value="90" oninput="updateSliderVal('shoulder')">
+      </div>
+      <div class="slider-group">
+        <label>Elbow (0-135°) <span id="sl-val-elbow">90</span></label>
+        <input type="range" id="sl-elbow" min="0" max="135" value="90" oninput="updateSliderVal('elbow')">
+      </div>
+    </div>
+    <div class="col">
+      <div class="slider-group">
+        <label>Wrist (0-180, 90=stop) <span id="sl-val-wrist">90</span></label>
+        <input type="range" id="sl-wrist" min="0" max="180" value="90" oninput="updateSliderVal('wrist')">
+      </div>
+      <div class="slider-group">
+        <label>Gripper (0-100%) <span id="sl-val-gripper">50</span></label>
+        <input type="range" id="sl-gripper" min="0" max="100" value="50" oninput="updateSliderVal('gripper')">
+      </div>
+      <div class="slider-group">
+        <label>Speed <span id="sl-val-speed">30</span></label>
+        <input type="range" id="sl-speed" min="10" max="50" value="30" oninput="updateSliderVal('speed')">
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-success" onclick="sendManual()">Send Position</button>
+    <button onclick="sendManual(0,90,90,90,50)">Home</button>
+    <button class="btn-warning" onclick="toggleTeaching()" id="btn-teach">Start Teaching</button>
+  </div>
+</div>
+
+<!-- AI COMMAND -->
+<div class="panel">
+  <h2>AI Command</h2>
+  <input type="text" id="command-input" placeholder="e.g., pick up the red cube, wave, scan the area, stack blocks">
+  <div class="btn-row">
+    <button onclick="sendCommand()">Send to AI</button>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="panel">
+  <h2>Stored Skills</h2>
+  <ul class="skill-list" id="skill-list"><li style="color:#888;">No skills yet. Use teaching mode to record one.</li></ul>
+  <div class="btn-row">
+    <button onclick="refreshSkills()">Refresh</button>
+  </div>
+</div>
+
+<!-- LOG -->
+<div class="panel">
+  <h2>Live Log</h2>
+  <div class="log" id="log"></div>
+</div>
+
+<script>
+const ws = new WebSocket('ws://localhost:8000/ws/dashboard');
+let teachingMode = false;
+
+function log(msg, cls) {
+  const el = document.getElementById('log');
+  const line = document.createElement('div');
+  line.className = cls || 'info';
+  const t = new Date().toLocaleTimeString();
+  line.textContent = `[${t}] ${msg}`;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+}
+
+function updateGauge(id, value, min, max) {
+  const pct = Math.max(0, Math.min(100, ((value - min) / (max - min)) * 100));
+  const fill = document.getElementById('gauge-' + id);
+  if (fill) fill.style.width = pct + '%';
+}
+
+function updateSliderVal(name) {
+  const el = document.getElementById('sl-' + name);
+  const valEl = document.getElementById('sl-val-' + name);
+  if (el && valEl) valEl.textContent = el.value;
+}
+
+function setStatus(id, text, cls) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = text; el.className = 'status-badge ' + cls; }
+}
+
+function sendManual(b, s, e, w, g) {
+  b = b !== undefined ? b : parseInt(document.getElementById('sl-base').value);
+  s = s !== undefined ? s : parseInt(document.getElementById('sl-shoulder').value);
+  e = e !== undefined ? e : parseInt(document.getElementById('sl-elbow').value);
+  w = w !== undefined ? w : parseInt(document.getElementById('sl-wrist').value);
+  g = g !== undefined ? g / 100 : parseInt(document.getElementById('sl-gripper').value) / 100;
+  const sp = parseInt(document.getElementById('sl-speed').value);
+  ws.send(JSON.stringify({
+    type: 'manual_control',
+    payload: { joint_angles: [b, s, e, w], gripper: g, speed: sp, duration_ms: 1500 }
+  }));
+  log(`Manual: base=${b}° [${s}, ${e}, w=${w}] gripper=${(g*100).toFixed(0)}%`, 'out');
+}
+
+function sendCommand() {
+  const input = document.getElementById('command-input');
+  const text = input.value.trim();
+  if (!text) return;
+  ws.send(JSON.stringify({ type: 'user_command', payload: { text } }));
+  log('You: ' + text, 'info');
+  input.value = '';
+}
+
+function toggleTeaching() {
+  teachingMode = !teachingMode;
+  ws.send(JSON.stringify({ type: 'toggle_teaching', payload: { enabled: teachingMode } }));
+  document.getElementById('btn-teach').textContent = teachingMode ? 'Stop Teaching' : 'Start Teaching';
+  document.getElementById('btn-teach').className = teachingMode ? 'btn-danger' : 'btn-warning';
+  log('Teaching mode: ' + (teachingMode ? 'ON' : 'OFF'), teachingMode ? 'error' : 'info');
+}
+
+function sendEmergency() {
+  ws.send(JSON.stringify({ type: 'emergency_stop' }));
+}
+
+function clearEmergency() {
+  ws.send(JSON.stringify({ type: 'clear_emergency' }));
+}
+
+function refreshSkills() {
+  fetch('/api/skills').then(r => r.json()).then(data => {
+    const list = document.getElementById('skill-list');
+    const skills = data.skills || [];
+    if (skills.length === 0) {
+      list.innerHTML = '<li style="color:#888;">No skills yet. Use teaching mode to record one.</li>';
+      return;
+    }
+    list.innerHTML = '';
+    skills.forEach(s => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${s.skill_id}</span> <span style="color:#888;">${s.name || ''}</span> <button style="margin:0;padding:3px 10px;" onclick="playSkill('${s.skill_id}')">Play</button>`;
+      list.appendChild(li);
+    });
+  }).catch(() => {});
+}
+
+function playSkill(id) {
+  ws.send(JSON.stringify({ type: 'play_skill', payload: { skill_id: id } }));
+  log('Playing skill: ' + id, 'out');
+}
+
+ws.onopen = () => { log('Dashboard connected to server', 'info'); refreshSkills(); };
+
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  if (data.type === 'state') {
+    const s = data.payload;
+    if (s.connected) {
+      setStatus('esp-status', 'Connected', 'status-connected');
+      document.getElementById('esp-lastseen').textContent = new Date().toLocaleTimeString();
+    } else {
+      setStatus('esp-status', 'Disconnected', 'status-disconnected');
+    }
+    setStatus('arm-status', (s.status || 'idle').charAt(0).toUpperCase() + (s.status || 'idle').slice(1), 'status-' + (s.status || 'idle'));
+    if (s.joint_angles) {
+      updateGauge('base', s.joint_angles[0], 0, 360);
+      document.getElementById('val-base').textContent = Math.round(s.joint_angles[0]) + '\u00B0';
+      updateGauge('shoulder', s.joint_angles[1], 0, 135);
+      document.getElementById('val-shoulder').textContent = Math.round(s.joint_angles[1]) + '\u00B0';
+      updateGauge('elbow', s.joint_angles[2], 0, 135);
+      document.getElementById('val-elbow').textContent = Math.round(s.joint_angles[2]) + '\u00B0';
+      updateGauge('wrist', s.joint_angles[3], 0, 180);
+      document.getElementById('val-wrist').textContent = Math.round(s.joint_angles[3]) + '\u00B0';
+    }
+    if (s.gripper !== undefined) {
+      document.getElementById('gauge-gripper').style.width = (s.gripper * 100) + '%';
+      document.getElementById('val-gripper').textContent = (s.gripper * 100).toFixed(0) + '%';
+    }
+    if (s.sensors) {
+      document.getElementById('val-distance').textContent = (s.sensors.distance || 0).toFixed(1);
+      document.getElementById('val-current').textContent = (s.sensors.current || 0).toFixed(2);
+    }
+    if (s.mood) document.getElementById('val-mood').textContent = s.mood;
+    if (s.active_cmd) document.getElementById('val-cmd').textContent = s.active_cmd;
+  } else if (data.type === 'llm_response') {
+    log('AI: ' + data.payload.message, 'in');
+  } else if (data.type === 'command_sent') {
+    log('Sent: ' + data.payload.action + ' (' + data.payload.command_id + ')', 'out');
+  } else if (data.type === 'error') {
+    log('Error: ' + data.payload, 'error');
+  } else if (data.type === 'ollama_status') {
+    setStatus('ollama-status', data.payload.connected ? 'Connected' : 'Disconnected', data.payload.connected ? 'status-connected' : 'status-disconnected');
+    document.getElementById('ollama-model').textContent = data.payload.model || '';
+  } else if (data.type === 'emergency_stop') {
+    document.getElementById('emergency-bar').style.display = data.payload ? 'flex' : 'none';
+  } else if (data.type === 'teaching_mode') {
+    teachingMode = data.payload.enabled;
+    document.getElementById('btn-teach').textContent = teachingMode ? 'Stop Teaching' : 'Start Teaching';
+    document.getElementById('btn-teach').className = teachingMode ? 'btn-danger' : 'btn-warning';
+  } else if (data.type === 'skill_playing') {
+    log('Playing skill: ' + data.payload, 'info');
+  }
+};
+
+ws.onclose = () => {
+  log('Dashboard disconnected', 'error');
+  setStatus('esp-status', 'Disconnected', 'status-disconnected');
+};
+
+document.getElementById('command-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendCommand();
+});
+
+log('Dashboard ready.', 'info');
+</script>
+</body>
+</html>
