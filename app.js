@@ -629,8 +629,8 @@ void checkSafetyLimits() {
       discipline: "Embedded Firmware & IoT Display",
       status: "Active Build",
       description: "A multi-function smart desktop companion and vehicle telemetry unit built on an ESP32 and SSD1306 128x64 OLED display. Features capacitive touch switching between 7 procedural pixel-art animation states (Mochi, Orbit, Eyes, Compass, Hands, Flag). When paired with a phone via a companion web app, it relays real-time Google Maps turn-by-turn directions and distances over Wi-Fi. Simultaneously connects to Spotify API via OAuth bounce to render live track titles, artists, and playback state directly on the monochrome display.",
-      heroImg: "assets/projects/navigator/hero.svg",
-      teardownImg: "assets/projects/navigator/teardown.svg",
+      heroImg: "assets/projects/navigator/hero.jpg",
+      teardownImg: "assets/projects/navigator/teardown.jpg",
       teardownCaption: "SSD1306 I2C display wiring and multi-frame bitmap animation pipeline",
       madeWith: [
         "ESP32 Dual-Core (Wi-Fi + BLE)",
@@ -742,8 +742,8 @@ def pixel_to_world_cm(u, v, cx, cy, H_cm, focal_px):
       discipline: "Mathematical Simulation & WebGL",
       status: "Active Build",
       description: "An interactive wave-superposition and harmonic interference simulator engineered with a dark Git-branch terminal paradigm. Users create equations as 'Branches' [e.g. A * sin(k*x - w*t)] and variables as 'Commits' [A, k, w], manipulating parameters with live sliders. A Python Flask backend uses NumPy vectorized mathematics to compute wave amplitudes across dynamic x-ranges, while a high-performance HTML5 Canvas renders individual harmonics and overlays their merged superposition sum in real time with pan, zoom, and time-evolution animation.",
-      heroImg: "assets/projects/gitpatchwave/hero.svg",
-      teardownImg: "assets/projects/gitpatchwave/teardown.svg",
+      heroImg: "assets/projects/gitpatchwave/hero.png",
+      teardownImg: "assets/projects/gitpatchwave/teardown.png",
       teardownCaption: "Live canvas wave interference solver with dynamic branch equation parser",
       madeWith: [
         "Python 3 & Flask",
