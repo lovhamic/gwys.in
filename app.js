@@ -1655,6 +1655,640 @@ void audioTask(void *pvParameters) {
     }
   }
 
+
+  // ---------------------------------------------------------------------------
+  // 12. JOURNAL SYSTEM: DATABASE, DETAIL PAGE & THUMBNAIL 3D MOTION
+  // ---------------------------------------------------------------------------
+  const JOURNAL_DATABASE = {
+  "claude-hackathon": {
+    "id": "claude-hackathon",
+    "numericId": 1,
+    "folder": "claude hackathon ( oct 3 2026)",
+    "title": "Hacking Human Ability: Taking First Place at Superhuman Lab",
+    "date": "03 October 2026",
+    "category": "Hackathon & Assistive AI",
+    "readTime": "4 min",
+    "location": "TinkerSpace, Calicut",
+    "award": "First Place Trophy",
+    "badge": "WINNER · 1ST PLACE",
+    "tags": [
+      "SuperhumanLab",
+      "TinkerSpace",
+      "AssistiveTech",
+      "FirstPlace"
+    ],
+    "md": "hacking_human_ability.md",
+    "thumb": "assets/journals/claude-hackathon/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/claude-hackathon/photo-1.jpg",
+        "caption": "Bagging first place trophy with the team at TinkerSpace Calicut"
+      },
+      {
+        "src": "assets/journals/claude-hackathon/photo-2.jpg",
+        "caption": "Hardware prototyping setup, wire harnesses and CAD testing"
+      }
+    ],
+    "excerpt": "Our team just bagged first place at the Superhuman Lab hackathon at TinkerSpace Calicut! We spent the first weekend of October completely immersed in this event, and it wasn't your usual demo-day...",
+    "paragraphs": [
+      "Our team just bagged first place at the Superhuman Lab hackathon at TinkerSpace Calicut! We spent the first weekend of October completely immersed in this event, and it wasn't your usual demo-day theater. The whole goal was to hack human ability by using AI and hardware to turn assistive tech into actual upgrades instead of just basic medical devices. It was an amazing environment with engineers, designers, and people with lived experiences sitting down together to build prototypes that actually matter.",
+      "After 48 hours of heavy CAD modeling, wiring up microcontrollers, and surviving on basically zero sleep, seeing our project take the top spot felt incredible. It was the perfect chance to put my usual electronics and 3D printing tinkering into something with a real, tangible impact. Really proud of everyone on the team for pulling this build together over the weekend."
+    ]
+  },
+  "walking-ferns": {
+    "id": "walking-ferns",
+    "numericId": 2,
+    "folder": "walking ferns (sep 19 2026)",
+    "title": "Experiencing Outdoor Learning: Volunteering with Walking Ferns",
+    "date": "19 September 2026",
+    "category": "Field Volunteering & Mentorship",
+    "readTime": "3 min",
+    "location": "Calicut Outskirts",
+    "award": "Community Volunteer",
+    "badge": "FIELD MENTORSHIP",
+    "tags": [
+      "WalkingFerns",
+      "OutdoorEducation",
+      "Mentorship",
+      "Curiosity"
+    ],
+    "md": "walking_ferns_volunteer_journal.md",
+    "thumb": "assets/journals/walking-ferns/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/walking-ferns/photo-1.jpg",
+        "caption": "Mentoring and climbing trees with children in nature"
+      },
+      {
+        "src": "assets/journals/walking-ferns/photo-2.jpg",
+        "caption": "Group selfies and shared outdoor curiosity with parents and kids"
+      },
+      {
+        "src": "assets/journals/walking-ferns/photo-3.jpg",
+        "caption": "Indoor huddles and experiential nature discovery activities"
+      }
+    ],
+    "excerpt": "Spending the day volunteering with Walking Ferns was a great experience. The initiative focuses on experiential, outdoor learning, helping kids build curiosity by getting them out of formal class...",
+    "paragraphs": [
+      "Spending the day volunteering with Walking Ferns was a great experience. The initiative focuses on experiential, outdoor learning, helping kids build curiosity by getting them out of formal classrooms and into nature. It was really interesting to step into a mentoring role in such an unstructured environment, where the focus is on letting children explore and figure things out hands-on rather than just feeding them information.",
+      "The day was a mix of quiet indoor moments and a lot of outdoor energy. We spent time sitting on the floor in group huddles for shared activities, but the highlight was definitely getting outside and climbing trees with the kids. It was a very grounded, community-driven space, and just hanging out in the branches and taking group selfies with the parents and children made the whole learning process feel completely natural and fun."
+    ]
+  },
+  "useless-project": {
+    "id": "useless-project",
+    "numericId": 3,
+    "folder": "usless project( sep 12 2026)",
+    "title": "Why I Built a Useless Cyber-Glove (And Won Second Place)",
+    "date": "12 September 2026",
+    "category": "Hardware Hacking & Wearables",
+    "readTime": "5 min",
+    "location": "TinkerSpace, Calicut",
+    "award": "Second Place Award",
+    "badge": "WINNER · 2ND PLACE",
+    "tags": [
+      "TinkerHub",
+      "MemeGlove",
+      "WearableHacking",
+      "SecondPlace"
+    ],
+    "md": "useless_projects_hackathon_report.md",
+    "thumb": "assets/journals/useless-project/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/useless-project/photo-1.jpg",
+        "caption": "Wearing the chaotic latex cyber-glove wired with microcontrollers and jumpers"
+      },
+      {
+        "src": "assets/journals/useless-project/photo-2.jpg",
+        "caption": "Debugging serial signals and firmware on the laptop workbench"
+      }
+    ],
+    "excerpt": "I just grabbed second place this weekend at Useless Projects 3.0, which turned out to be exactly what a maker event at TinkerSpace Calicut should look like. Hosted by TinkerHub, the whole premise...",
+    "paragraphs": [
+      "I just grabbed second place this weekend at Useless Projects 3.0, which turned out to be exactly what a maker event at TinkerSpace Calicut should look like. Hosted by TinkerHub, the whole premise of the hackathon was to celebrate the joy of building things purely for fun, without worrying about whether they actually solve a real-world problem. It was great to see such a solid group of creators show up, spending the weekend experimenting, breaking things, and showing off some genuinely quirky ideas in a totally pressure-free environment.",
+      "My entry for the weekend was a wonderfully impractical wearable hardware setup. I strapped a microcontroller to my wrist, ran a bunch of exposed jumper wires down a latex glove, and spent way too long actively debugging the whole thing on my laptop. It took some seriously chaotic hardware hacking to get it running, but the messy build process completely paid off in the end. Taking home a prize for something intentionally useless was a pretty amazing way to wrap up the weekend."
+    ]
+  },
+  "nit-physics-visit": {
+    "id": "nit-physics-visit",
+    "numericId": 4,
+    "folder": "nit physics dept visit ( oct 24 2025)",
+    "title": "A Day at NITC: Inside the Advanced Physics Labs",
+    "date": "24 October 2025",
+    "category": "Physics & Advanced Instrumentation",
+    "readTime": "4 min",
+    "location": "Department of Physics, NIT Calicut",
+    "award": "Industrial Research Visit",
+    "badge": "RESEARCH VISIT",
+    "tags": [
+      "NITCalicut",
+      "Spectroscopy",
+      "JEOL500NMR",
+      "MaterialsScience"
+    ],
+    "md": "nitc_physics_iv_report.md",
+    "thumb": "assets/journals/nit-physics-visit/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/nit-physics-visit/photo-1.jpg",
+        "caption": "Inside the advanced physics lab with precision superconducting instrumentation"
+      },
+      {
+        "src": "assets/journals/nit-physics-visit/photo-2.jpg",
+        "caption": "Inspecting specialized materials chemistry and applied polymer setups"
+      },
+      {
+        "src": "assets/journals/nit-physics-visit/photo-3.jpg",
+        "caption": "The JEOL 500 NMR spectrometer for molecular characterization"
+      }
+    ],
+    "excerpt": "Our recent industrial visit to the Department of Physics at NIT Calicut offered an excellent look into the practical side of advanced physical sciences. The department clearly prioritizes high-le...",
+    "paragraphs": [
+      "Our recent industrial visit to the Department of Physics at NIT Calicut offered an excellent look into the practical side of advanced physical sciences. The department clearly prioritizes high-level research, which was evident from their strong focus on publishing in specialized fields like materials chemistry and applied polymers. It was inspiring to experience an academic environment so deeply committed to pushing the boundaries of fundamental and applied physics, while actively preparing students to step into innovation and leadership roles within the scientific community.",
+      "The absolute highlight of the tour was getting to see the department's high-end instrumentation firsthand. Walking into the lab and observing the JEOL 500 NMR spectrometer in person really put our theoretical studies into perspective. This sophisticated, superconducting equipment is crucial for complex molecular characterization and structural analysis. Having the chance to see the real-world infrastructure required to run such advanced spectroscopy experiments gave us a much better understanding of what it actually takes to conduct professional, cutting-edge research."
+    ]
+  },
+  "nss-state-camp": {
+    "id": "nss-state-camp",
+    "numericId": 5,
+    "folder": "Nss state level camp (oct 19 2025)",
+    "title": "NSS State Camp Diaries: Three Days at CM College",
+    "date": "19 October 2025",
+    "category": "Leadership & Community Development",
+    "readTime": "5 min",
+    "location": "CM College of Arts and Science",
+    "award": "State Leadership Camp",
+    "badge": "STATE LEADERSHIP",
+    "tags": [
+      "NSSStateCamp",
+      "CMCollege",
+      "Leadership",
+      "NotMeButYou"
+    ],
+    "md": "nss_camp_report.md",
+    "thumb": "assets/journals/nss-state-camp/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/nss-state-camp/photo-1.jpg",
+        "caption": "State level camp volunteers gathered at CM College of Arts and Science"
+      },
+      {
+        "src": "assets/journals/nss-state-camp/photo-2.jpg",
+        "caption": "Field activities, team-building sessions, and open project panels"
+      }
+    ],
+    "excerpt": "The NSS State Level Leadership Camp wrapped up after a busy three days at CM College of Arts and Science. Held from October 17th to 19th, 2025, the event brought together student volunteers under...",
+    "paragraphs": [
+      "The NSS State Level Leadership Camp wrapped up after a busy three days at CM College of Arts and Science. Held from October 17th to 19th, 2025, the event brought together student volunteers under the University of Calicut and the Kerala Higher Education Department. Things kicked off with an introductory session where local police officers spoke to the crowd about stepping up as youth leaders and taking responsibility in their communities. The main goal of the weekend was to take the NSS motto of \"Not Me But You\" and turn it into practical skills, giving volunteers a space to figure out how to manage projects and communicate better when they get back to their home units.",
+      "Over the three days, the schedule was packed with a mix of indoor discussions and outdoor team-building sessions. Instead of just sitting through lectures, volunteers spent time out in the field working on group tasks, which really helped break the ice and build connections among students from all over the state. Evenings usually shifted toward cultural programs and open panels where everyone could share what was actually working in their local community drives. By the time the closing session rolled around, the volunteers were heading home with a lot more confidence, a solid network of friends, and a clearer game plan for their upcoming campus initiatives."
+    ]
+  },
+  "nss-university-camp": {
+    "id": "nss-university-camp",
+    "numericId": 6,
+    "folder": "nss university level camp (march 23 2025)",
+    "title": "Less Plastic, More Memories: Wrapping Up the 3-Day NSS University Camp",
+    "date": "24 March 2025",
+    "category": "Social Service & Ecology",
+    "readTime": "4 min",
+    "location": "Chaliyam Beach & University of Calicut",
+    "award": "Calicut Swachhata Camp",
+    "badge": "ECO INITIATIVE",
+    "tags": [
+      "CalicutSwachhata",
+      "BeachCleanup",
+      "ChaliyamBeach",
+      "Community"
+    ],
+    "md": "nss_camp_report.md",
+    "thumb": "assets/journals/nss-university-camp/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/nss-university-camp/photo-1.jpg",
+        "caption": "Volunteers participating in Destination Swachhata plastic cleanup drive"
+      },
+      {
+        "src": "assets/journals/nss-university-camp/photo-2.jpg",
+        "caption": "Closing ceremony and group memories by Chaliyam Beach"
+      },
+      {
+        "src": "assets/journals/nss-university-camp/photo-3.jpg",
+        "caption": "Interactive environmental seminars and ice-breaker team games"
+      }
+    ],
+    "excerpt": "From March 22 to 24, 2025, the University of Calicut's NSS department hosted a three-day residential camp called \"Calicut Swachhata\". The event brought together 100 volunteers selected from 100 d...",
+    "paragraphs": [
+      "From March 22 to 24, 2025, the University of Calicut's NSS department hosted a three-day residential camp called \"Calicut Swachhata\". The event brought together 100 volunteers selected from 100 different colleges across the region. The camp kicked off with an inauguration and featured several seminars focused on waste management and everyday cleanliness. Along with these sessions, a typical camp like this would also include morning warm-ups, ice-breaker games, and evening cultural programs where students get to showcase their talents and bond with volunteers from other colleges.",
+      "The main highlight of the three days was the \"Destination Swachhata\" campaign, where the students headed out for a major beach cleaning drive at Chaliyam Beach. Working under the \"Life is Beautiful\" project, the volunteers teamed up to pick up plastic and clear debris from the coastline. This hands-on work helped spread public awareness about keeping our public spaces and oceans clean. After three days of hard work and learning, the camp wrapped up with a closing ceremony and a big group photo by the beach, sending everyone home with great memories and a fresh mindset for social service."
+    ]
+  },
+  "microcontroller-physics": {
+    "id": "microcontroller-physics",
+    "numericId": 7,
+    "folder": "micro-controller experiments on physics (sep 11 2024)",
+    "title": "Hands-on Physics: Bringing Experiments to Life with SEELab",
+    "date": "11 September 2024",
+    "category": "Embedded Electronics & Physics",
+    "readTime": "4 min",
+    "location": "Physics Laboratory Workshop",
+    "award": "Hands-on Workshop",
+    "badge": "HARDWARE WORKSHOP",
+    "tags": [
+      "SEELab3",
+      "OpAmpGain",
+      "Kinematics",
+      "OpenHardware"
+    ],
+    "md": "workshop_report.md",
+    "thumb": "assets/journals/microcontroller-physics/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/microcontroller-physics/photo-1.jpg",
+        "caption": "Students wiring resistors and sensors onto the SEELab 3.0 breadboard"
+      },
+      {
+        "src": "assets/journals/microcontroller-physics/photo-2.jpg",
+        "caption": "Projected software telemetry interface logging physical sensor values"
+      },
+      {
+        "src": "assets/journals/microcontroller-physics/photo-3.jpg",
+        "caption": "Analyzing operational amplifier gain alongside kinematics equations"
+      },
+      {
+        "src": "assets/journals/microcontroller-physics/photo-4.jpg",
+        "caption": "Student hardware presentations demonstrating functional circuit builds"
+      }
+    ],
+    "excerpt": "A recent educational workshop on microcontroller-based physics experiments provided students with a practical way to connect classroom theory with modern electronics. Instructors walked the class...",
+    "paragraphs": [
+      "A recent educational workshop on microcontroller-based physics experiments provided students with a practical way to connect classroom theory with modern electronics. Instructors walked the class through key principles, exploring concepts like operational amplifier gain alongside kinematics equations used to calculate gravity. To bring these ideas to life and bridge the gap between theory and application, digital software interfaces were projected on screen, showing students exactly how to monitor and log data directly from their upcoming physical setups.",
+      "The bulk of the session was highly collaborative and hands-on. Students teamed up to build their own circuits using the SEELab 3.0 open-source science kit, carefully wiring components like resistors directly onto the device's integrated breadboard to connect with various sensors. The environment was engaging and supportive, ultimately culminating in students confidently stepping up to present their completed hardware setups and explain their experimental processes to both the instructors and their peers."
+    ]
+  },
+  "optica-students": {
+    "id": "optica-students",
+    "numericId": 8,
+    "folder": "optica for students (aug 14 2024)",
+    "title": "Inspiring Young Minds: Optics and Light Exploration Outreach",
+    "date": "14 August 2024",
+    "category": "Photonics & Optics Outreach",
+    "readTime": "4 min",
+    "location": "School Science Center",
+    "award": "Student Outreach Program",
+    "badge": "SCIENCE OUTREACH",
+    "tags": [
+      "OpticaOutreach",
+      "Prisms",
+      "Dispersion",
+      "WaveOptics"
+    ],
+    "md": "optica_outreach_report.md",
+    "thumb": "assets/journals/optica-students/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/optica-students/photo-1.jpg",
+        "caption": "School students testing optical dispersion with glass prisms"
+      },
+      {
+        "src": "assets/journals/optica-students/photo-2.jpg",
+        "caption": "Demonstrating light wave convergence and divergence using convex lenses"
+      },
+      {
+        "src": "assets/journals/optica-students/photo-3.jpg",
+        "caption": "Hands-on diffraction gratings revealing the visible rainbow spectrum"
+      }
+    ],
+    "excerpt": "Recently, the Muhammed Abdurahiman Memorial Orphanage College Chapter of OPTICA organized an engaging educational outreach program designed to advance the understanding of optics and photonics am...",
+    "paragraphs": [
+      "Recently, the Muhammed Abdurahiman Memorial Orphanage College Chapter of OPTICA organized an engaging educational outreach program designed to advance the understanding of optics and photonics among school students. The initiative brought together a large, enthusiastic audience of young learners for interactive presentations, including a detailed exploration of the properties of white light. Driven by a dedicated organizing committee and student volunteers, the event successfully fostered a collaborative and interactive environment for the students to explore complex scientific concepts.",
+      "During the session, attendees were introduced to foundational science gadgets that transform abstract optical theories into observable physical phenomena. The physics of optical dispersion was demonstrated using glass prisms, which slow down and bend passing light rays at varying angles to separate white light into a visible rainbow spectrum. The program also explored the core principles of refraction using convex and concave lenses to show how light waves can be manipulated to converge at a single focal point or diverge. By interacting with these optical tools alongside diffraction gratings, the students gained a practical, hands-on understanding of photonics and the fundamental behavior of light."
+    ]
+  },
+  "optica-session": {
+    "id": "optica-session",
+    "numericId": 9,
+    "folder": "optica session ( july 18 2024)",
+    "title": "Exploring Photonics: A Hands-on Look at Optical Gadgets",
+    "date": "18 July 2024",
+    "category": "Photonics & Optical Gadgets",
+    "readTime": "3 min",
+    "location": "MAMO College, OPTICA Student Chapter",
+    "award": "Chapter Practical Session",
+    "badge": "PHOTONICS SESSION",
+    "tags": [
+      "MAMOCollege",
+      "OpticsSuitcase",
+      "Spectroscopy",
+      "Photonics"
+    ],
+    "md": "event_outlook_report.md",
+    "thumb": "assets/journals/optica-session/thumb.jpg",
+    "photos": [
+      {
+        "src": "assets/journals/optica-session/photo-1.jpg",
+        "caption": "Participants wearing specialized spectral viewing glasses to observe light diffraction"
+      },
+      {
+        "src": "assets/journals/optica-session/photo-2.jpg",
+        "caption": "Exploring optical tool mechanics with The Optics Suitcase in classroom"
+      }
+    ],
+    "excerpt": "The OPTICA Student Chapter at Muhammed Abdurahiman Memorial Orphanage College recently hosted an interactive session focused on the mechanics and real-world applications of optical gadgets. Cente...",
+    "paragraphs": [
+      "The OPTICA Student Chapter at Muhammed Abdurahiman Memorial Orphanage College recently hosted an interactive session focused on the mechanics and real-world applications of optical gadgets. Centered around practical demonstrations using \"The Optics Suitcase,\" the program was designed to bring complex concepts in optics and photonics out of theoretical textbooks and into an accessible classroom environment. The workshop provided a collaborative space for students to explore the fundamental principles governing light and vision.",
+      "Throughout the event, attendees gained firsthand experience by wearing specialized optical viewing glasses to observe light behavior and spectral patterns. This practical setup allowed the group to test different optical tools simultaneously and actively discuss the visual phenomena unfolding right before their eyes. By bridging the gap between theoretical physics and tangible applications, the chapter successfully fostered a deeper, more engaging understanding of photonics among the participants."
+    ]
+  }
+};
+
+  function initJournalThumbnailMotion() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    const cards = document.querySelectorAll('.journal-card');
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+      const thumb = card.querySelector('.journal-thumb-container');
+      if (!thumb) return;
+
+      let isHovered = false;
+      let rafId = null;
+      let currentTiltX = 0;
+      let currentTiltY = 0;
+      let targetTiltX = 0;
+      let targetTiltY = 0;
+
+      function updateTilt() {
+        if (!isHovered) {
+          currentTiltX += (0 - currentTiltX) * 0.15;
+          currentTiltY += (0 - currentTiltY) * 0.15;
+          thumb.style.transform = `perspective(800px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+          if (Math.abs(currentTiltX) > 0.05 || Math.abs(currentTiltY) > 0.05) {
+            rafId = requestAnimationFrame(updateTilt);
+          } else {
+            thumb.style.transform = '';
+          }
+          return;
+        }
+
+        currentTiltX += (targetTiltX - currentTiltX) * 0.15;
+        currentTiltY += (targetTiltY - currentTiltY) * 0.15;
+        thumb.style.transform = `perspective(800px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+        rafId = requestAnimationFrame(updateTilt);
+      }
+
+      card.addEventListener('mouseenter', () => {
+        isHovered = true;
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(updateTilt);
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = thumb.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Subtle, physical tilt clamp (max ±5 degrees)
+        targetTiltX = -((y - centerY) / centerY) * 5;
+        targetTiltY = ((x - centerX) / centerX) * 5;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        isHovered = false;
+        targetTiltX = 0;
+        targetTiltY = 0;
+      });
+    });
+  }
+
+  function initJournalDetailPage() {
+    const titleEl = document.getElementById('journal-title');
+    if (!titleEl) return; // Not on journal detail page
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id') || 'claude-hackathon';
+    const journal = JOURNAL_DATABASE[id] || JOURNAL_DATABASE['claude-hackathon'];
+
+    // Update document & meta titles
+    document.title = `${journal.title} // gwys.in`;
+    const metaTitle = document.getElementById('journal-meta-title');
+    if (metaTitle) metaTitle.textContent = `${journal.title} · gwys.in`;
+
+    // Metadata chips
+    const readTimeEl = document.getElementById('journal-readtime-badge');
+    if (readTimeEl) readTimeEl.textContent = `${journal.readTime} read`;
+
+    const categoryPill = document.getElementById('journal-category-pill');
+    if (categoryPill) categoryPill.textContent = journal.category;
+
+    const awardPill = document.getElementById('journal-award-pill');
+    if (awardPill) {
+      if (journal.badge) {
+        awardPill.textContent = journal.badge;
+        awardPill.style.display = 'inline-block';
+      } else if (journal.award) {
+        awardPill.textContent = journal.award;
+        awardPill.style.display = 'inline-block';
+      } else {
+        awardPill.style.display = 'none';
+      }
+    }
+
+    const dateText = document.getElementById('journal-date-text');
+    if (dateText) dateText.textContent = journal.date;
+
+    const locationText = document.getElementById('journal-location-text');
+    if (locationText) locationText.textContent = journal.location;
+
+    // Main Title
+    titleEl.textContent = journal.title;
+
+    // Hero image
+    const heroImg = document.getElementById('journal-hero-img');
+    const heroCaption = document.getElementById('journal-hero-caption');
+    const heroContainer = document.getElementById('journal-hero-container');
+
+    const primaryPhoto = (journal.photos && journal.photos.length > 0)
+      ? journal.photos[0]
+      : { src: journal.thumb, caption: journal.title };
+
+    if (heroImg) {
+      heroImg.src = primaryPhoto.src;
+      heroImg.alt = primaryPhoto.caption || journal.title;
+    }
+    if (heroCaption) {
+      heroCaption.textContent = primaryPhoto.caption || `${journal.title} // Field visual`;
+    }
+
+    // Body content with drop-cap on opening paragraph
+    const bodyContent = document.getElementById('journal-body-content');
+    if (bodyContent && journal.paragraphs) {
+      bodyContent.innerHTML = '';
+      journal.paragraphs.forEach((para, idx) => {
+        const p = document.createElement('p');
+        if (idx === 0) {
+          p.className = 'text-lg sm:text-xl text-neutral-900 leading-relaxed font-sans first-letter:float-left first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-serif first-letter:font-bold first-letter:pr-3.5 first-letter:pt-1 first-letter:text-ink';
+        } else {
+          p.className = 'text-base sm:text-lg text-neutral-700 leading-relaxed';
+        }
+        p.textContent = para;
+        bodyContent.appendChild(p);
+      });
+    }
+
+    // Blueprint Card Metadata
+    const metaDate = document.getElementById('meta-date');
+    if (metaDate) metaDate.textContent = journal.date;
+    const metaLocation = document.getElementById('meta-location');
+    if (metaLocation) metaLocation.textContent = journal.location;
+    const metaCategory = document.getElementById('meta-category');
+    if (metaCategory) metaCategory.textContent = journal.category;
+    const metaAward = document.getElementById('meta-award');
+    if (metaAward) metaAward.textContent = journal.award || journal.badge || 'Field Activity';
+
+    // Documentation Gallery
+    const galleryGrid = document.getElementById('journal-gallery-grid');
+    const galleryCount = document.getElementById('gallery-count-badge');
+    const photosList = journal.photos || [];
+
+    if (galleryCount) {
+      galleryCount.textContent = `[ ${photosList.length} Photo${photosList.length === 1 ? '' : 's'} ]`;
+    }
+
+    if (galleryGrid) {
+      galleryGrid.innerHTML = '';
+      photosList.forEach((photo, idx) => {
+        const figure = document.createElement('figure');
+        figure.className = 'journal-gallery-item group rounded-xl overflow-hidden border border-black/20 bg-neutral-900 flex flex-col cursor-pointer transition-all duration-300';
+        figure.setAttribute('data-cursor', 'Expand Photo');
+        figure.innerHTML = `
+          <div class="overflow-hidden bg-neutral-950 relative aspect-[4/3] flex items-center justify-center">
+            <img src="${photo.src}" alt="${photo.caption}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out" loading="lazy">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+              <span class="font-mono text-xs text-white bg-black/80 px-3 py-1.5 rounded-full border border-white/20">Click to expand</span>
+            </div>
+          </div>
+          <figcaption class="p-3 bg-white font-mono text-xs text-neutral-700 border-t border-black/10 flex items-center justify-between">
+            <span class="truncate pr-2">${photo.caption}</span>
+            <span class="text-neutral-400 font-bold flex-shrink-0">0${idx + 1}</span>
+          </figcaption>
+        `;
+
+        figure.addEventListener('click', () => {
+          Sound.click();
+          openPhotoLightbox(photo.src, photo.caption, idx + 1, photosList.length);
+        });
+
+        galleryGrid.appendChild(figure);
+      });
+    }
+
+    // Hero image also clickable for lightbox
+    if (heroContainer) {
+      heroContainer.style.cursor = 'pointer';
+      heroContainer.setAttribute('data-cursor', 'Expand Photo');
+      heroContainer.addEventListener('click', () => {
+        Sound.click();
+        openPhotoLightbox(primaryPhoto.src, primaryPhoto.caption, 1, photosList.length || 1);
+      });
+    }
+
+    // Tag cloud
+    const tagsContainer = document.getElementById('journal-tags-container');
+    if (tagsContainer && journal.tags) {
+      tagsContainer.innerHTML = '';
+      journal.tags.forEach((tag) => {
+        const tagSpan = document.createElement('span');
+        tagSpan.className = 'px-2.5 py-1 rounded bg-neutral-100 border border-neutral-300 text-neutral-700 hover:border-black hover:bg-yellow hover:text-black transition-colors cursor-default';
+        tagSpan.textContent = `#${tag}`;
+        tagsContainer.appendChild(tagSpan);
+      });
+    }
+
+    // Next & Previous Pagination
+    const journalKeys = Object.keys(JOURNAL_DATABASE);
+    const currentIndex = journalKeys.indexOf(journal.id);
+    const safeIndex = currentIndex !== -1 ? currentIndex : 0;
+    const prevIndex = (safeIndex - 1 + journalKeys.length) % journalKeys.length;
+    const nextIndex = (safeIndex + 1) % journalKeys.length;
+    const prevJournal = JOURNAL_DATABASE[journalKeys[prevIndex]];
+    const nextJournal = JOURNAL_DATABASE[journalKeys[nextIndex]];
+
+    const prevBtn = document.getElementById('journal-prev-btn');
+    const prevTitle = document.getElementById('journal-prev-title');
+    if (prevBtn && prevTitle) {
+      prevBtn.href = `journal.html?id=${prevJournal.id}`;
+      prevTitle.textContent = prevJournal.title;
+    }
+
+    const nextBtn = document.getElementById('journal-next-btn');
+    const nextTitle = document.getElementById('journal-next-title');
+    if (nextBtn && nextTitle) {
+      nextBtn.href = `journal.html?id=${nextJournal.id}`;
+      nextTitle.textContent = nextJournal.title;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // 13. PHOTO LIGHTBOX MODAL
+  // ---------------------------------------------------------------------------
+  function openPhotoLightbox(src, caption, index, total) {
+    let lightbox = document.getElementById('journal-lightbox');
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.id = 'journal-lightbox';
+      lightbox.className = 'fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200';
+      lightbox.innerHTML = `
+        <div class="absolute top-4 right-4 flex items-center gap-3">
+          <span id="lightbox-counter" class="font-mono text-xs text-white/60"></span>
+          <button id="lightbox-close-btn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-mono text-lg transition-colors border border-white/20 cursor-pointer" aria-label="Close">
+            ✕
+          </button>
+        </div>
+        <div class="max-w-5xl max-h-[82vh] flex flex-col items-center">
+          <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border border-white/10">
+          <p id="lightbox-caption" class="mt-4 font-mono text-xs sm:text-sm text-neutral-300 text-center max-w-2xl px-2"></p>
+        </div>
+      `;
+      document.body.appendChild(lightbox);
+
+      const closeBtn = lightbox.querySelector('#lightbox-close-btn');
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('pointer-events-none')) {
+          closeLightbox();
+        }
+      });
+    }
+
+    const img = lightbox.querySelector('#lightbox-img');
+    const cap = lightbox.querySelector('#lightbox-caption');
+    const counter = lightbox.querySelector('#lightbox-counter');
+
+    img.src = src;
+    img.alt = caption || '';
+    cap.textContent = caption || '';
+    if (counter) counter.textContent = `[ ${index} / ${total} ]`;
+
+    lightbox.classList.remove('pointer-events-none');
+    requestAnimationFrame(() => {
+      lightbox.classList.add('opacity-100');
+    });
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('journal-lightbox');
+    if (!lightbox) return;
+    lightbox.classList.remove('opacity-100');
+    lightbox.classList.add('pointer-events-none');
+  }
+
   // ---------------------------------------------------------------------------
   // INITIALIZE ON DOM READY
   // ---------------------------------------------------------------------------
@@ -1670,5 +2304,7 @@ void audioTask(void *pvParameters) {
     initCardTiltAndModal();
     initBenchTelemetry();
     initFilterPills();
+    initJournalThumbnailMotion();
+    initJournalDetailPage();
   });
 })();

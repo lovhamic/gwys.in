@@ -1,0 +1,5 @@
+# Experiencing Outdoor Learning: Volunteering with Walking Ferns
+
+Spending the day volunteering with Walking Ferns was a great experience. The initiative focuses on experiential, outdoor learning, helping kids build curiosity by getting them out of formal classrooms and into nature. It was really interesting to step into a mentoring role in such an unstructured environment, where the focus is on letting children explore and figure things out hands-on rather than just feeding them information. 
+
+The day was a mix of quiet indoor moments and a lot of outdoor energy. We spent time sitting on the floor in group huddles for shared activities, but the highlight was definitely getting outside and climbing trees with the kids. It was a very grounded, community-driven space, and just hanging out in the branches and taking group selfies with the parents and children made the whole learning process feel completely natural and fun.

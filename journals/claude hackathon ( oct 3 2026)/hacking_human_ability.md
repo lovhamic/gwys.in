@@ -1,0 +1,5 @@
+# Hacking Human Ability: Taking First Place at Superhuman Lab
+
+Our team just bagged first place at the Superhuman Lab hackathon at TinkerSpace Calicut! We spent the first weekend of October completely immersed in this event, and it wasn't your usual demo-day theater. The whole goal was to hack human ability by using AI and hardware to turn assistive tech into actual upgrades instead of just basic medical devices. It was an amazing environment with engineers, designers, and people with lived experiences sitting down together to build prototypes that actually matter.
+
+After 48 hours of heavy CAD modeling, wiring up microcontrollers, and surviving on basically zero sleep, seeing our project take the top spot felt incredible. It was the perfect chance to put my usual electronics and 3D printing tinkering into something with a real, tangible impact. Really proud of everyone on the team for pulling this build together over the weekend.

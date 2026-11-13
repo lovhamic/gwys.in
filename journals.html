@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Field Journals // guywithyellowscrewdriver</title>
-  <meta name="description" content="Engineering field notes, PCB post-mortems, hardware teardowns, and essays by guywithyellowscrewdriver.">
+  <title>Field Journals // gwys.in</title>
+  <meta name="description" content="Engineering field notes, hackathon prototypes, physics laboratory teardowns, and outdoor education diaries by gwys.in.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -27,8 +27,8 @@
           },
           fontFamily: {
             display: ['"Plus Jakarta Sans"', 'sans-serif'],
-            serif: ['"Newsreader"', 'Georgia', 'serif'],
-            sans: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           }
         }
@@ -37,8 +37,16 @@
   </script>
   
   <link rel="stylesheet" href="style.css">
+  <style>
+    .bg-grid-blueprint {
+      background-size: 28px 28px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    }
+  </style>
 </head>
-<body class="bg-white text-ink min-h-screen flex flex-col antialiased selection:bg-yellow selection:text-black">
+<body class="bg-white text-ink min-h-screen flex flex-col antialiased selection:bg-yellow selection:text-black bg-grid-blueprint">
 
   <!-- Interactive Custom Cursor -->
   <div class="cursor-dot"></div>
@@ -48,7 +56,7 @@
   <header class="w-full bg-white/95 backdrop-blur-md border-b border-subtle sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <a href="index.html" class="flex items-center gap-2 group">
+      <a href="index.html" class="flex items-center gap-2 group" data-cursor="Home">
         <span class="font-display font-extrabold text-lg tracking-tight text-ink">
           gwys<span class="text-yellow text-xl leading-none">.</span>in
         </span>
@@ -82,107 +90,512 @@
     <div class="max-w-3xl mb-12">
       <div class="flex items-center gap-2 mb-2">
         <span class="w-2 h-2 rounded-full bg-yellow"></span>
-        <span class="font-mono text-xs uppercase tracking-wider text-neutral-500 font-bold">Field Notes</span>
+        <span class="font-mono text-xs uppercase tracking-wider text-neutral-500 font-bold">Field Documentation</span>
       </div>
       <h1 class="display-hero-title text-5xl sm:text-6xl md:text-7xl text-ink tracking-tight mb-4">
         Engineering Journals
       </h1>
       <p class="font-sans text-base sm:text-lg text-neutral-600 leading-relaxed">
-        Technical autopsies, ground plane noise derivations, kinematics geometry notes, 
-        and hardware teardowns written from the bench.
+        Field logs, hackathon prototypes, physics laboratory sessions, and community service diaries from the maker journey. Click any entry to read the full report and inspect the high-resolution photo documentation.
       </p>
     </div>
 
-    <!-- Timeline Entries -->
-    <div class="space-y-12">
-      
-      <!-- Entry 01 -->
-      <article class="py-6 border-t border-subtle">
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
-          <span class="font-mono text-xs text-neutral-400">18 October 2026 · Post-Mortem</span>
-          <span class="font-mono text-xs text-neutral-500">Read: 8 min</span>
-        </div>
-        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
-          Diagnosing Ground Loop Transients at 3 AM with an Oscilloscope
-        </h2>
-        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
-          When an ARM Cortex-M7 core resets precisely every time a high-current servo fires, you don't have a software deadlock—you have 
-          680 mV of inductive ground bounce. Documenting how slicing a shared return trace with an X-Acto blade and jumping a star ground to the bulk electrolytic capacitor solved it.
-        </p>
-        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
-          <span>#Grounding</span>
-          <span>•</span>
-          <span>#STM32</span>
-          <span>•</span>
-          <span>#Oscilloscope</span>
-        </div>
+    <!-- Timeline Entries Grid / List -->
+    <div class="space-y-8">
+
+      <!-- Entry 1: Hacking Human Ability: Taking First Place at Superhuman Lab -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="claude-hackathon" data-cursor="Read Journal">
+        <a href="journal.html?id=claude-hackathon" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/claude-hackathon/thumb.jpg" 
+                 alt="Hacking Human Ability: Taking First Place at Superhuman Lab" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              WINNER · 1ST PLACE
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">03 October 2026</span>
+                <span>•</span>
+                <span class="text-neutral-500">Hackathon & Assistive AI</span>
+                <span>•</span>
+                <span class="text-neutral-400">4 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Hacking Human Ability: Taking First Place at Superhuman Lab
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                Our team just bagged first place at the Superhuman Lab hackathon at TinkerSpace Calicut! We spent the first weekend of October completely immersed in this event, and it wasn't your usual demo-day theater. The whole goal was to hack human ability by using AI and hardware to turn assistive tech into actual upgrades instead of just basic medical devices. It was an amazing environment with engineers, designers, and people with lived experiences sitting down together to build prototypes that actually matter.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#SuperhumanLab</span>
+            <span>#TinkerSpace</span>
+            <span>#AssistiveTech</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
       </article>
 
-      <!-- Entry 02 -->
-      <article class="py-6 border-t border-subtle">
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
-          <span class="font-mono text-xs text-neutral-400">14 September 2026 · Algorithms</span>
-          <span class="font-mono text-xs text-neutral-500">Read: 12 min</span>
-        </div>
-        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
-          Why FABRIK Geometry Outperforms Jacobian Inversion Near Singularities
-        </h2>
-        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
-          Jacobian transpose and pseudo-inverse methods fail violently when robotic arms approach full extension. 
-          Forward And Backward Reaching Inverse Kinematics (FABRIK) solves joint positioning purely through geometric projection, consuming 
-          less than 4% of MCU cycles with no matrix determinant collapse.
-        </p>
-        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
-          <span>#Kinematics</span>
-          <span>•</span>
-          <span>#FABRIK</span>
-          <span>•</span>
-          <span>#LinearAlgebra</span>
-        </div>
+      <!-- Entry 2: Experiencing Outdoor Learning: Volunteering with Walking Ferns -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="walking-ferns" data-cursor="Read Journal">
+        <a href="journal.html?id=walking-ferns" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/walking-ferns/thumb.jpg" 
+                 alt="Experiencing Outdoor Learning: Volunteering with Walking Ferns" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              FIELD MENTORSHIP
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">19 September 2026</span>
+                <span>•</span>
+                <span class="text-neutral-500">Field Volunteering & Mentorship</span>
+                <span>•</span>
+                <span class="text-neutral-400">3 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Experiencing Outdoor Learning: Volunteering with Walking Ferns
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                Spending the day volunteering with Walking Ferns was a great experience. The initiative focuses on experiential, outdoor learning, helping kids build curiosity by getting them out of formal classrooms and into nature. It was really interesting to step into a mentoring role in such an unstructured environment, where the focus is on letting children explore and figure things out hands-on rather than just feeding them information.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#WalkingFerns</span>
+            <span>#OutdoorEducation</span>
+            <span>#Mentorship</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
       </article>
 
-      <!-- Entry 03 -->
-      <article class="py-6 border-t border-subtle">
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
-          <span class="font-mono text-xs text-neutral-400">22 July 2026 · Teardown</span>
-          <span class="font-mono text-xs text-neutral-500">Read: 6 min</span>
-        </div>
-        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
-          Harmonic Strain Wave Gear Teardown: Wear Patterns in Flexsplines
-        </h2>
-        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
-          Taking apart a 50:1 reduction strain wave harmonic cup drive after 1,200 continuous run hours under 8 Nm payload. 
-          Examining flexspline tooth micro-fractures under optical zoom and measuring residual backlash with dial indicators.
-        </p>
-        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
-          <span>#Mechanisms</span>
-          <span>•</span>
-          <span>#HarmonicDrive</span>
-          <span>•</span>
-          <span>#Metrology</span>
-        </div>
+      <!-- Entry 3: Why I Built a Useless Cyber-Glove (And Won Second Place) -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="useless-project" data-cursor="Read Journal">
+        <a href="journal.html?id=useless-project" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/useless-project/thumb.jpg" 
+                 alt="Why I Built a Useless Cyber-Glove (And Won Second Place)" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              WINNER · 2ND PLACE
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">12 September 2026</span>
+                <span>•</span>
+                <span class="text-neutral-500">Hardware Hacking & Wearables</span>
+                <span>•</span>
+                <span class="text-neutral-400">5 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Why I Built a Useless Cyber-Glove (And Won Second Place)
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                I just grabbed second place this weekend at Useless Projects 3.0, which turned out to be exactly what a maker event at TinkerSpace Calicut should look like. Hosted by TinkerHub, the whole premise of the hackathon was to celebrate the joy of building things purely for fun, without worrying about whether they actually solve a real-world problem. It was great to see such a solid group of creators show up, spending the weekend experimenting, breaking things, and showing off some genuinely quirky ideas in a totally pressure-free environment.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#TinkerHub</span>
+            <span>#MemeGlove</span>
+            <span>#WearableHacking</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
       </article>
 
-      <!-- Entry 04 -->
-      <article class="py-6 border-t border-subtle">
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-3">
-          <span class="font-mono text-xs text-neutral-400">08 May 2026 · Electronics</span>
-          <span class="font-mono text-xs text-neutral-500">Read: 10 min</span>
-        </div>
-        <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mb-3 hover:text-neutral-600 transition-colors cursor-pointer">
-          Parasitic Breadboard Capacitance and the True Cost of Analog Noise
-        </h2>
-        <p class="font-sans text-sm text-neutral-600 leading-relaxed max-w-3xl mb-4">
-          Standard solderless breadboard spring clips introduce 2–5 pF of parasitic capacitance between adjacent rows. 
-          Demonstrating why high-speed SPI signals and precision analog thermocouple amplifiers cannot be accurately evaluated on breadboards.
-        </p>
-        <div class="font-mono text-xs text-neutral-400 flex items-center gap-2">
-          <span>#Analog</span>
-          <span>•</span>
-          <span>#Parasitics</span>
-          <span>•</span>
-          <span>#PCBs</span>
-        </div>
+      <!-- Entry 4: A Day at NITC: Inside the Advanced Physics Labs -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="nit-physics-visit" data-cursor="Read Journal">
+        <a href="journal.html?id=nit-physics-visit" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/nit-physics-visit/thumb.jpg" 
+                 alt="A Day at NITC: Inside the Advanced Physics Labs" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              RESEARCH VISIT
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">24 October 2025</span>
+                <span>•</span>
+                <span class="text-neutral-500">Physics & Advanced Instrumentation</span>
+                <span>•</span>
+                <span class="text-neutral-400">4 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                A Day at NITC: Inside the Advanced Physics Labs
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                Our recent industrial visit to the Department of Physics at NIT Calicut offered an excellent look into the practical side of advanced physical sciences. The department clearly prioritizes high-level research, which was evident from their strong focus on publishing in specialized fields like materials chemistry and applied polymers. It was inspiring to experience an academic environment so deeply committed to pushing the boundaries of fundamental and applied physics, while actively preparing students to step into innovation and leadership roles within the scientific community.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#NITCalicut</span>
+            <span>#Spectroscopy</span>
+            <span>#JEOL500NMR</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
+      </article>
+
+      <!-- Entry 5: NSS State Camp Diaries: Three Days at CM College -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="nss-state-camp" data-cursor="Read Journal">
+        <a href="journal.html?id=nss-state-camp" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/nss-state-camp/thumb.jpg" 
+                 alt="NSS State Camp Diaries: Three Days at CM College" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              STATE LEADERSHIP
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">19 October 2025</span>
+                <span>•</span>
+                <span class="text-neutral-500">Leadership & Community Development</span>
+                <span>•</span>
+                <span class="text-neutral-400">5 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                NSS State Camp Diaries: Three Days at CM College
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                The NSS State Level Leadership Camp wrapped up after a busy three days at CM College of Arts and Science. Held from October 17th to 19th, 2025, the event brought together student volunteers under the University of Calicut and the Kerala Higher Education Department. Things kicked off with an introductory session where local police officers spoke to the crowd about stepping up as youth leaders and taking responsibility in their communities. The main goal of the weekend was to take the NSS motto of "Not Me But You" and turn it into practical skills, giving volunteers a space to figure out how to manage projects and communicate better when they get back to their home units.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#NSSStateCamp</span>
+            <span>#CMCollege</span>
+            <span>#Leadership</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
+      </article>
+
+      <!-- Entry 6: Less Plastic, More Memories: Wrapping Up the 3-Day NSS University Camp -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="nss-university-camp" data-cursor="Read Journal">
+        <a href="journal.html?id=nss-university-camp" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/nss-university-camp/thumb.jpg" 
+                 alt="Less Plastic, More Memories: Wrapping Up the 3-Day NSS University Camp" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              ECO INITIATIVE
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">24 March 2025</span>
+                <span>•</span>
+                <span class="text-neutral-500">Social Service & Ecology</span>
+                <span>•</span>
+                <span class="text-neutral-400">4 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Less Plastic, More Memories: Wrapping Up the 3-Day NSS University Camp
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                From March 22 to 24, 2025, the University of Calicut's NSS department hosted a three-day residential camp called "Calicut Swachhata". The event brought together 100 volunteers selected from 100 different colleges across the region. The camp kicked off with an inauguration and featured several seminars focused on waste management and everyday cleanliness. Along with these sessions, a typical camp like this would also include morning warm-ups, ice-breaker games, and evening cultural programs where students get to showcase their talents and bond with volunteers from other colleges.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#CalicutSwachhata</span>
+            <span>#BeachCleanup</span>
+            <span>#ChaliyamBeach</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
+      </article>
+
+      <!-- Entry 7: Hands-on Physics: Bringing Experiments to Life with SEELab -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="microcontroller-physics" data-cursor="Read Journal">
+        <a href="journal.html?id=microcontroller-physics" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/microcontroller-physics/thumb.jpg" 
+                 alt="Hands-on Physics: Bringing Experiments to Life with SEELab" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              HARDWARE WORKSHOP
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">11 September 2024</span>
+                <span>•</span>
+                <span class="text-neutral-500">Embedded Electronics & Physics</span>
+                <span>•</span>
+                <span class="text-neutral-400">4 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Hands-on Physics: Bringing Experiments to Life with SEELab
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                A recent educational workshop on microcontroller-based physics experiments provided students with a practical way to connect classroom theory with modern electronics. Instructors walked the class through key principles, exploring concepts like operational amplifier gain alongside kinematics equations used to calculate gravity. To bring these ideas to life and bridge the gap between theory and application, digital software interfaces were projected on screen, showing students exactly how to monitor and log data directly from their upcoming physical setups.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#SEELab3</span>
+            <span>#OpAmpGain</span>
+            <span>#Kinematics</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
+      </article>
+
+      <!-- Entry 8: Inspiring Young Minds: Optics and Light Exploration Outreach -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="optica-students" data-cursor="Read Journal">
+        <a href="journal.html?id=optica-students" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/optica-students/thumb.jpg" 
+                 alt="Inspiring Young Minds: Optics and Light Exploration Outreach" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              SCIENCE OUTREACH
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">14 August 2024</span>
+                <span>•</span>
+                <span class="text-neutral-500">Photonics & Optics Outreach</span>
+                <span>•</span>
+                <span class="text-neutral-400">4 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Inspiring Young Minds: Optics and Light Exploration Outreach
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                Recently, the Muhammed Abdurahiman Memorial Orphanage College Chapter of OPTICA organized an engaging educational outreach program designed to advance the understanding of optics and photonics among school students. The initiative brought together a large, enthusiastic audience of young learners for interactive presentations, including a detailed exploration of the properties of white light. Driven by a dedicated organizing committee and student volunteers, the event successfully fostered a collaborative and interactive environment for the students to explore complex scientific concepts.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#OpticaOutreach</span>
+            <span>#Prisms</span>
+            <span>#Dispersion</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
+      </article>
+
+      <!-- Entry 9: Exploring Photonics: A Hands-on Look at Optical Gadgets -->
+      <article class="journal-card group cursor-pointer block border border-subtle bg-white hover:border-ink transition-all duration-300" data-journal-id="optica-session" data-cursor="Read Journal">
+        <a href="journal.html?id=optica-session" class="flex flex-col md:flex-row gap-6 md:gap-8 items-start no-underline">
+          
+          <!-- Interactive Thumbnail Container -->
+          <div class="journal-thumb-container md:w-72 lg:w-80 flex-shrink-0">
+            <img src="assets/journals/optica-session/thumb.jpg" 
+                 alt="Exploring Photonics: A Hands-on Look at Optical Gadgets" 
+                 class="journal-thumb-img"
+                 loading="lazy">
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[10px] font-mono px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+              <span>Read Log</span>
+              <span>→</span>
+            </div>
+            <span class="journal-badge-pill absolute bottom-3 left-3 bg-white/95 text-ink text-[10px] font-mono px-2 py-0.5 rounded border border-black/20 font-bold shadow-sm">
+              PHOTONICS SESSION
+            </span>
+          </div>
+
+          <!-- Content Description -->
+          <div class="flex-grow flex flex-col justify-between py-1">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 font-mono text-xs text-neutral-400">
+                <span class="font-bold text-neutral-800">18 July 2024</span>
+                <span>•</span>
+                <span class="text-neutral-500">Photonics & Optical Gadgets</span>
+                <span>•</span>
+                <span class="text-neutral-400">3 min read</span>
+              </div>
+
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-ink group-hover:text-neutral-600 transition-colors mb-3 leading-snug">
+                Exploring Photonics: A Hands-on Look at Optical Gadgets
+              </h2>
+
+              <p class="font-sans text-sm text-neutral-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                The OPTICA Student Chapter at Muhammed Abdurahiman Memorial Orphanage College recently hosted an interactive session focused on the mechanics and real-world applications of optical gadgets. Centered around practical demonstrations using "The Optics Suitcase," the program was designed to bring complex concepts in optics and photonics out of theoretical textbooks and into an accessible classroom environment. The workshop provided a collaborative space for students to explore the fundamental principles governing light and vision.
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-subtle/60 mt-auto">
+              <div class="font-mono text-xs text-neutral-400 flex flex-wrap gap-2">
+                <span>#MAMOCollege</span>
+            <span>#OpticsSuitcase</span>
+            <span>#Spectroscopy</span>
+              </div>
+              <span class="font-mono text-xs font-bold text-ink inline-flex items-center gap-1 group-hover:text-yellow transition-colors">
+                <span>Read Note</span>
+                <span class="journal-read-arrow">→</span>
+              </span>
+            </div>
+          </div>
+
+        </a>
       </article>
 
     </div>
@@ -190,12 +603,13 @@
   </main>
 
   <!-- Footer -->
-  <footer class="w-full bg-white border-t border-subtle py-12 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
-      <div>guywithyellowscrewdriver // FIELD LOGS</div>
-      <div class="flex gap-6">
-        <a href="index.html" class="hover:text-ink transition-colors">Home</a>
-        <a href="experiments.html" class="hover:text-ink transition-colors">Builds</a>
+  <footer class="w-full border-t border-subtle py-12 bg-white mt-auto">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-500">
+      <div>
+        gwys.in // FIELD LOGS ARCHIVE [09 ENTRIES]
+      </div>
+      <div>
+        Made on a workbench with code, copper, and a yellow screwdriver.
       </div>
     </div>
   </footer>

@@ -1,0 +1,5 @@
+# Hands-on Physics: Bringing Experiments to Life with SEELab
+
+A recent educational workshop on microcontroller-based physics experiments provided students with a practical way to connect classroom theory with modern electronics. Instructors walked the class through key principles, exploring concepts like operational amplifier gain alongside kinematics equations used to calculate gravity. To bring these ideas to life and bridge the gap between theory and application, digital software interfaces were projected on screen, showing students exactly how to monitor and log data directly from their upcoming physical setups.
+
+The bulk of the session was highly collaborative and hands-on. Students teamed up to build their own circuits using the SEELab 3.0 open-source science kit, carefully wiring components like resistors directly onto the device's integrated breadboard to connect with various sensors. The environment was engaging and supportive, ultimately culminating in students confidently stepping up to present their completed hardware setups and explain their experimental processes to both the instructors and their peers.

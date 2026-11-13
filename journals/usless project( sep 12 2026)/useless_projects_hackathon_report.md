@@ -1,0 +1,5 @@
+# Why I Built a Useless Cyber-Glove (And Won Second Place)
+
+I just grabbed second place this weekend at Useless Projects 3.0, which turned out to be exactly what a maker event at TinkerSpace Calicut should look like. Hosted by TinkerHub, the whole premise of the hackathon was to celebrate the joy of building things purely for fun, without worrying about whether they actually solve a real-world problem. It was great to see such a solid group of creators show up, spending the weekend experimenting, breaking things, and showing off some genuinely quirky ideas in a totally pressure-free environment.
+
+My entry for the weekend was a wonderfully impractical wearable hardware setup. I strapped a microcontroller to my wrist, ran a bunch of exposed jumper wires down a latex glove, and spent way too long actively debugging the whole thing on my laptop. It took some seriously chaotic hardware hacking to get it running, but the messy build process completely paid off in the end. Taking home a prize for something intentionally useless was a pretty amazing way to wrap up the weekend.
