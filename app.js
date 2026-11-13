@@ -1667,16 +1667,9 @@ void audioTask(void *pvParameters) {
     "title": "Hacking Human Ability: Taking First Place at Superhuman Lab",
     "date": "03 October 2026",
     "category": "Hackathon & Assistive AI",
-    "readTime": "4 min",
     "location": "TinkerSpace, Calicut",
     "award": "First Place Trophy",
     "badge": "WINNER · 1ST PLACE",
-    "tags": [
-      "SuperhumanLab",
-      "TinkerSpace",
-      "AssistiveTech",
-      "FirstPlace"
-    ],
     "md": "hacking_human_ability.md",
     "thumb": "assets/journals/claude-hackathon/thumb.jpg",
     "photos": [
@@ -1702,16 +1695,9 @@ void audioTask(void *pvParameters) {
     "title": "Experiencing Outdoor Learning: Volunteering with Walking Ferns",
     "date": "19 September 2026",
     "category": "Field Volunteering & Mentorship",
-    "readTime": "3 min",
     "location": "Calicut Outskirts",
     "award": "Community Volunteer",
     "badge": "FIELD MENTORSHIP",
-    "tags": [
-      "WalkingFerns",
-      "OutdoorEducation",
-      "Mentorship",
-      "Curiosity"
-    ],
     "md": "walking_ferns_volunteer_journal.md",
     "thumb": "assets/journals/walking-ferns/thumb.jpg",
     "photos": [
@@ -1741,16 +1727,9 @@ void audioTask(void *pvParameters) {
     "title": "Why I Built a Useless Cyber-Glove (And Won Second Place)",
     "date": "12 September 2026",
     "category": "Hardware Hacking & Wearables",
-    "readTime": "5 min",
     "location": "TinkerSpace, Calicut",
     "award": "Second Place Award",
     "badge": "WINNER · 2ND PLACE",
-    "tags": [
-      "TinkerHub",
-      "MemeGlove",
-      "WearableHacking",
-      "SecondPlace"
-    ],
     "md": "useless_projects_hackathon_report.md",
     "thumb": "assets/journals/useless-project/thumb.jpg",
     "photos": [
@@ -1776,16 +1755,9 @@ void audioTask(void *pvParameters) {
     "title": "A Day at NITC: Inside the Advanced Physics Labs",
     "date": "24 October 2025",
     "category": "Physics & Advanced Instrumentation",
-    "readTime": "4 min",
     "location": "Department of Physics, NIT Calicut",
     "award": "Industrial Research Visit",
     "badge": "RESEARCH VISIT",
-    "tags": [
-      "NITCalicut",
-      "Spectroscopy",
-      "JEOL500NMR",
-      "MaterialsScience"
-    ],
     "md": "nitc_physics_iv_report.md",
     "thumb": "assets/journals/nit-physics-visit/thumb.jpg",
     "photos": [
@@ -1815,16 +1787,9 @@ void audioTask(void *pvParameters) {
     "title": "NSS State Camp Diaries: Three Days at CM College",
     "date": "19 October 2025",
     "category": "Leadership & Community Development",
-    "readTime": "5 min",
     "location": "CM College of Arts and Science",
     "award": "State Leadership Camp",
     "badge": "STATE LEADERSHIP",
-    "tags": [
-      "NSSStateCamp",
-      "CMCollege",
-      "Leadership",
-      "NotMeButYou"
-    ],
     "md": "nss_camp_report.md",
     "thumb": "assets/journals/nss-state-camp/thumb.jpg",
     "photos": [
@@ -1850,16 +1815,9 @@ void audioTask(void *pvParameters) {
     "title": "Less Plastic, More Memories: Wrapping Up the 3-Day NSS University Camp",
     "date": "24 March 2025",
     "category": "Social Service & Ecology",
-    "readTime": "4 min",
     "location": "Chaliyam Beach & University of Calicut",
     "award": "Calicut Swachhata Camp",
     "badge": "ECO INITIATIVE",
-    "tags": [
-      "CalicutSwachhata",
-      "BeachCleanup",
-      "ChaliyamBeach",
-      "Community"
-    ],
     "md": "nss_camp_report.md",
     "thumb": "assets/journals/nss-university-camp/thumb.jpg",
     "photos": [
@@ -1889,16 +1847,9 @@ void audioTask(void *pvParameters) {
     "title": "Hands-on Physics: Bringing Experiments to Life with SEELab",
     "date": "11 September 2024",
     "category": "Embedded Electronics & Physics",
-    "readTime": "4 min",
     "location": "Physics Laboratory Workshop",
     "award": "Hands-on Workshop",
     "badge": "HARDWARE WORKSHOP",
-    "tags": [
-      "SEELab3",
-      "OpAmpGain",
-      "Kinematics",
-      "OpenHardware"
-    ],
     "md": "workshop_report.md",
     "thumb": "assets/journals/microcontroller-physics/thumb.jpg",
     "photos": [
@@ -1932,16 +1883,9 @@ void audioTask(void *pvParameters) {
     "title": "Inspiring Young Minds: Optics and Light Exploration Outreach",
     "date": "14 August 2024",
     "category": "Photonics & Optics Outreach",
-    "readTime": "4 min",
     "location": "School Science Center",
     "award": "Student Outreach Program",
     "badge": "SCIENCE OUTREACH",
-    "tags": [
-      "OpticaOutreach",
-      "Prisms",
-      "Dispersion",
-      "WaveOptics"
-    ],
     "md": "optica_outreach_report.md",
     "thumb": "assets/journals/optica-students/thumb.jpg",
     "photos": [
@@ -1971,16 +1915,9 @@ void audioTask(void *pvParameters) {
     "title": "Exploring Photonics: A Hands-on Look at Optical Gadgets",
     "date": "18 July 2024",
     "category": "Photonics & Optical Gadgets",
-    "readTime": "3 min",
     "location": "MAMO College, OPTICA Student Chapter",
     "award": "Chapter Practical Session",
     "badge": "PHOTONICS SESSION",
-    "tags": [
-      "MAMOCollege",
-      "OpticsSuitcase",
-      "Spectroscopy",
-      "Photonics"
-    ],
     "md": "event_outlook_report.md",
     "thumb": "assets/journals/optica-session/thumb.jpg",
     "photos": [
@@ -2078,9 +2015,6 @@ void audioTask(void *pvParameters) {
     if (metaTitle) metaTitle.textContent = `${journal.title} · gwys.in`;
 
     // Metadata chips
-    const readTimeEl = document.getElementById('journal-readtime-badge');
-    if (readTimeEl) readTimeEl.textContent = `${journal.readTime} read`;
-
     const categoryPill = document.getElementById('journal-category-pill');
     if (categoryPill) categoryPill.textContent = journal.category;
 
@@ -2193,18 +2127,6 @@ void audioTask(void *pvParameters) {
       heroContainer.addEventListener('click', () => {
         Sound.click();
         openPhotoLightbox(primaryPhoto.src, primaryPhoto.caption, 1, photosList.length || 1);
-      });
-    }
-
-    // Tag cloud
-    const tagsContainer = document.getElementById('journal-tags-container');
-    if (tagsContainer && journal.tags) {
-      tagsContainer.innerHTML = '';
-      journal.tags.forEach((tag) => {
-        const tagSpan = document.createElement('span');
-        tagSpan.className = 'px-2.5 py-1 rounded bg-neutral-100 border border-neutral-300 text-neutral-700 hover:border-black hover:bg-yellow hover:text-black transition-colors cursor-default';
-        tagSpan.textContent = `#${tag}`;
-        tagsContainer.appendChild(tagSpan);
       });
     }
 
