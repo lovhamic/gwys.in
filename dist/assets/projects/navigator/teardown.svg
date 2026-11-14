@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-navtd" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#122419" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="650" fill="#080e0a" />
+  <rect width="1000" height="650" fill="url(#grid-navtd)" opacity="0.6" />
+
+  <g transform="translate(40, 40)">
+    <text font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#1ed760" letter-spacing="2">HARDWARE PINOUT &amp; NETWORK BRIDGES</text>
+    <text y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" fill="#ffffff">ESP32 + SSD1306 OLED (I2C) + Capacitive Touch (GPIO 33)</text>
+  </g>
+
+  <g transform="translate(60, 110)">
+    <!-- ESP32 Board -->
+    <rect x="260" y="30" width="300" height="360" rx="10" fill="#0f1f14" stroke="#1ed760" stroke-width="2" />
+    <text x="410" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#1ed760">ESP32 DUAL-CORE</text>
+    <text x="410" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#88bba0">WIFI + BLUETOOTH + TOUCH</text>
+
+    <!-- Pins -->
+    <g transform="translate(290, 130)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">
+      <text y="0"><tspan fill="#1ed760">GPIO 21</tspan> : I2C SDA (Display)</text>
+      <text y="30"><tspan fill="#1ed760">GPIO 22</tspan> : I2C SCL (Display)</text>
+      <text y="60"><tspan fill="#ffd600">GPIO 33</tspan> : Capacitive Touch Pad</text>
+      <text y="90"><tspan fill="#ff4500">3.3V</tspan>    : OLED VCC</text>
+      <text y="120"><tspan fill="#718096">GND</tspan>    : Common Ground</text>
+      <text y="150"><tspan fill="#79c0ff">WiFi AP</tspan>: ESP32-Setup (SoftAP)</text>
+      <text y="180"><tspan fill="#79c0ff">Port 80</tspan>: Embedded WebServer</text>
+    </g>
+
+    <!-- SSD1306 Display Block -->
+    <rect x="640" y="80" width="240" height="240" rx="8" fill="#061209" stroke="#79c0ff" stroke-width="1.5" />
+    <text x="20" y="30" transform="translate(640, 80)" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#79c0ff">SSD1306 OLED</text>
+    <text x="20" y="50" transform="translate(640, 80)" font-family="'JetBrains Mono', monospace" font-size="10" fill="#88bba0">128x64 MONOCHROME</text>
+    <g transform="translate(660, 170)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#c9d1d9">
+      <text y="0">I2C Address: 0x3C</text>
+      <text y="24">U8g2 HW I2C Driver</text>
+      <text y="48">Full Screen Framebuffer</text>
+      <text y="72">100kHz / 400kHz Fast I2C</text>
+    </g>
+
+    <!-- Capacitive Touch Pad -->
+    <circle cx="120" cy="200" r="45" fill="#152b1d" stroke="#ffd600" stroke-width="2" />
+    <text x="120" y="195" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#ffd600">TOUCH</text>
+    <text x="120" y="210" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#88bba0">GPIO 33</text>
+    <text x="120" y="260" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">DEBOUNCE 50ms</text>
+
+    <!-- Wire traces -->
+    <path d="M 165 200 L 260 190" stroke="#ffd600" stroke-width="2" fill="none" />
+    <path d="M 560 160 L 640 160" stroke="#1ed760" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- Bottom Box -->
+  <g transform="translate(60, 510)">
+    <rect width="880" height="70" rx="8" fill="#0f1f14" stroke="#1ed760" stroke-dasharray="3 3" />
+    <text x="24" y="30" font-family="'JetBrains Mono', monospace" font-size="11" fill="#1ed760">SOFTWARE ECOSYSTEM:</text>
+    <text x="24" y="50" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      U8g2 Graphics, ArduinoJson, ESP32 WebServer, NTP Time Client, and Spotify PKCE Token Exchange.
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "name": "screwby-in",
+  "version": "1.0.0",
+  "description": "guywithyellowscrewdriver (screwby.in) - Interactive Hardware Portfolio & Field Journals",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "hardware",
+    "iot",
+    "robotics",
+    "physics"
+  ],
+  "author": "Anurag (guywithyellowscrewdriver)",
+  "license": "MIT"
+}

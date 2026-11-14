@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-rd" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#261a14" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="800" fill="#0e0a07" />
+  <rect width="1200" height="800" fill="url(#grid-rd)" opacity="0.8" />
+
+  <!-- Header -->
+  <g transform="translate(60, 60)">
+    <text font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#f97316" letter-spacing="3">ON-DEVICE ACOUSTIC NEURAL MODELS // EMBEDDED KINEMATICS</text>
+    <text y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Voice Quadruped · On-Device AI Robot Dog</text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" fill="#8c6a56">SEEED XIAO ESP32S3 + INMP441 I2S DIGITAL MEMS MIC + LOCAL ESP-SR SPEECH MODEL + 4x SERVO GAIT</text>
+  </g>
+
+  <!-- Left: Quadruped Kinematic Chassis Schematic -->
+  <g transform="translate(60, 160)">
+    <rect width="520" height="400" rx="16" fill="#17110c" stroke="#f97316" stroke-width="2" />
+    
+    <!-- Central Torso Frame -->
+    <rect x="140" y="160" width="240" height="100" rx="12" fill="#241a13" stroke="#f97316" stroke-width="2" />
+    <text x="260" y="210" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800" fill="#ffffff">XIAO ESP32S3</text>
+    <text x="260" y="230" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#f97316">8MB PSRAM CORE</text>
+
+    <!-- INMP441 Head/Microphone Module -->
+    <circle cx="90" cy="180" r="28" fill="#120e0a" stroke="#ffd600" stroke-width="2" />
+    <circle cx="90" cy="180" r="6" fill="#ffd600" />
+    <text x="90" y="225" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#ffd600">INMP441 MIC</text>
+
+    <!-- Sound Acoustic Waves -->
+    <path d="M 50 160 C 35 170 35 190 50 200" fill="none" stroke="#ffd600" stroke-width="2" stroke-dasharray="3 2" />
+    <path d="M 40 150 C 20 165 20 195 40 210" fill="none" stroke="#ffd600" stroke-width="2" opacity="0.6" stroke-dasharray="4 2" />
+
+    <!-- 4 Servo Legs with Kinematic Angles -->
+    <!-- Front Left Leg -->
+    <g>
+      <circle cx="160" cy="260" r="14" fill="#38251b" stroke="#f97316" stroke-width="2" />
+      <line x1="160" y1="260" x2="130" y2="350" stroke="#f97316" stroke-width="6" stroke-linecap="round" />
+      <circle cx="130" cy="350" r="6" fill="#ffffff" />
+    </g>
+
+    <!-- Front Right Leg -->
+    <g opacity="0.7">
+      <circle cx="190" cy="250" r="12" fill="#38251b" stroke="#a0aec0" stroke-width="1.5" />
+      <line x1="190" y1="250" x2="170" y2="330" stroke="#718096" stroke-width="5" stroke-linecap="round" />
+      <circle cx="170" cy="330" r="5" fill="#a0aec0" />
+    </g>
+
+    <!-- Back Left Leg -->
+    <g>
+      <circle cx="340" cy="260" r="14" fill="#38251b" stroke="#f97316" stroke-width="2" />
+      <line x1="340" y1="260" x2="370" y2="350" stroke="#f97316" stroke-width="6" stroke-linecap="round" />
+      <circle cx="370" cy="350" r="6" fill="#ffffff" />
+    </g>
+
+    <!-- Back Right Leg -->
+    <g opacity="0.7">
+      <circle cx="370" cy="250" r="12" fill="#38251b" stroke="#a0aec0" stroke-width="1.5" />
+      <line x1="370" y1="250" x2="400" y2="330" stroke="#718096" stroke-width="5" stroke-linecap="round" />
+      <circle cx="400" cy="330" r="5" fill="#a0aec0" />
+    </g>
+
+    <!-- Audio Telemetry Tag -->
+    <g transform="translate(30, 30)">
+      <rect width="220" height="55" rx="6" fill="#0d0906" stroke="#f97316" />
+      <text x="12" y="22" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffd600">ACOUSTIC INGESTION:</text>
+      <text x="12" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ffffff">Peak Level: 14,280 (LOCKED)</text>
+    </g>
+  </g>
+
+  <!-- Right: On-Device Speech Recognition Models -->
+  <g transform="translate(620, 160)">
+    <rect width="520" height="400" rx="16" fill="#17110c" stroke="#38261b" stroke-width="2" />
+    <text x="24" y="36" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#f97316">ESP-SR EMBEDDED NEURAL SPEECH PIPELINE</text>
+
+    <!-- Wake Word Block -->
+    <g transform="translate(24, 65)" font-family="'JetBrains Mono', monospace">
+      <rect width="470" height="65" rx="8" fill="#241a13" stroke="#ffd600" />
+      <text x="16" y="24" font-size="11" font-weight="700" fill="#ffd600">WAKE-WORD DETECTION (ON-DEVICE)</text>
+      <text x="16" y="46" font-size="14" font-weight="800" fill="#ffffff">"Hi ESP" → 5.0s Command Window Open</text>
+    </g>
+
+    <!-- Command Routines -->
+    <g transform="translate(24, 150)" font-family="'JetBrains Mono', monospace">
+      <text font-size="11" font-weight="700" fill="#ffffff">RECOGNIZED KINEMATIC COMMANDS:</text>
+
+      <g transform="translate(0, 20)">
+        <rect width="225" height="40" rx="4" fill="#1e150f" stroke="#f97316" />
+        <text x="12" y="25" font-size="11" fill="#cbd5e0">cmd 0: "good boy"</text>
+      </g>
+      <g transform="translate(245, 20)">
+        <rect width="225" height="40" rx="4" fill="#1e150f" stroke="#f97316" />
+        <text x="12" y="25" font-size="11" fill="#cbd5e0">cmd 1: "sit down"</text>
+      </g>
+      <g transform="translate(0, 70)">
+        <rect width="225" height="40" rx="4" fill="#1e150f" stroke="#f97316" />
+        <text x="12" y="25" font-size="11" fill="#cbd5e0">cmd 2: "lie down"</text>
+      </g>
+      <g transform="translate(245, 70)">
+        <rect width="225" height="40" rx="4" fill="#1e150f" stroke="#f97316" />
+        <text x="12" y="25" font-size="11" fill="#cbd5e0">cmd 3: "stretch"</text>
+      </g>
+      <g transform="translate(0, 120)">
+        <rect width="225" height="40" rx="4" fill="#1e150f" stroke="#ffd600" />
+        <text x="12" y="25" font-size="11" font-weight="700" fill="#ffd600">cmd 4: "walk (trot)"</text>
+      </g>
+      <g transform="translate(245, 120)">
+        <rect width="225" height="40" rx="4" fill="#1e150f" stroke="#ffd600" />
+        <text x="12" y="25" font-size="11" font-weight="700" fill="#ffd600">cmd 5: "dance"</text>
+      </g>
+    </g>
+
+    <g transform="translate(24, 340)">
+      <text font-family="'JetBrains Mono', monospace" font-size="10" fill="#a08070">
+        Completely air-gapped on-chip neural inference. No cloud or internet connection required.
+      </text>
+    </g>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(60, 590)">
+    <rect width="1080" height="140" rx="12" fill="#140e0a" stroke="#261a14" />
+    <text x="30" y="34" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#f97316">I2S WIRING SPECIFICATION</text>
+    <g transform="translate(30, 58)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#c09880">
+      <text y="0">• INMP441 to XIAO ESP32S3: SCK → D8 (GPIO 7) | WS → D9 (GPIO 8) | SD → D7 (GPIO 44) | 3V3 + GND</text>
+      <text y="22">• 4x Kinematic Servos: Connected to D0-D3 (GPIO 1-4) with dedicated high-current 5V power bus</text>
+      <text y="44">• Firmware: compiled with custom partitions.csv housing flashed srmodels.bin neural weights</text>
+    </g>
+  </g>
+</svg>

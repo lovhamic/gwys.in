@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>guywithyellowscrewdriver // Hybrid Systems & Physical Computing</title>
+  <meta name="description" content="Portfolio of guywithyellowscrewdriver — Hybrid hardware and software developer exploring robotics, IoT systems, and simulation software.">
+  
+  <!-- Modern Swiss Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0a0a0c',
+            canvas: '#ffffff',
+            surface: '#f7f7f9',
+            subtle: '#e5e7eb',
+            yellow: {
+              DEFAULT: '#ffd600',
+              hover: '#e6c200'
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-ink min-h-screen flex flex-col antialiased selection:bg-yellow selection:text-black">
+
+  <!-- Interactive Custom Cursor -->
+  <div class="cursor-dot"></div>
+
+  <!-- =========================================================================
+       1. MINIMALIST HEADER
+       ========================================================================= -->
+  <header class="w-full bg-white/95 backdrop-blur-md border-b border-subtle sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 group" data-cursor="Home">
+        <span class="font-display font-extrabold text-lg tracking-tight text-ink">
+          screwby<span class="inline-block text-yellow text-xl leading-none transition-transform duration-300 group-hover:rotate-90">.</span>in
+        </span>
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-sans font-medium text-neutral-600">
+        <a href="index.html" class="text-ink font-semibold transition-colors">Home</a>
+        <a href="experiments.html" class="hover:text-ink transition-colors">Builds</a>
+        <a href="journals.html" class="hover:text-ink transition-colors">Journals</a>
+        <a href="#how-i-work" class="hover:text-ink transition-colors">How I Work</a>
+      </nav>
+
+      <!-- Right Action & Audio Switch -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button id="sound-toggle-btn" class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-600 hover:text-ink transition-colors px-2.5 py-1 rounded-full border border-neutral-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span id="sound-toggle-text">Audio On</span>
+        </button>
+
+        <a href="https://wa.me/919497170714" target="_blank" rel="noopener noreferrer" class="btn-pill-primary text-xs tracking-wide">
+          <span>Contact</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. EDITORIAL HERO SECTION // GIANT TITLE + METADATA STRIP + BRACKET QUOTE
+       ========================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-16 md:pb-24 w-full">
+    
+    <!-- Giant Display Title (Interactive Kinetic Typography) -->
+    <h1 id="hero-interactive-title" class="display-hero-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl mb-8 select-none" aria-label="guywithyellowscrewdriver">
+      <span class="title-word" data-word="guywith">
+        <span class="title-char" data-char="g">g</span><span class="title-char" data-char="u">u</span><span class="title-char" data-char="y">y</span><span class="title-char" data-char="w">w</span><span class="title-char" data-char="i">i</span><span class="title-char" data-char="t">t</span><span class="title-char" data-char="h">h</span>
+      </span><span class="title-word" data-word="yellow">
+        <span class="title-char char-yellow" data-char="y">y</span><span class="title-char char-yellow" data-char="e">e</span><span class="title-char char-yellow" data-char="l">l</span><span class="title-char char-yellow" data-char="l">l</span><span class="title-char char-yellow" data-char="o">o</span><span class="title-char char-yellow" data-char="w">w</span>
+      </span><span class="title-word" data-word="screwdriver">
+        <span class="title-char" data-char="s">s</span><span class="title-char" data-char="c">c</span><span class="title-char" data-char="r">r</span><span class="title-char" data-char="e">e</span><span class="title-char" data-char="w">w</span><span class="title-char" data-char="d">d</span><span class="title-char" data-char="r">r</span><span class="title-char" data-char="i">i</span><span class="title-char" data-char="v">v</span><span class="title-char" data-char="e">e</span><span class="title-char" data-char="r">r</span>
+      </span>
+      <span class="title-screw-dot" title="T8 Screwdriver Bolt Head"></span>
+      <span class="title-baseline-trace"></span>
+    </h1>
+
+    <!-- Editorial Bracket Quote (Matching Reference Style) -->
+    <div class="max-w-4xl mx-auto text-center my-12 sm:my-16 px-4">
+      <blockquote id="interactive-hero-quote" class="font-display font-semibold text-2xl sm:text-3xl md:text-4xl text-ink tracking-tight leading-snug">
+        <span class="quote-bracket">[</span><span id="jack-trades-interactive" class="jack-trades-interactive" data-cursor="Interactive" title="The jack of all trades"><span class="jack-char">T</span><span class="jack-char">h</span><span class="jack-char">e</span>&nbsp;<span class="jack-char">j</span><span class="jack-char">a</span><span class="jack-char">c</span><span class="jack-char">k</span>&nbsp;<span class="jack-char">o</span><span class="jack-char">f</span>&nbsp;<span class="jack-char">a</span><span class="jack-char">l</span><span class="jack-char">l</span>&nbsp;<span class="jack-char">t</span><span class="jack-char">r</span><span class="jack-char">a</span><span class="jack-char">d</span><span class="jack-char">e</span><span class="jack-char">s</span><span class="jack-trace-line"></span></span> from Makerstation bridging autonomous hardware, physics simulation, to Robot mechanics<span class="quote-bracket">]</span>
+      </blockquote>
+      <p class="font-sans text-sm sm:text-base text-neutral-500 mt-4 max-w-2xl mx-auto">
+        Turning late-night scripts into functional hardware. Built, tested, and perfectly tuned with absolute precision.
+      </p>
+
+      <!-- The Two Section Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+        <a href="experiments.html" class="btn-pill-primary">
+          <span>See the builds</span>
+          <span>→</span>
+        </a>
+        <a href="journals.html" class="btn-pill-secondary">
+          <span>Read the journal</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Stage Viewport -->
+    <div class="w-full mt-10">
+      <!-- Stage Viewport Container -->
+      <div class="relative w-full rounded-2xl md:rounded-3xl overflow-hidden bg-neutral-100 border border-subtle aspect-[16/9]">
+        
+        <!-- Photo Stage -->
+        <div id="hero-stage-photo" class="w-full h-full relative">
+          <img src="assets/front.webp" 
+               alt="guywithyellowscrewdriver workbench & maker visual" 
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       3. MINIMALIST INFINITE MARQUEE TICKER // ORIGINAL AXIOMS
+       ========================================================================= -->
+  <div class="w-full marquee-wrapper my-6">
+    <div class="marquee-track font-serif italic text-base sm:text-lg text-neutral-800 select-none">
+      <span>· no simulation survives first contact with a breadboard</span>
+      <span>· always measure ground impedance before blaming firmware</span>
+      <span>· code is cheap, torque is expensive</span>
+      <span>· the yellow screwdriver opens what silicon hides</span>
+      <span>· floating inputs are radio antennas for chaos</span>
+      <span>· calibrate twice, solder once</span>
+      <span>· no simulation survives first contact with a breadboard</span>
+      <span>· always measure ground impedance before blaming firmware</span>
+      <span>· code is cheap, torque is expensive</span>
+      <span>· the yellow screwdriver opens what silicon hides</span>
+      <span>· floating inputs are radio antennas for chaos</span>
+      <span>· calibrate twice, solder once</span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       4. STRUCTURE OF HOW I WORK // 4-PHASE ITERATIVE DOODLE PROCESS
+       ========================================================================= -->
+  <section id="how-i-work" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+    
+    <!-- Header with Unique Interactive Animation & Process Sequencer -->
+    <div class="mb-12">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-4 border-b border-subtle">
+        <div id="how-i-work-interactive" class="how-i-work-interactive group cursor-pointer select-none inline-flex items-center gap-4" data-cursor="Trigger Loop" title="Click to trigger engineering process loop">
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-ink tracking-tight flex items-center">
+            <span class="hiw-word" data-word="How">How</span>
+            <span>&nbsp;</span>
+            <span class="hiw-word" data-word="I">I</span>
+            <span>&nbsp;</span>
+            <span class="hiw-word" data-word="Work">Work</span>
+          </h2>
+          <span class="hiw-loop-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-surface border border-subtle text-neutral-600 group-hover:border-ink group-hover:text-ink transition-all">
+            <span class="w-1.5 h-1.5 rounded-full bg-yellow group-hover:animate-ping"></span>
+            <span id="hiw-badge-status">4-Stage Loop</span>
+            <span class="font-sans font-bold">↺</span>
+          </span>
+        </div>
+      </div>
+      
+      <!-- Interactive Caliper Step Gauge beneath the title -->
+      <div class="w-full mt-3 flex items-center justify-between text-[11px] font-mono text-neutral-400 select-none">
+        <button class="hiw-step-indicator active" data-step="0">01 // PLAN</button>
+        <div class="h-px bg-neutral-200 flex-grow mx-3"></div>
+        <button class="hiw-step-indicator" data-step="1">02 // BUILD</button>
+        <div class="h-px bg-neutral-200 flex-grow mx-3"></div>
+        <button class="hiw-step-indicator" data-step="2">03 // FAIL</button>
+        <div class="h-px bg-neutral-200 flex-grow mx-3"></div>
+        <button class="hiw-step-indicator" data-step="3">04 // FIGURING OUT</button>
+      </div>
+    </div>
+
+    <!-- 4-Phase Grid with User's Doodle Images -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" id="hiw-cards-grid">
+      
+      <!-- Card 01: Plan -->
+      <div class="hiw-card group relative flex flex-col justify-between p-5 bg-white rounded-2xl border border-subtle hover:border-ink transition-all duration-300" data-phase="0" data-cursor="Plan">
+        <div>
+          <div class="flex items-center justify-between mb-3 text-xs font-mono">
+            <span class="font-bold text-neutral-400 group-hover:text-ink transition-colors">[01]</span>
+            <span class="text-neutral-500 uppercase tracking-wider">Concept</span>
+          </div>
+
+          <!-- Doodle Frame -->
+          <div class="hiw-doodle-wrapper w-full aspect-[4/5] mb-4 p-3">
+            <img src="plan/plan.jpg" alt="Plan doodle - engineering concept sketching" class="hiw-doodle-img max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display font-bold text-xl text-ink group-hover:text-neutral-700 transition-colors">
+            Plan
+          </h3>
+        </div>
+      </div>
+
+      <!-- Card 02: Build -->
+      <div class="hiw-card group relative flex flex-col justify-between p-5 bg-white rounded-2xl border border-subtle hover:border-ink transition-all duration-300" data-phase="1" data-cursor="Build">
+        <div>
+          <div class="flex items-center justify-between mb-3 text-xs font-mono">
+            <span class="font-bold text-neutral-400 group-hover:text-ink transition-colors">[02]</span>
+            <span class="text-neutral-500 uppercase tracking-wider">Execution</span>
+          </div>
+
+          <!-- Doodle Frame -->
+          <div class="hiw-doodle-wrapper w-full aspect-[4/5] mb-4 p-3">
+            <img src="plan/build.jpg" alt="Build doodle - soldering and fabrication" class="hiw-doodle-img max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display font-bold text-xl text-ink group-hover:text-neutral-700 transition-colors">
+            Build
+          </h3>
+        </div>
+      </div>
+
+      <!-- Card 03: Fail -->
+      <div class="hiw-card group relative flex flex-col justify-between p-5 bg-white rounded-2xl border border-subtle hover:border-ink transition-all duration-300" data-phase="2" data-cursor="Diagnose">
+        <div>
+          <div class="flex items-center justify-between mb-3 text-xs font-mono">
+            <span class="font-bold text-neutral-400 group-hover:text-ink transition-colors">[03]</span>
+            <span class="text-neutral-500 uppercase tracking-wider">Reality</span>
+          </div>
+
+          <!-- Doodle Frame -->
+          <div class="hiw-doodle-wrapper w-full aspect-[4/5] mb-4 p-3">
+            <img src="plan/fail.jpg" alt="Fail doodle - debugging and ground noise" class="hiw-doodle-img max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display font-bold text-xl text-ink group-hover:text-neutral-700 transition-colors">
+            Fail
+          </h3>
+        </div>
+      </div>
+
+      <!-- Card 04: Figuring out -->
+      <div class="hiw-card group relative flex flex-col justify-between p-5 bg-white rounded-2xl border border-subtle hover:border-ink transition-all duration-300" data-phase="3" data-cursor="Figuring Out">
+        <div>
+          <div class="flex items-center justify-between mb-3 text-xs font-mono">
+            <span class="font-bold text-neutral-400 group-hover:text-ink transition-colors">[04]</span>
+            <span class="text-neutral-500 uppercase tracking-wider">Breakthrough</span>
+          </div>
+
+          <!-- Doodle Frame -->
+          <div class="hiw-doodle-wrapper w-full aspect-[4/5] mb-4 p-3">
+            <img src="plan/Found%20It.jpg" alt="Figuring out doodle - zero backlash solution" class="hiw-doodle-img max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display font-bold text-xl text-ink group-hover:text-neutral-700 transition-colors">
+            Figuring out
+          </h3>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       5. MID-PAGE QUOTES // INTERACTIVE AXIOMS & SYSTEM BREAKING POINTS
+       ========================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+    <div class="space-y-6">
+      
+      <!-- Axiom 01: Breaking Point -->
+      <div id="axiom-card-breaking" class="axiom-card group select-none p-6 sm:p-10" data-cursor="Stress Test" title="Click or scrub across to test breaking point">
+        <blockquote class="axiom-quote-text font-display font-bold text-2xl sm:text-3xl md:text-4xl text-ink tracking-tight" id="axiom-quote-1">
+          &ldquo;The fastest way to understand a system is to push it exactly one step past its breaking point.&rdquo;
+        </blockquote>
+
+        <!-- Interactive Strain Gauge Bar -->
+        <div class="w-full bg-neutral-200/80 rounded-full h-1 overflow-hidden mt-6">
+          <div id="axiom-strain-bar" class="axiom-strain-bar w-full h-full"></div>
+        </div>
+      </div>
+
+      <!-- Axiom 02: Unexpected Outcomes -->
+      <div id="axiom-card-outcomes" class="axiom-card group select-none p-6 sm:p-10" data-cursor="Probe Outcome" title="Click to trigger unexpected outcomes pulse">
+        <blockquote class="axiom-quote-text font-display font-bold text-2xl sm:text-3xl md:text-4xl text-ink tracking-tight" id="axiom-quote-2">
+          &ldquo;There is no such thing as a failed experiment, only experiments with unexpected outcomes.&rdquo;
+        </blockquote>
+
+        <!-- Interactive Spectrum Ripple Line -->
+        <div class="w-full bg-neutral-200/80 rounded-full h-1 overflow-hidden mt-6">
+          <div id="axiom-outcome-bar" class="w-full h-full bg-gradient-to-r from-emerald-500 via-yellow to-blue-600 origin-left scale-x-[0.15] transition-transform duration-200"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. SUMMARISE EXPERIMENTS // SELECTED WORKS (3D Tilt & Direct Build Breakdown)
+       ========================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+    
+    <div class="max-w-3xl mb-12">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2 h-2 rounded-full bg-yellow"></span>
+        <span class="font-mono text-xs uppercase tracking-wider text-neutral-500 font-bold">Curated Builds</span>
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-ink tracking-tight mb-3">
+        Selected Works
+      </h2>
+      <p class="font-sans text-base text-neutral-600 leading-relaxed">
+        What I'm building right now in the lab; mostly robotics, IoT, and simulations.
+      </p>
+    </div>
+
+    <!-- 2-Column Clean Grid with 3D Magnetic Tilt -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 tilt-card-container">
+      
+      <!-- Work 01: Black Box -->
+      <a href="build.html?id=blackbox" class="work-card-tilt group cursor-pointer block no-underline" data-project-id="blackbox" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/blackbox/01.png" 
+               alt="Black Box Magnetometer-Free GPS Waypoint Navigator" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+            <span>View Full Build</span>
+            <span>→</span>
+          </div>
+          <span class="absolute bottom-3 left-3 bg-white/95 text-ink text-[11px] font-mono px-2.5 py-1 rounded border border-black/20 group-hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Breakdown ↗
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-display font-bold text-base text-ink group-hover:text-neutral-600 transition-colors">
+            Black Box · Magnetometer-Free GPS Navigator
+          </span>
+          <span class="font-mono text-xs text-neutral-500">
+            ESP32-C3 | Kalman | GPS
+          </span>
+        </div>
+      </a>
+
+      <!-- Work 02: Meme Glove -->
+      <a href="build.html?id=memeglove" class="work-card-tilt group cursor-pointer block no-underline" data-project-id="memeglove" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/meme-glove/hero.jpg" 
+               alt="Meme Glove IoT Wireless RFID NFC Soundboard Wearable" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+            <span>View Full Build</span>
+            <span>→</span>
+          </div>
+          <span class="absolute bottom-3 left-3 bg-white/95 text-ink text-[11px] font-mono px-2.5 py-1 rounded border border-black/20 group-hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Breakdown ↗
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-display font-bold text-base text-ink group-hover:text-neutral-600 transition-colors">
+            Meme Glove · IoT RFID Wearable Soundboard
+          </span>
+          <span class="font-mono text-xs text-neutral-500">
+            ESP32 | RC522 | Wi-Fi
+          </span>
+        </div>
+      </a>
+
+      <!-- Work 03: Shoot the Cockroach -->
+      <a href="build.html?id=cockroach" class="work-card-tilt group cursor-pointer block no-underline" data-project-id="cockroach" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/cockroach/03.jpg" 
+               alt="Shoot the Cockroach ESP32 Physical IMU Arcade Gun" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+            <span>View Full Build</span>
+            <span>→</span>
+          </div>
+          <span class="absolute bottom-3 left-3 bg-white/95 text-ink text-[11px] font-mono px-2.5 py-1 rounded border border-black/20 group-hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Breakdown ↗
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-display font-bold text-base text-ink group-hover:text-neutral-600 transition-colors">
+            Shoot the Cockroach · IMU Arcade Gun
+          </span>
+          <span class="font-mono text-xs text-neutral-500">
+            ESP32 | MPU6050 | Pygame
+          </span>
+        </div>
+      </a>
+
+      <!-- Work 04: Water Sim -->
+      <a href="build.html?id=watersim" class="work-card-tilt group cursor-pointer block no-underline" data-project-id="watersim" data-cursor="Open Build">
+        <div class="work-card-img-wrapper aspect-[16/10] mb-4 border border-black/10 bg-neutral-900">
+          <img src="assets/projects/watersim/hero.png" 
+               alt="Water Sim ESP32 NeoPixel Fluid Matrix" 
+               class="w-full h-full object-cover">
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 text-white text-[11px] font-mono px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+            <span>View Full Build</span>
+            <span>→</span>
+          </div>
+          <span class="absolute bottom-3 left-3 bg-white/95 text-ink text-[11px] font-mono px-2.5 py-1 rounded border border-black/20 group-hover:bg-yellow transition-colors font-bold shadow-sm">
+            Full Build Breakdown ↗
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-display font-bold text-base text-ink group-hover:text-neutral-600 transition-colors">
+            Water Sim · Fluid Matrix
+          </span>
+          <span class="font-mono text-xs text-neutral-500">
+            ESP32 | WS2812B | FastLED
+          </span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- View All Builds Action -->
+    <div class="mt-12 text-center">
+      <a href="experiments.html" class="btn-pill-primary">
+        <span>View all 10 builds in catalog</span>
+        <span>→</span>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       7. SUMMARISE JOURNALS // FROM THE FIELD LOGS
+       ========================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full border-t border-subtle">
+    <div class="max-w-4xl">
+      
+      <div class="mb-8">
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-ink tracking-tight mb-2">
+          Journals &amp; Logs
+        </h2>
+        <p class="font-sans text-sm text-neutral-600">
+          Field notes, hackathon prototypes, physics labs, and community service diaries.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">03 October 2026</span>
+          <a href="journal.html?id=claude-hackathon" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            Hacking Human Ability: Taking First Place at Superhuman Lab
+          </a>
+          <span class="font-mono text-xs font-bold text-neutral-800 bg-yellow/40 px-2 py-0.5 rounded border border-black/10">1st Place</span>
+        </div>
+
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">19 September 2026</span>
+          <a href="journal.html?id=walking-ferns" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            Experiencing Outdoor Learning: Volunteering with Walking Ferns
+          </a>
+          <span class="font-mono text-xs text-neutral-500">Mentorship</span>
+        </div>
+
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">15 September 2026</span>
+          <a href="journal.html?id=useless-project" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            The Useless Project: When Over-Engineering is the Only Metric That Matters
+          </a>
+          <span class="font-mono text-xs text-neutral-500">Hardware</span>
+        </div>
+
+        <div class="py-4 border-b border-subtle flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 group">
+          <span class="font-mono text-xs text-neutral-400 sm:w-36 flex-shrink-0">12 August 2026</span>
+          <a href="journal.html?id=nit-physics-visit" class="font-display font-semibold text-base sm:text-lg text-ink group-hover:text-neutral-600 transition-colors flex-grow">
+            A Day at the National Institute of Technology: Exploring Advanced Physics Labs
+          </a>
+          <span class="font-mono text-xs text-neutral-500">Laboratory</span>
+        </div>
+
+      </div>
+
+      <div class="mt-8">
+        <a href="journals.html" class="btn-pill-secondary text-xs">
+          <span>Browse complete journal archive</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. SWISS MINIMALIST FOOTER
+       ========================================================================= -->
+  <footer class="w-full bg-white border-t border-subtle py-16 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div>
+          <h2 class="display-hero-title text-4xl sm:text-5xl md:text-6xl text-ink">
+            Let's build something resilient.
+          </h2>
+          <p class="font-sans text-sm text-neutral-500 mt-2">
+            Available for hands-on workshops and sessions in robotics, physics, electronics, and general STEM.
+          </p>
+        </div>
+
+        <div>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=k623595@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-pill-primary">
+            <span>Get in touch</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t border-subtle pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-sans text-neutral-500">
+        <div class="flex items-center gap-6 font-medium">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=k623595@gmail.com" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">Email</a>
+          <a href="https://github.com/lovhamic" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/anuraglvmc" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">LinkedIn</a>
+          <a href="https://www.instructables.com/member/Anurag_lvmc" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">Instructables</a>
+        </div>
+
+        <div class="font-mono text-neutral-400">
+          © 2026 guywithyellowscrewdriver
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

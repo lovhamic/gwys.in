@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-rdtd" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#261a14" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="650" fill="#0e0a07" />
+  <rect width="1000" height="650" fill="url(#grid-rdtd)" opacity="0.6" />
+
+  <g transform="translate(40, 40)">
+    <text font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#f97316" letter-spacing="2">INMP441 I2S &amp; SERVO POWER WIRING</text>
+    <text y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="800" fill="#ffffff">Seeed Studio XIAO ESP32S3 Pin Mapping &amp; Gait Servos</text>
+  </g>
+
+  <g transform="translate(60, 110)">
+    <!-- INMP441 Microphone -->
+    <rect x="0" y="40" width="220" height="220" rx="8" fill="#17110c" stroke="#ffd600" stroke-width="1.5" />
+    <text x="20" y="70" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffd600">INMP441 MEMS</text>
+    <text x="20" y="90" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8c6a56">I2S DIGITAL AUDIO</text>
+    <g transform="translate(20, 125)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      <text y="0">VDD → 3V3</text>
+      <text y="24">GND → GND</text>
+      <text y="48">SCK → D8 (GPIO 7)</text>
+      <text y="72">WS  → D9 (GPIO 8)</text>
+      <text y="96">SD  → D7 (GPIO 44)</text>
+    </g>
+
+    <!-- XIAO ESP32S3 -->
+    <rect x="300" y="40" width="260" height="340" rx="10" fill="#241a13" stroke="#f97316" stroke-width="2" />
+    <text x="430" y="75" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#f97316">XIAO ESP32S3</text>
+    <text x="430" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffffff">OPI PSRAM ENABLED</text>
+
+    <!-- Servos Right -->
+    <rect x="640" y="40" width="260" height="340" rx="8" fill="#17110c" stroke="#a0aec0" stroke-width="1.5" />
+    <text x="20" y="30" transform="translate(640, 40)" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">4x MICRO SERVOS</text>
+    <text x="20" y="50" transform="translate(640, 40)" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8c6a56">SEPARATE 5V SUPPLY</text>
+    <g transform="translate(660, 120)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      <text y="0">D0 (GPIO 1) → Front Left</text>
+      <text y="30">D1 (GPIO 2) → Front Right</text>
+      <text y="60">D2 (GPIO 3) → Back Left</text>
+      <text y="90">D3 (GPIO 4) → Back Right</text>
+      <text y="130" fill="#f97316">Power: 5V rail (isolated)</text>
+      <text y="154" fill="#a0aec0">Common GND with XIAO</text>
+    </g>
+
+    <path d="M 220 180 L 300 180" stroke="#ffd600" stroke-width="2" fill="none" />
+    <path d="M 560 180 L 640 180" stroke="#f97316" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- Footnote -->
+  <g transform="translate(60, 520)">
+    <rect width="880" height="70" rx="8" fill="#17110c" stroke="#261a14" />
+    <text x="24" y="30" font-family="'JetBrains Mono', monospace" font-size="11" fill="#f97316">AUDIO GAIN &amp; FLASH CALIBRATION:</text>
+    <text x="24" y="50" font-family="'JetBrains Mono', monospace" font-size="11" fill="#c09880">
+      Flash models once with flash_models.bat. Serial monitor commands: 'gain 12', 'cmd 4' to trigger trot walk.
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-ra" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a202c" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="800" fill="#0c1017" />
+  <rect width="1200" height="800" fill="url(#grid-ra)" opacity="0.8" />
+
+  <!-- Header -->
+  <g transform="translate(60, 60)">
+    <text font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#ffd600" letter-spacing="3">AUTONOMOUS ROBOTICS // KINEMATICS &amp; LOCAL LLM</text>
+    <text y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">AI Robotic Arm · 4-DOF Vision Manipulator</text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" fill="#718096">4x MG996R SERVOS + SG90 GRIPPER + OLLAMA PHI-3 LLM + ACS712 CURRENT STALL SENSOR + HC-SR04 SONAR</text>
+  </g>
+
+  <!-- Left: 4-DOF Arm Kinematics Visualization -->
+  <g transform="translate(60, 160)">
+    <rect width="520" height="480" rx="16" fill="#141a24" stroke="#2d3748" stroke-width="2" />
+    
+    <!-- Base Plate -->
+    <rect x="160" y="410" width="200" height="30" rx="4" fill="#2d3748" stroke="#ffd600" stroke-width="2" />
+    <text x="260" y="430" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ffd600">BASE (MG996R - GPIO 12)</text>
+
+    <!-- Shoulder Joint -->
+    <circle cx="260" cy="380" r="22" fill="#1a202c" stroke="#00e5ff" stroke-width="2.5" />
+    <circle cx="260" cy="380" r="6" fill="#00e5ff" />
+    <text x="295" y="385" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0aec0">SHOULDER (θ1)</text>
+
+    <!-- Link 1 (Humerus) -->
+    <line x1="260" y1="380" x2="190" y2="240" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round" />
+    <line x1="260" y1="380" x2="190" y2="240" stroke="#4a5568" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Elbow Joint -->
+    <circle cx="190" cy="240" r="18" fill="#1a202c" stroke="#00e5ff" stroke-width="2.5" />
+    <circle cx="190" cy="240" r="5" fill="#00e5ff" />
+    <text x="95" y="245" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0aec0">ELBOW (θ2)</text>
+
+    <!-- Link 2 (Forearm) -->
+    <line x1="190" y1="240" x2="340" y2="160" stroke="#e2e8f0" stroke-width="10" stroke-linecap="round" />
+    <line x1="190" y1="240" x2="340" y2="160" stroke="#4a5568" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Wrist Pitch Joint -->
+    <circle cx="340" cy="160" r="14" fill="#1a202c" stroke="#00e5ff" stroke-width="2" />
+    <text x="365" y="155" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0aec0">WRIST (θ3)</text>
+
+    <!-- Gripper Mechanism (SG90) -->
+    <line x1="340" y1="160" x2="410" y2="130" stroke="#ffd600" stroke-width="6" stroke-linecap="round" />
+    <path d="M 410 130 L 435 110 L 445 120 M 410 130 L 435 150 L 445 140" fill="none" stroke="#ffd600" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- Sonar Cone (HC-SR04) -->
+    <path d="M 420 130 L 490 80 L 490 180 Z" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-dasharray="3 3" />
+    <text x="475" y="200" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00e5ff">SONAR ECHO (38cm)</text>
+
+    <!-- Inverse Kinematics Tag -->
+    <g transform="translate(30, 30)">
+      <rect width="200" height="55" rx="6" fill="#0b0e14" stroke="#2d3748" />
+      <text x="12" y="22" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffd600">END-EFFECTOR POS:</text>
+      <text x="12" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ffffff">X: +24.8 Y: +16.2 Z: +10.5</text>
+    </g>
+  </g>
+
+  <!-- Right: Architecture Stack (Ollama LLM + ESP32 Closed Loop) -->
+  <g transform="translate(620, 160)">
+    <!-- LLM Planner -->
+    <rect width="520" height="150" rx="12" fill="#141a24" stroke="#ffd600" stroke-width="1.5" />
+    <text x="24" y="32" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ffd600">LOCAL AI REASONING AGENT (OLLAMA PHI-3 / QWEN 2.5)</text>
+    <g transform="translate(24, 55)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+      <text y="0">Task Prompt: "Pick up red screw on table and sort into tray"</text>
+      <text y="24" fill="#00e5ff">Vision Agent → Object Bounding Box Detected [u:310, v:440]</text>
+      <text y="48" fill="#a0aec0">Kinematics Solver → [θ1: 42°, θ2: 78°, θ3: 110°, Grip: OPEN]</text>
+      <text y="72" fill="#68d391">Trajectory Execution Command Pushed over USB Serial @ 115200</text>
+    </g>
+
+    <!-- Embedded Safety Controller (ACS712 Current Sensing) -->
+    <g transform="translate(0, 175)">
+      <rect width="520" height="150" rx="12" fill="#141a24" stroke="#00e5ff" stroke-width="1.5" />
+      <text x="24" y="32" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#00e5ff">ACS712 CURRENT SENSOR // STALL DETECTION</text>
+      <g transform="translate(24, 55)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e0">
+        <text y="0">Continuous current monitoring on high-power 5V rail.</text>
+        <text y="24" fill="#ffd600">Threshold: Current &gt; 3.8A indicates physical obstacle or stall.</text>
+        <text y="48" fill="#ff6b4a">Automatic Emergency Torque Dump to prevent stripped servo gears.</text>
+        <text y="72" fill="#a0aec0">Real-time load feedback relayed to AI planner state machine.</text>
+      </g>
+    </g>
+
+    <!-- Spec Summary Bar -->
+    <g transform="translate(0, 350)">
+      <rect width="520" height="130" rx="12" fill="#111622" stroke="#2d3748" />
+      <text x="24" y="30" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ffffff">SYSTEM ARCHITECTURE SUMMARY</text>
+      <g transform="translate(24, 55)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0aec0">
+        <text y="0">• Actuation: 4x MG996R (11 kg-cm torque) + 1x SG90</text>
+        <text y="22">• Power Bus: 5V 6A Regulated + 1000uF Buffer Capacitors</text>
+        <text y="44">• Microcontroller: ESP32-WROOM-32 (FreeRTOS dual-core)</text>
+      </g>
+    </g>
+  </g>
+</svg>

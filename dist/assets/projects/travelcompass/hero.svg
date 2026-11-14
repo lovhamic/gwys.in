@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <pattern id="grid-tc" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a202c" stroke-width="1"/>
+      <circle cx="40" cy="40" r="1.5" fill="#2d3748"/>
+    </pattern>
+    <filter id="glow-tc" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0b0e14" />
+  <rect width="1200" height="800" fill="url(#grid-tc)" opacity="0.8" />
+
+  <!-- Technical Header Overlay -->
+  <g transform="translate(60, 60)">
+    <text font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#ffd600" letter-spacing="3">PROJECT BLUEPRINT // BENCHMARK SPEC</text>
+    <text y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Black Box · Magnetometer-Free GPS Navigator</text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" fill="#718096">ESP32-C3 SUPERMINI + NEO-6M GPS (1Hz) + MPU6050 (100Hz) + 1D KALMAN FILTER</text>
+  </g>
+
+  <!-- OLED Display Frame (SH1106 1.3" 128x64) -->
+  <g transform="translate(60, 160)">
+    <!-- Bezel -->
+    <rect width="480" height="340" rx="16" fill="#141821" stroke="#2d3748" stroke-width="3" />
+    <!-- Glass Screen (Phosphor Blue / Cyan Glow) -->
+    <rect x="24" y="24" width="432" height="292" rx="8" fill="#030914" stroke="#00d2ff" stroke-width="1.5" />
+    
+    <!-- Screen Pixel Grid / Phosphor Display Content -->
+    <g transform="translate(48, 48)">
+      <!-- Top Status Line -->
+      <text font-family="'JetBrains Mono', monospace" font-size="12" fill="#00d2ff" letter-spacing="1">GPS: 3D FIX [8 SATS]</text>
+      <text x="384" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="12" fill="#00d2ff">COG: 042°</text>
+      <line x1="0" y1="16" x2="384" y2="16" stroke="#00d2ff" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+
+      <!-- Giant Smooth Compass Arrow -->
+      <g transform="translate(192, 120)">
+        <circle r="68" fill="none" stroke="#00d2ff" stroke-width="1" stroke-dasharray="4 4" opacity="0.4" />
+        <circle r="78" fill="none" stroke="#00d2ff" stroke-width="0.5" opacity="0.2" />
+        <!-- Pointer tilted to waypoint angle -->
+        <g transform="rotate(38)">
+          <polygon points="0,-64 24,40 0,22 -24,40" fill="#00d2ff" filter="url(#glow-tc)" />
+          <polygon points="0,-64 0,22 -24,40" fill="#0099cc" />
+          <circle cx="0" cy="0" r="5" fill="#030914" stroke="#00d2ff" stroke-width="2" />
+        </g>
+      </g>
+
+      <!-- Target Readout -->
+      <g transform="translate(192, 225)">
+        <text text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#ffffff">Upper Washroom</text>
+        <text y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="800" fill="#ffd600">38.4 METERS</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Hardware Schematic Block (Right Side) -->
+  <g transform="translate(580, 160)">
+    <!-- ESP32-C3 Supermini Board -->
+    <rect width="260" height="340" rx="12" fill="#0c1b1a" stroke="#00ff88" stroke-width="2" />
+    <text x="24" y="36" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800" fill="#00ff88">ESP32-C3 MINI</text>
+    <text x="24" y="56" font-family="'JetBrains Mono', monospace" font-size="10" fill="#88bba0">RISC-V 160MHz // 4MB FLASH</text>
+
+    <!-- Chip Outline -->
+    <rect x="50" y="80" width="160" height="150" rx="6" fill="#142624" stroke="#00ff88" stroke-dasharray="4 2" />
+    <text x="130" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00ff88">1D KALMAN</text>
+    <text x="130" y="168" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#88bba0">FUSION SOLVER</text>
+
+    <!-- Pins -->
+    <g transform="translate(24, 255)" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">
+      <text y="0"><tspan fill="#ffd600">GPIO 8</tspan> : I2C SDA</text>
+      <text y="20"><tspan fill="#ffd600">GPIO 9</tspan> : I2C SCL</text>
+      <text y="40"><tspan fill="#00d2ff">GPIO 20</tspan>: GPS RX (UART1)</text>
+      <text y="60"><tspan fill="#00d2ff">GPIO 21</tspan>: GPS TX (UART1)</text>
+    </g>
+  </g>
+
+  <!-- Sensor Modules (Far Right) -->
+  <g transform="translate(870, 160)">
+    <!-- NEO-6M GPS -->
+    <rect width="270" height="155" rx="10" fill="#181c26" stroke="#4a5568" stroke-width="1.5" />
+    <rect x="180" y="20" width="70" height="70" rx="4" fill="#cbd5e0" stroke="#718096" />
+    <text x="215" y="60" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#1a202c" font-weight="700">CERAMIC</text>
+    <text x="215" y="74" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#4a5568">PATCH ANT</text>
+    <text x="20" y="38" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#ffffff">NEO-6M GPS</text>
+    <text x="20" y="58" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0aec0">9600 Baud UART</text>
+    <text x="20" y="80" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffd600">1Hz NMEA RMC/GGA</text>
+    <text x="20" y="125" font-family="'JetBrains Mono', monospace" font-size="11" fill="#68d391">COG Heading Trajectory</text>
+
+    <!-- MPU6050 6-Axis IMU -->
+    <g transform="translate(0, 185)">
+      <rect width="270" height="155" rx="10" fill="#181c26" stroke="#4a5568" stroke-width="1.5" />
+      <rect x="20" y="20" width="50" height="50" rx="4" fill="#004d40" stroke="#00bfa5" />
+      <text x="45" y="48" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#80eec0">IMU</text>
+      <text x="85" y="38" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#ffffff">MPU6050 GYRO</text>
+      <text x="85" y="58" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0aec0">I2C Addr 0x68</text>
+      <text x="85" y="78" font-family="'JetBrains Mono', monospace" font-size="10" fill="#ffd600">100Hz Raw Gyro Z</text>
+      <text x="20" y="125" font-family="'JetBrains Mono', monospace" font-size="11" fill="#68d391">High-Rate Relative Yaw</text>
+    </g>
+  </g>
+
+  <!-- Lower Kalman Math Pipeline Banner -->
+  <g transform="translate(60, 540)">
+    <rect width="1080" height="180" rx="12" fill="#111622" stroke="#2d3748" stroke-width="1.5" />
+    <text x="32" y="38" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ffd600" letter-spacing="2">SENSOR FUSION ARCHITECTURE // 1D KALMAN FILTER</text>
+    
+    <g transform="translate(32, 70)" font-family="'JetBrains Mono', monospace">
+      <!-- Step 1 -->
+      <g>
+        <rect width="220" height="75" rx="6" fill="#1a202c" stroke="#4a5568" />
+        <text x="16" y="26" font-size="11" font-weight="700" fill="#ffffff">01. PREDICT STEP</text>
+        <text x="16" y="46" font-size="10" fill="#a0aec0">yaw += gz_dps * dt</text>
+        <text x="16" y="62" font-size="10" fill="#718096">P = P + Q (100Hz)</text>
+      </g>
+      <!-- Arrow -->
+      <text x="236" y="45" font-size="16" fill="#ffd600">→</text>
+
+      <!-- Step 2 -->
+      <g transform="translate(260, 0)">
+        <rect width="240" height="75" rx="6" fill="#1a202c" stroke="#4a5568" />
+        <text x="16" y="26" font-size="11" font-weight="700" fill="#ffffff">02. GPS UPDATE (COG)</text>
+        <text x="16" y="46" font-size="10" fill="#a0aec0">if (speed > 2 km/h)</text>
+        <text x="16" y="62" font-size="10" fill="#718096">diff = cog - yaw</text>
+      </g>
+      <!-- Arrow -->
+      <text x="516" y="45" font-size="16" fill="#ffd600">→</text>
+
+      <!-- Step 3 -->
+      <g transform="translate(540, 0)">
+        <rect width="240" height="75" rx="6" fill="#1a202c" stroke="#4a5568" />
+        <text x="16" y="26" font-size="11" font-weight="700" fill="#ffffff">03. KALMAN GAIN (K)</text>
+        <text x="16" y="46" font-size="10" fill="#a0aec0">K = P / (P + R)</text>
+        <text x="16" y="62" font-size="10" fill="#ffd600">yaw += K * diff</text>
+      </g>
+      <!-- Arrow -->
+      <text x="796" y="45" font-size="16" fill="#ffd600">→</text>
+
+      <!-- Step 4 -->
+      <g transform="translate(820, 0)">
+        <rect width="195" height="75" rx="6" fill="#0b291e" stroke="#00ff88" />
+        <text x="16" y="26" font-size="11" font-weight="700" fill="#00ff88">04. DISPLAY OUTPUT</text>
+        <text x="16" y="46" font-size="10" fill="#e2e8f0">Target Arrow Render</text>
+        <text x="16" y="62" font-size="10" fill="#88bba0">Zero Gyroscope Drift</text>
+      </g>
+    </g>
+  </g>
+</svg>
