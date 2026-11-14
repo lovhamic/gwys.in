@@ -1950,9 +1950,9 @@ void audioTask(void *pvParameters) {
     const journal = JOURNAL_DATABASE[id] || JOURNAL_DATABASE['claude-hackathon'];
 
     // Update document & meta titles
-    document.title = `${journal.title} // gwys.in`;
+    document.title = `${journal.title} // screwby.in`;
     const metaTitle = document.getElementById('journal-meta-title');
-    if (metaTitle) metaTitle.textContent = `${journal.title} · gwys.in`;
+    if (metaTitle) metaTitle.textContent = `${journal.title} · screwby.in`;
 
     // Metadata chips
     const categoryPill = document.getElementById('journal-category-pill');
