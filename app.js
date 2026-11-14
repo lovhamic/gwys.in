@@ -209,7 +209,6 @@
   // ---------------------------------------------------------------------------
   function initCursorFollower() {
     const dot = document.querySelector(".cursor-dot");
-    const label = document.querySelector(".cursor-label");
     if (!dot || window.matchMedia("(pointer: coarse)").matches) return;
 
     let mouseX = -100;
@@ -227,27 +226,17 @@
       dotY += (mouseY - dotY) * 0.22;
 
       dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
-      if (label) {
-        label.style.transform = `translate(${dotX}px, ${dotY + 28}px)`;
-      }
-
       requestAnimationFrame(loop);
     }
     loop();
 
-    // Hover triggers for custom cursor states
-    document.querySelectorAll("[data-cursor]").forEach((el) => {
+    // Hover triggers for interactive elements (no text label)
+    document.querySelectorAll("a, button, [role='button'], .cursor-pointer, .work-card-tilt, .axiom-card, .hiw-card, [data-cursor]").forEach((el) => {
       el.addEventListener("mouseenter", () => {
-        const text = el.getAttribute("data-cursor");
         dot.classList.add("cursor-hover");
-        if (label && text) {
-          label.textContent = text;
-          label.style.opacity = "1";
-        }
       });
       el.addEventListener("mouseleave", () => {
         dot.classList.remove("cursor-hover");
-        if (label) label.style.opacity = "0";
       });
     });
   }

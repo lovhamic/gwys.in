@@ -464,22 +464,6 @@ body {
   background-color: rgba(255, 214, 0, 0.25);
   border: 1.5px solid var(--ink-primary);
 }
-.cursor-label {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 10000;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #0a0a0c;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 120ms ease;
-}
 
 /* Quick Spec Modal / Drawer */
 .modal-backdrop {
