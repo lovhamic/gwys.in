@@ -1154,7 +1154,6 @@ void audioTask(void *pvParameters) {
     if (!titleEl) return;
 
     const chars = titleEl.querySelectorAll(".title-char");
-    const caliperHud = document.getElementById("title-caliper-hud");
     const screwDot = titleEl.querySelector(".title-screw-dot");
     if (!chars.length) return;
 
@@ -1233,10 +1232,6 @@ void audioTask(void *pvParameters) {
       isCalibrating = true;
       Sound.relay();
 
-      if (caliperHud) {
-        caliperHud.textContent = "[CALIBRATING TORQUE MATRIX // SCANNING 23 BYTES...]";
-      }
-
       if (screwDot) {
         screwDot.style.transform = "rotate(360deg) scale(1.3)";
       }
@@ -1268,16 +1263,10 @@ void audioTask(void *pvParameters) {
             if (idx === chars.length - 1) {
               setTimeout(() => {
                 Sound.chirp();
-                if (caliperHud) {
-                  caliperHud.textContent = "[TORQUE LOCKED: 0.42 Nm · 23 BYTES CALIBRATED · 100% NOMINAL]";
-                }
                 if (screwDot) {
                   screwDot.style.transform = "rotate(0deg) scale(1)";
                 }
                 setTimeout(() => {
-                  if (caliperHud) {
-                    caliperHud.textContent = "[KERNING: -0.045em · TORQUE: NOMINAL · CLICK TO CALIBRATE]";
-                  }
                   isCalibrating = false;
                 }, 2800);
               }, 60);
@@ -1299,9 +1288,6 @@ void audioTask(void *pvParameters) {
       const dx = e.clientX - dragStartX;
       currentKerning = Math.max(-0.065, Math.min(0.04, -0.045 + dx * 0.0003));
       titleEl.style.letterSpacing = `${currentKerning.toFixed(4)}em`;
-      if (caliperHud) {
-        caliperHud.textContent = `[DYNAMIC KERNING: ${currentKerning.toFixed(3)}em · TIGHTEN/LOOSEN]`;
-      }
     });
 
     window.addEventListener("mouseup", () => {
@@ -1313,9 +1299,6 @@ void audioTask(void *pvParameters) {
       Sound.probe(900);
       setTimeout(() => {
         titleEl.style.transition = "";
-        if (caliperHud && !isCalibrating) {
-          caliperHud.textContent = "[KERNING: -0.045em · TORQUE: NOMINAL · CLICK TO CALIBRATE]";
-        }
       }, 360);
     });
   }
