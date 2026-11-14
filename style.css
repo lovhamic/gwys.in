@@ -324,66 +324,6 @@ body {
   transform: scale(1.035);
 }
 
-/* Interactive Photo Hotspots */
-.photo-hotspot {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  z-index: 20;
-}
-.photo-hotspot-pin {
-  width: 14px;
-  height: 14px;
-  background-color: var(--screwdriver-yellow);
-  border: 2px solid #000;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  transition: transform 160ms var(--ease-spring);
-}
-.photo-hotspot:hover .photo-hotspot-pin {
-  transform: scale(1.4);
-}
-.photo-hotspot-ring {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid var(--screwdriver-yellow);
-  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-}
-@keyframes pulse-ring {
-  0% { transform: scale(0.6); opacity: 0.8; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-
-/* Tooltip Popover from Trigger (Origin-aware Emil Kowalski style) */
-.hotspot-tooltip {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.95);
-  opacity: 0;
-  pointer-events: none;
-  white-space: nowrap;
-  background-color: #0a0a0c;
-  color: #ffffff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-  transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
-  z-index: 30;
-}
-.photo-hotspot:hover .hotspot-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
 /* How I Work Interactive Title & Process Sequencer */
 .how-i-work-interactive {
   transition: transform 160ms var(--ease-spring);

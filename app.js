@@ -256,12 +256,7 @@
   // 4. HERO STAGE: WORKBENCH VISUAL & INTERACTIVE HOTSPOTS
   // ---------------------------------------------------------------------------
   function initHeroStage() {
-    // Hotspot clicks on Workbench Visual
-    document.querySelectorAll(".photo-hotspot").forEach((spot) => {
-      spot.addEventListener("click", () => {
-        Sound.probe(1600);
-      });
-    });
+    // Workbench Visual
   }
 
   // ---------------------------------------------------------------------------
