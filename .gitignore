@@ -3,6 +3,7 @@ node_modules/
 skill/
 .agents/
 New folder/
+reference/github/
 
 # OS and logs
 .DS_Store

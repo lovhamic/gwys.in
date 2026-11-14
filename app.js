@@ -495,7 +495,7 @@ if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) {
         "Python 3 & Pygame Engine",
         "Custom Gun Enclosure"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/shoot-the-cockroach",
       specs: [
         { label: "Baud Rate", val: "115200 Baud USB Serial" },
         { label: "Sensor Cadence", val: "100Hz (10ms interval)" },
@@ -554,7 +554,7 @@ Lighting: The more water in a spot, the deeper the blue. Fast-moving water turns
         "Eulerian-Lagrangian Particle Solver",
         "C++ Embedded Firmware"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/water-sim-10x10",
       specs: [
         { label: "Fluid Particles", val: "40 Water + 20 Spray Droplets" },
         { label: "Frame Rate", val: "40 FPS (25,000 µs frame cap)" },
@@ -598,7 +598,7 @@ void stepWater(float dt) {
         "HC-SR04 Ultrasonic Sonar",
         "Ollama Local LLM & Python Backend"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/ai-robotic-arm",
       specs: [
         { label: "Joint Actuators", val: "4x MG996R (11 kg-cm) + 1x SG90" },
         { label: "Current Sense", val: "ACS712 (Stall Threshold > 3.8A)" },
@@ -640,7 +640,7 @@ void checkSafetyLimits() {
         "Google Maps Geolocation Relay",
         "U8g2 Graphics Library"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/navigator-01",
       specs: [
         { label: "Display Driver", val: "SSD1306 128x64 HW I2C (U8g2)" },
         { label: "Animation Engine", val: "7-Mode Procedural Bitmap FSM" },
@@ -679,7 +679,7 @@ void handleTouchCycle() {
         "Diffraction Grating Optics (1000 lines/mm)",
         "NumPy Numerical Array Math"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/pyspectrometer",
       specs: [
         { label: "Wavelength Fit", val: "Two-Point Dual Laser Benchmark" },
         { label: "Filtering", val: "Savitzky-Golay Digital Window" },
@@ -717,7 +717,7 @@ peak_indices = peakutils.indexes(smoothed_intensity, thres=0.15, min_dist=10)`
         "Interactive Magnifier Zoom Inset",
         "JSON Calibration Persistence"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/webcam-coordinate-tracker",
       specs: [
         { label: "Projection Model", val: "Pinhole Geometry (X = (u - cx)*H/f)" },
         { label: "Calibration", val: "6X Magnified Ruler Inset (Key 'k')" },
@@ -753,7 +753,7 @@ def pixel_to_world_cm(u, v, cx, cy, H_cm, focal_px):
         "Custom Expression Parser",
         "Real-Time Harmonic Synthesis"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/gitpatch-wave",
       specs: [
         { label: "Math Engine", val: "NumPy Vectorized Linspace (1000 pts)" },
         { label: "Frontend", val: "HTML5 Canvas 60 FPS RequestAnimationFrame" },
@@ -795,7 +795,7 @@ def calculate_wave():
         "FreeRTOS Multi-Tasking Firmware",
         "Separate 5V High-Current Rail"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/dog-voice-control",
       specs: [
         { label: "Core Board", val: "Seeed Studio XIAO ESP32S3 (OPI PSRAM)" },
         { label: "Microphone", val: "INMP441 I2S 24-bit Digital MEMS" },
