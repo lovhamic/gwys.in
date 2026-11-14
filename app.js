@@ -396,7 +396,7 @@ The Arrival: Once you are within 15 meters of your target, the screen announces 
         "1.3\" OLED (SH1106 Driver)",
         "5V Power Source"
       ],
-      githubUrl: "https://github.com/lovhamic",
+      githubUrl: "https://github.com/lovhamic/travelcompass",
       specs: [
         { label: "Core MCU", val: "ESP32-C3 RISC-V 160MHz" },
         { label: "IMU Fusion", val: "1D Kalman (100Hz Gyro + 1Hz GPS)" },
